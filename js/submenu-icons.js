@@ -1,5 +1,5 @@
 /* Submenu icons for Hindu Mamanram navigation.
-   Kept separate from main.js so existing navigation logic is untouched. */
+   Separate from main.js so existing navigation/dropdown logic stays untouched. */
 (function () {
   'use strict';
 
@@ -12,13 +12,22 @@
     'gallery.html': 'fa-solid fa-images'
   };
 
-  function addIcon(link, iconClass) {
-    if (!link || link.querySelector('.submenu-fa-icon')) return;
-
+  function addFaIcon(link, iconClass) {
+    if (!link || link.querySelector('.submenu-fa-icon, .submenu-goddess-icon')) return;
     const icon = document.createElement('i');
     icon.className = `${iconClass} submenu-fa-icon`;
     icon.setAttribute('aria-hidden', 'true');
     link.prepend(icon);
+  }
+
+  function addGoddessIcon(link) {
+    if (!link || link.querySelector('.submenu-fa-icon, .submenu-goddess-icon')) return;
+    const image = document.createElement('img');
+    image.src = 'assets/deity-lakshmi.jpg';
+    image.alt = '';
+    image.className = 'submenu-goddess-icon';
+    image.setAttribute('aria-hidden', 'true');
+    link.prepend(image);
   }
 
   function applySubmenuIcons() {
@@ -26,20 +35,18 @@
       const href = link.getAttribute('href') || '';
       const baseHref = href.split('#')[0];
 
-      if (href.startsWith('gallery.html#')) {
-        addIcon(link, 'fa-regular fa-image');
+      // Varalakshmi pooja albums use Goddess Lakshmi instead of a generic photo icon.
+      if (/^gallery\.html#y20\d{2}$/.test(href)) {
+        addGoddessIcon(link);
         return;
       }
 
-      if (iconMap[baseHref]) {
-        addIcon(link, iconMap[baseHref]);
-      }
+      if (iconMap[baseHref]) addFaIcon(link, iconMap[baseHref]);
     });
   }
 
   function addStyles() {
     if (document.getElementById('submenu-icon-styles')) return;
-
     const style = document.createElement('style');
     style.id = 'submenu-icon-styles';
     style.textContent = `
@@ -48,7 +55,6 @@
         align-items: center;
         gap: 12px;
       }
-
       .nav .menu a .submenu-fa-icon {
         width: 20px;
         min-width: 20px;
@@ -58,16 +64,28 @@
         line-height: 1;
         transition: color .18s ease, transform .18s ease;
       }
-
+      .nav .menu a .submenu-goddess-icon {
+        width: 27px;
+        height: 27px;
+        min-width: 27px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+        border: 1px solid rgba(139,35,72,.18);
+        box-shadow: 0 2px 7px rgba(70,25,35,.12);
+        transition: transform .18s ease, box-shadow .18s ease;
+      }
       .nav .menu a:hover .submenu-fa-icon,
       .nav .menu a:focus-visible .submenu-fa-icon {
         color: currentColor;
         transform: translateX(1px);
       }
-
-      .nav .menu .group-label {
-        padding-left: 0;
+      .nav .menu a:hover .submenu-goddess-icon,
+      .nav .menu a:focus-visible .submenu-goddess-icon {
+        transform: scale(1.07);
+        box-shadow: 0 3px 9px rgba(70,25,35,.18);
       }
+      .nav .menu .group-label { padding-left: 0; }
     `;
     document.head.appendChild(style);
   }
@@ -75,17 +93,11 @@
   function init() {
     addStyles();
     applySubmenuIcons();
-
-    /* main.js builds the header dynamically. Observe briefly so icons are
-       also applied if this file executes before the header is rendered. */
-    const observer = new MutationObserver(() => applySubmenuIcons());
+    const observer = new MutationObserver(applySubmenuIcons);
     observer.observe(document.body, { childList: true, subtree: true });
     window.setTimeout(() => observer.disconnect(), 5000);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 })();
