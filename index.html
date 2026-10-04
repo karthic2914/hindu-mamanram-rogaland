@@ -8,15 +8,32 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hind+Madurai:wght@400;500;600&family=Tiro+Tamil&display=swap"
-    rel="stylesheet"
-  >
-  
-
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hind+Madurai:wght@400;500;600&family=Tiro+Tamil&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="css/styles.css?v=20261004g">
   <link rel="stylesheet" href="css/home-v2.css?v=20261004h">
+  <style>
+    @media (min-width:981px){
+      #site-nav{gap:6px!important}
+      #site-nav>.nav-item>.nav-link,#site-nav>.nav-item>.nav-parent{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:9px!important;min-height:46px!important;padding:11px 14px!important;border-radius:9px!important;font-family:"Hind Madurai","Nirmala UI","Segoe UI",sans-serif!important;font-size:15.5px!important;font-weight:600!important;line-height:1.2!important;color:#2c1814!important;transition:background-color .2s ease,color .2s ease,box-shadow .2s ease,transform .2s ease!important}
+      #site-nav>.nav-item>.nav-link::before,#site-nav>.nav-item>.nav-parent::before{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:19px!important;flex:0 0 19px!important;color:#8b2346!important;font-family:"Font Awesome 6 Free"!important;font-size:16px!important;font-weight:900!important;line-height:1!important;-webkit-font-smoothing:antialiased}
+      #site-nav>.nav-item:nth-child(1)>.nav-link::before{content:"\f015"!important}
+      #site-nav>.nav-item:nth-child(2)>.nav-parent::before{content:"\f66f"!important}
+      #site-nav>.nav-item:nth-child(3)>.nav-parent::before{content:"\f4c4"!important}
+      #site-nav>.nav-item:nth-child(4)>.nav-parent::before{content:"\f144"!important}
+      #site-nav>.nav-item:nth-child(5)>.nav-link::before{content:"\f0e0"!important}
+      #site-nav>.nav-item>.nav-parent::after{content:"\f078"!important;position:static!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;width:auto!important;height:auto!important;margin-left:2px!important;background:none!important;border-radius:0!important;color:#8b2346!important;font-family:"Font Awesome 6 Free"!important;font-size:11px!important;font-weight:900!important;line-height:1!important;transform:none!important;transition:transform .2s ease!important;-webkit-font-smoothing:antialiased}
+      #site-nav>.nav-item:hover>.nav-parent::after,#site-nav>.nav-item:focus-within>.nav-parent::after{transform:rotate(180deg)!important}
+      #site-nav>.nav-item>.nav-link:hover,#site-nav>.nav-item>.nav-parent:hover{background:#f9e9ed!important;color:#8b2346!important;transform:translateY(-1px)!important}
+      #site-nav>.nav-item>.nav-link.is-active,#site-nav>.nav-item>.nav-parent.is-active{background:#fff2f4!important;color:#8b2346!important;font-weight:700!important;box-shadow:inset 0 -3px 0 #8b2346!important}
+      #site-nav>.nav-item>.nav-link.is-active::after{display:none!important}
+      #site-nav>.nav-item>.nav-parent.is-active::after{display:inline-flex!important}
+      #site-nav .menu{top:100%!important;margin-top:0!important;min-width:235px!important;padding:8px!important;border-radius:12px!important;border:1px solid rgba(110,44,70,.12)!important;box-shadow:0 18px 45px rgba(62,22,40,.14)!important}
+      #site-nav .menu::before{content:"";position:absolute;left:0;right:0;top:-8px;height:8px;background:transparent}
+      #site-nav .menu a{padding:10px 12px!important;border-radius:8px!important;font-family:"Hind Madurai","Nirmala UI",sans-serif!important;font-weight:500!important;transition:background .18s ease,color .18s ease!important}
+      #site-nav .menu a:hover{background:#f9e9ed!important;color:#8b2346!important}
+    }
+  </style>
 </head>
 <body data-page="home" data-title-ta="இந்து மாமன்றம் ரூகலாண்ட்" data-title-en="Hindu Mamanram Rogaland">
   <header id="site-header"></header>
@@ -32,109 +49,35 @@
         </div>
       </div>
       <figure class="seal-card">
-        <span class="seal-lamp" aria-hidden="true"></span>
-        <span class="seal-lamp seal-lamp-right" aria-hidden="true"></span>
+        <span class="seal-lamp" aria-hidden="true"></span><span class="seal-lamp seal-lamp-right" aria-hidden="true"></span>
         <img class="seal-img" src="assets/hm-seal.jpg" alt="இந்து மாமன்றம் ரூகலாண்ட்">
-        <figcaption>
-          <strong data-i18n="seal.name">இந்து மாமன்றம் ரூகலாண்ட்</strong>
-          <span>EST. 1986 · NORWAY</span>
-        </figcaption>
+        <figcaption><strong data-i18n="seal.name">இந்து மாமன்றம் ரூகலாண்ட்</strong><span>EST. 1986 · NORWAY</span></figcaption>
       </figure>
     </div>
-
-    <div class="wrap">
-      <div class="stats">
-        <div class="stat"><span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></span><div><b data-i18n="stat.founded">1986</b><span data-i18n="stat.founded.sub">நிறுவப்பட்டது</span></div></div>
-        <div class="stat"><span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c2 3 2 5 0 8-2-3-2-5 0-8z"/><path d="M9 14h6l-1 7H10l-1-7z"/></svg></span><div><b data-i18n="stat.pooja">மாதந்தோறும்</b><span data-i18n="stat.pooja.sub">பூஜை</span></div></div>
-        <div class="stat"><span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg></span><div><b data-i18n="stat.time">18:30</b><span data-i18n="stat.time.sub">பூஜை நேரம்</span></div></div>
-        <div class="stat"><span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.2"/></svg></span><div><b>Sandnes</b><span>Varatun Gård</span></div></div>
+    <div class="wrap"><div class="stats">
+      <div class="stat"><span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></span><div><b data-i18n="stat.founded">1986</b><span data-i18n="stat.founded.sub">நிறுவப்பட்டது</span></div></div>
+      <div class="stat"><span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c2 3 2 5 0 8-2-3-2-5 0-8z"/><path d="M9 14h6l-1 7H10l-1-7z"/></svg></span><div><b data-i18n="stat.pooja">மாதந்தோறும்</b><span data-i18n="stat.pooja.sub">பூஜை</span></div></div>
+      <div class="stat"><span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg></span><div><b data-i18n="stat.time">18:30</b><span data-i18n="stat.time.sub">பூஜை நேரம்</span></div></div>
+      <div class="stat"><span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.2"/></svg></span><div><b>Sandnes</b><span>Varatun Gård</span></div></div>
+    </div></div>
+    <section class="section next-band"><div class="wrap next-grid">
+      <article class="next-card" id="next-pooja"><p class="kicker" data-i18n="next.kicker">அடுத்த பூஜை</p><div class="next-main"><div class="next-when"><b data-next="day">10</b><span data-next="month">அக்டோபர்</span><small data-next="year">2026</small></div><div><h2 data-next="name">மஹாளயபக்ஷ பூஜை</h2><p class="next-sponsor" data-next="sponsor">உபயதாரர் : அடியார்கள் உபயம்</p><p class="next-meta"><span>18:30</span><span>Varatun Gård, Sandnes</span></p></div></div><img class="next-photo" src="assets/deity-mahalaya.jpg" alt=""><a class="btn btn-primary" href="worship.html" data-i18n="next.all">அனைத்து பூஜைகளும் பார்க்க</a></article>
+      <aside class="place-card"><h3 data-i18n="home.venue.title">பூஜை நடைபெறும் இடம்</h3><p data-i18n="home.venue.short">இந்து மாமன்றத்தின் பூஜை வழிபாடுகள் சண்ட்னஸ் நகரில் உள்ள வாரதுன் கோர்ட் மண்டபத்தில் நடைபெறுகின்றது.</p><p class="place-address">Varatun Gård, Varatun hagen,<br>Sandnes, Norway</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Varatun+G%C3%A5rd+Varatun+hagen+Sandnes" target="_blank" rel="noopener" data-i18n="home.venue.map">வழிபடத்தைத் திறக்க</a></aside>
+    </div></section>
+    <section class="section" id="live-notices" hidden><div class="wrap"><p class="kicker" data-i18n="notice.kicker">அறிவிப்பு</p><h2 data-i18n="notice.heading">குழு அறிவிப்பு</h2><div class="notice-list" id="notice-list"></div></div></section>
+    <section class="section about-home"><div class="wrap"><p class="kicker" data-i18n="home.kicker">எமது பீடம்</p><h2 data-i18n="home.heading">ரூகலாந்தின் இந்து வழிபாட்டு இல்லம்</h2><div class="about-copy prose"><p data-i18n="home.p1">எமது நிலையம் நோர்வே நாட்டின் மிகப் பழைய இந்து மத பீடமாக 1980-களின் நடுப்பகுதியில் இஸ்ரவங்கர் மாநகரில் ஆரம்பிக்கப்பட்டது. இங்கு மாதந்தோறும் வழமையான பூஜை வழிபாடுகளுடன் வரலக்ஷ்மி பூஜை, சரஸ்வதி பூஜை முதலிய விசேட பூஜைகளும் நடைபெறுகின்றன.</p><p data-i18n="home.p2">இந்து மாமன்றம் ஒரு மதபீடமாக அரச அங்கீகாரம் பெற்றுள்ளதுடன் தொடர்ந்து வருடந்தோறும் பல புதிய அங்கத்தவர்களை இணைத்து இந்து மக்களுக்காக பல அரிய சேவைகளையும் சிறப்பாக செய்து வளர்ந்து வருகின்றது.</p></div>
+      <div class="grid-3">
+        <article class="card"><span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c2 3 2 5 0 8-2-3-2-5 0-8z"/><path d="M9 14h6l-1 7H10l-1-7z"/></svg></span><h3 data-i18n="home.card1.title">இறைவழிபாடு</h3><p data-i18n="home.card1.text">மாதாந்த பூஜை 18:30 மணிக்கு ஆரம்பமாகும். உபயதாரர் பட்டியலுடன் 2026 ஆம் ஆண்டு அட்டவணை இறைவழிபாடு பக்கத்தில் உள்ளது.</p><a class="more" href="worship.html" data-i18n="home.more">மேலும்</a></article>
+        <article class="card"><span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="8" cy="9" r="2.2"/><circle cx="16" cy="9" r="2.2"/><path d="M4 19c1-3 2.6-4 4-4s3 1 4 4M12 19c1-3 2.6-4 4-4s3 1 4 4"/></svg></span><h3 data-i18n="home.card2.title">திருமணம் மற்றும் அந்தியம்</h3><p data-i18n="home.card2.text">அரசு அங்கீகரித்த இந்து திருமணம், நோர்வே சட்டத்திற்கும் மரபிற்கும் அமைய அந்தியக்கிரிகை ஏற்பாடு.</p><a class="more" href="wedding.html" data-i18n="home.more">மேலும்</a></article>
+        <article class="card"><span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3"/><path d="M5 19c1.4-3 3.6-4.5 7-4.5S17.6 16 19 19"/></svg></span><h3 data-i18n="home.card3.title">அங்கத்துவம்</h3><p data-i18n="home.card3.text">அங்கத்தவர் விண்ணப்பப் படிவத்தைப் பதிவிறக்கம் செய்யுங்கள். கொடுப்பனவிற்கு Vipps +47 466 77 855.</p><a class="more" href="#membership" data-i18n="home.more">மேலும்</a></article>
       </div>
-    </div>
-
-    <section class="section next-band">
-      <div class="wrap next-grid">
-        <article class="next-card" id="next-pooja">
-          <p class="kicker" data-i18n="next.kicker">அடுத்த பூஜை</p>
-          <div class="next-main">
-            <div class="next-when"><b data-next="day">10</b><span data-next="month">அக்டோபர்</span><small data-next="year">2026</small></div>
-            <div>
-              <h2 data-next="name">மஹாளயபக்ஷ பூஜை</h2>
-              <p class="next-sponsor" data-next="sponsor">உபயதாரர் : அடியார்கள் உபயம்</p>
-              <p class="next-meta"><span>18:30</span><span>Varatun Gård, Sandnes</span></p>
-            </div>
-          </div>
-          <img class="next-photo" src="assets/deity-mahalaya.jpg" alt="">
-          <a class="btn btn-primary" href="worship.html" data-i18n="next.all">அனைத்து பூஜைகளும் பார்க்க</a>
-        </article>
-        <aside class="place-card">
-          <h3 data-i18n="home.venue.title">பூஜை நடைபெறும் இடம்</h3>
-          <p data-i18n="home.venue.short">இந்து மாமன்றத்தின் பூஜை வழிபாடுகள் சண்ட்னஸ் நகரில் உள்ள வாரதுன் கோர்ட் மண்டபத்தில் நடைபெறுகின்றது.</p>
-          <p class="place-address">Varatun Gård, Varatun hagen,<br>Sandnes, Norway</p>
-          <a href="https://www.google.com/maps/search/?api=1&amp;query=Varatun+G%C3%A5rd+Varatun+hagen+Sandnes" target="_blank" rel="noopener" data-i18n="home.venue.map">வழிபடத்தைத் திறக்க</a>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section" id="live-notices" hidden>
-      <div class="wrap">
-        <p class="kicker" data-i18n="notice.kicker">அறிவிப்பு</p>
-        <h2 data-i18n="notice.heading">குழு அறிவிப்பு</h2>
-        <div class="notice-list" id="notice-list"></div>
-      </div>
-    </section>
-
-    <section class="section about-home">
-      <div class="wrap">
-        <p class="kicker" data-i18n="home.kicker">எமது பீடம்</p>
-        <h2 data-i18n="home.heading">ரூகலாந்தின் இந்து வழிபாட்டு இல்லம்</h2>
-        <div class="about-copy prose">
-            <p data-i18n="home.p1">எமது நிலையம் நோர்வே நாட்டின் மிகப் பழைய இந்து மத பீடமாக 1980-களின் நடுப்பகுதியில் இஸ்ரவங்கர் மாநகரில் ஆரம்பிக்கப்பட்டது. இங்கு மாதந்தோறும் வழமையான பூஜை வழிபாடுகளுடன் வரலக்ஷ்மி பூஜை, சரஸ்வதி பூஜை முதலிய விசேட பூஜைகளும் நடைபெறுகின்றன.</p>
-            <p data-i18n="home.p2">இந்து மாமன்றம் ஒரு மதபீடமாக அரச அங்கீகாரம் பெற்றுள்ளதுடன் தொடர்ந்து வருடந்தோறும் பல புதிய அங்கத்தவர்களை இணைத்து இந்து மக்களுக்காக பல அரிய சேவைகளையும் சிறப்பாக செய்து வளர்ந்து வருகின்றது.</p>
-          </div>
-        <div class="grid-3">
-          <article class="card">
-            <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c2 3 2 5 0 8-2-3-2-5 0-8z"/><path d="M9 14h6l-1 7H10l-1-7z"/></svg></span>
-            <h3 data-i18n="home.card1.title">இறைவழிபாடு</h3>
-            <p data-i18n="home.card1.text">மாதாந்த பூஜை 18:30 மணிக்கு ஆரம்பமாகும். உபயதாரர் பட்டியலுடன் 2026 ஆம் ஆண்டு அட்டவணை இறைவழிபாடு பக்கத்தில் உள்ளது.</p>
-            <a class="more" href="worship.html" data-i18n="home.more">மேலும்</a>
-          </article>
-          <article class="card">
-            <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="8" cy="9" r="2.2"/><circle cx="16" cy="9" r="2.2"/><path d="M4 19c1-3 2.6-4 4-4s3 1 4 4M12 19c1-3 2.6-4 4-4s3 1 4 4"/></svg></span>
-            <h3 data-i18n="home.card2.title">திருமணம் மற்றும் அந்தியம்</h3>
-            <p data-i18n="home.card2.text">அரசு அங்கீகரித்த இந்து திருமணம், நோர்வே சட்டத்திற்கும் மரபிற்கும் அமைய அந்தியக்கிரிகை ஏற்பாடு.</p>
-            <a class="more" href="wedding.html" data-i18n="home.more">மேலும்</a>
-          </article>
-          <article class="card">
-            <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3"/><path d="M5 19c1.4-3 3.6-4.5 7-4.5S17.6 16 19 19"/></svg></span>
-            <h3 data-i18n="home.card3.title">அங்கத்துவம்</h3>
-            <p data-i18n="home.card3.text">அங்கத்தவர் விண்ணப்பப் படிவத்தைப் பதிவிறக்கம் செய்யுங்கள். கொடுப்பனவிற்கு Vipps +47 466 77 855.</p>
-            <a class="more" href="#membership" data-i18n="home.more">மேலும்</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="membership">
-      <div class="wrap vipps">
-        <div>
-          <p class="kicker" data-i18n="home.card3.title">அங்கத்துவம்</p>
-          <h2 data-i18n="member.title">அங்கத்தவர் ஆகுங்கள்</h2>
-          <p data-i18n="member.text">நீங்களும் அங்கத்தவராகப் பதிவு செய்துகொள்ள விரும்பின் அதற்குரிய விண்ணப்பப் படிவத்தைக் கீழுள்ள இணைப்பின் வழியாகத் தரவிறக்கம் செய்துகொள்ளுங்கள்.</p>
-          <div class="actions">
-            <a class="btn btn-primary" id="member-form-link" href="https://drive.google.com/file/d/1r3KylsjU2gi9ltvv-0XzuL-FSpJ1m9DA/view?usp=sharing" target="_blank" rel="noopener" data-i18n="member.form">அங்கத்தவர் விண்ணப்ப படிவம்</a>
-          </div>
-        </div>
-        <div class="vipps-pay">
-          <p data-i18n="member.pay">பணக்கொடுப்பனவுகளின்போது எமது Vipps இலக்கத்தைப் பயன்படுத்துங்கள்.</p>
-          <span class="vipps-logo" aria-hidden="true">vipps</span>
-          <a class="vipps-num" href="tel:+4746677855">+47 466 77 855</a>
-        </div>
-      </div>
-    </section>
+    </div></section>
+    <section class="section" id="membership"><div class="wrap vipps"><div><p class="kicker" data-i18n="home.card3.title">அங்கத்துவம்</p><h2 data-i18n="member.title">அங்கத்தவர் ஆகுங்கள்</h2><p data-i18n="member.text">நீங்களும் அங்கத்தவராகப் பதிவு செய்துகொள்ள விரும்பின் அதற்குரிய விண்ணப்பப் படிவத்தைக் கீழுள்ள இணைப்பின் வழியாகத் தரவிறக்கம் செய்துகொள்ளுங்கள்.</p><div class="actions"><a class="btn btn-primary" id="member-form-link" href="https://drive.google.com/file/d/1r3KylsjU2gi9ltvv-0XzuL-FSpJ1m9DA/view?usp=sharing" target="_blank" rel="noopener" data-i18n="member.form">அங்கத்தவர் விண்ணப்ப படிவம்</a></div></div><div class="vipps-pay"><p data-i18n="member.pay">பணக்கொடுப்பனவுகளின்போது எமது Vipps இலக்கத்தைப் பயன்படுத்துங்கள்.</p><span class="vipps-logo" aria-hidden="true">vipps</span><a class="vipps-num" href="tel:+4746677855">+47 466 77 855</a></div></div></section>
   </main>
   <footer id="site-footer"></footer>
   <script src="js/pooja-data.js"></script>
   <script src="js/store.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/submenu-icons.js?v=20261004b"></script>
 </body>
 </html>
