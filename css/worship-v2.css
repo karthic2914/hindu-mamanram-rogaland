@@ -3,22 +3,17 @@
 .worship-page{overflow:hidden;background:#fbf6ed}
 
 /* HERO */
-.worship-hero{position:relative;min-height:380px;display:flex;align-items:center;overflow:hidden;background:linear-gradient(100deg,#fff8ec 0%,#fff9ef 48%,#f5e4c7 100%);border-bottom:1px solid var(--w-border)}
-.worship-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 50%,rgba(214,166,80,.16),transparent 30%),linear-gradient(90deg,rgba(255,255,255,.20),transparent 70%);pointer-events:none}
-.worship-hero-glow{position:absolute;width:560px;height:560px;right:12%;top:50%;transform:translateY(-50%);border-radius:50%;background:radial-gradient(circle,rgba(223,173,79,.18),rgba(223,173,79,.05) 44%,transparent 69%)}
-.worship-mandala{position:absolute;right:17%;top:50%;width:310px;height:310px;transform:translateY(-50%);display:grid;place-items:center;border:1px solid rgba(185,128,34,.14);border-radius:50%;color:rgba(167,108,26,.15)}
-.worship-mandala::before,.worship-mandala::after{content:"";position:absolute;border:1px solid rgba(185,128,34,.11);border-radius:50%}
-.worship-mandala::before{inset:22px}.worship-mandala::after{inset:48px;border-style:dashed}
-.worship-mandala span{font-family:Georgia,serif;font-size:126px;line-height:1;color:rgba(164,110,29,.14)}
-.worship-lamp-art{position:absolute;right:-35px;top:0;width:360px;height:100%;background:linear-gradient(90deg,rgba(251,246,237,1) 0%,rgba(251,246,237,.38) 27%,rgba(251,246,237,.02) 56%),url('../assets/deity-mahalaya.jpg') center/cover no-repeat;opacity:.38;filter:sepia(.18) saturate(.9)}
+.worship-hero{position:relative;min-height:380px;display:flex;align-items:center;overflow:hidden;background:#fbf2e4 url('../assets/worship-hero.png') center center/cover no-repeat;border-bottom:1px solid var(--w-border)}
+.worship-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,249,239,.96) 0%,rgba(255,249,239,.86) 34%,rgba(255,249,239,.38) 57%,rgba(255,249,239,.04) 82%);pointer-events:none}
+.worship-hero-glow,.worship-mandala,.worship-lamp-art{display:none}
 .worship-hero-inner{position:relative;z-index:2;width:100%;padding-top:54px;padding-bottom:54px}
 .worship-hero-copy{max-width:760px}
 .worship-hero .eyebrow,.kicker{margin:0 0 8px;color:var(--w-gold-dark);font-size:13px;font-weight:600;letter-spacing:.04em}
-.worship-hero .eyebrow{display:inline-flex;padding:6px 12px;background:rgba(211,164,71,.17);border-radius:999px}
-.worship-hero h1{margin:8px 0 0;color:var(--w-maroon-dark);font-size:clamp(54px,5.4vw,78px);line-height:1.08;font-weight:500}
+.worship-hero .eyebrow{display:inline-flex;padding:6px 12px;background:rgba(211,164,71,.22);border-radius:999px}
+.worship-hero h1{margin:8px 0 0;color:var(--w-maroon-dark);font-size:clamp(54px,5.4vw,78px);line-height:1.08;font-weight:500;text-shadow:0 1px 0 rgba(255,255,255,.4)}
 .worship-hero .lede{max-width:720px;margin:17px 0 0;color:#5f4b43;font-size:17px;line-height:1.75}
 .worship-hero-facts{display:flex;gap:14px;margin-top:25px}
-.hero-fact{display:flex;align-items:center;gap:12px;min-width:230px;padding:13px 16px;background:rgba(255,255,255,.88);border:1px solid rgba(68,36,28,.11);border-radius:13px;box-shadow:0 8px 22px rgba(75,42,26,.055);text-decoration:none}
+.hero-fact{display:flex;align-items:center;gap:12px;min-width:230px;padding:13px 16px;background:rgba(255,255,255,.91);border:1px solid rgba(68,36,28,.11);border-radius:13px;box-shadow:0 8px 22px rgba(75,42,26,.07);text-decoration:none;backdrop-filter:blur(4px)}
 .hero-fact-icon{display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;color:#fff;background:var(--w-maroon);border-radius:50%;font-size:17px}
 .hero-fact strong,.hero-fact span{display:block}.hero-fact strong{color:var(--w-maroon-dark);font-size:14px}.hero-fact div span{margin-top:3px;color:var(--w-muted);font-size:11px}
 
@@ -27,6 +22,6 @@
 
 .worship-venue-section{padding:0 0 64px}.worship-venue-card{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:30px 34px;background:var(--w-maroon-dark);color:#fff;border-radius:18px;box-shadow:0 16px 40px rgba(62,22,40,.12)}.worship-venue-card h2{color:#fff;font-size:29px}.worship-venue-card p{max-width:680px;margin:8px 0 0;color:#eadfd9;font-size:14px}.worship-venue-card .kicker{color:#e8c98a}.worship-venue-card .venue-address{color:#fff;font-weight:600}
 
-@media(max-width:1000px){.worship-lamp-art{right:-100px;width:330px}.worship-mandala{right:7%;opacity:.65}.worship-hero-copy{max-width:650px}}
-@media(max-width:900px){.worship-hero{min-height:auto}.worship-lamp-art{opacity:.18}.worship-mandala{right:-40px;opacity:.55}.summary-grid{grid-template-columns:1fr}.worship-calendar .pooja-event{grid-template-columns:60px 62px minmax(180px,1fr) 125px}.worship-calendar .pooja-action{grid-column:3/-1;text-align:left}.worship-venue-card{align-items:flex-start;flex-direction:column}}
-@media(max-width:650px){.worship-hero-inner{padding-top:38px;padding-bottom:38px}.worship-hero h1{font-size:48px}.worship-hero .lede{font-size:15px;line-height:1.65}.worship-mandala{width:210px;height:210px;right:-80px}.worship-mandala span{font-size:84px}.worship-lamp-art{display:none}.worship-hero-facts{flex-direction:column;max-width:330px}.hero-fact{min-width:0;width:100%}.calendar-heading{align-items:flex-start;flex-direction:column}.worship-calendar .pooja-event{grid-template-columns:54px 54px minmax(0,1fr);gap:11px;padding:14px 12px}.worship-calendar .pooja-deity img{width:48px;height:48px}.worship-calendar .pooja-date strong{font-size:30px}.worship-calendar .pooja-event-meta{grid-column:3;flex-direction:row;flex-wrap:wrap}.worship-calendar .pooja-action{grid-column:3}.worship-calendar .pooja-detail{grid-column:1/-1}.worship-calendar .pooja-detail-inner{grid-template-columns:1fr}.worship-calendar .pooja-closed{grid-template-columns:54px 54px minmax(0,1fr)}.worship-venue-card{padding:24px 20px}}
+@media(max-width:1000px){.worship-hero::before{background:linear-gradient(90deg,rgba(255,249,239,.96) 0%,rgba(255,249,239,.86) 48%,rgba(255,249,239,.20) 80%)}.worship-hero-copy{max-width:650px}}
+@media(max-width:900px){.worship-hero{min-height:auto;background-position:62% center}.summary-grid{grid-template-columns:1fr}.worship-calendar .pooja-event{grid-template-columns:60px 62px minmax(180px,1fr) 125px}.worship-calendar .pooja-action{grid-column:3/-1;text-align:left}.worship-venue-card{align-items:flex-start;flex-direction:column}}
+@media(max-width:650px){.worship-hero{background-position:68% center}.worship-hero::before{background:linear-gradient(90deg,rgba(255,249,239,.97) 0%,rgba(255,249,239,.92) 66%,rgba(255,249,239,.55) 100%)}.worship-hero-inner{padding-top:38px;padding-bottom:38px}.worship-hero h1{font-size:48px}.worship-hero .lede{font-size:15px;line-height:1.65}.worship-hero-facts{flex-direction:column;max-width:330px}.hero-fact{min-width:0;width:100%}.calendar-heading{align-items:flex-start;flex-direction:column}.worship-calendar .pooja-event{grid-template-columns:54px 54px minmax(0,1fr);gap:11px;padding:14px 12px}.worship-calendar .pooja-deity img{width:48px;height:48px}.worship-calendar .pooja-date strong{font-size:30px}.worship-calendar .pooja-event-meta{grid-column:3;flex-direction:row;flex-wrap:wrap}.worship-calendar .pooja-action{grid-column:3}.worship-calendar .pooja-detail{grid-column:1/-1}.worship-calendar .pooja-detail-inner{grid-template-columns:1fr}.worship-calendar .pooja-closed{grid-template-columns:54px 54px minmax(0,1fr)}.worship-venue-card{padding:24px 20px}}
