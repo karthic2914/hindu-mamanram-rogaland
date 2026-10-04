@@ -1,27 +1,1142 @@
-/* Worship page */
-:root{--w-paper:#fffdf8;--w-border:rgba(68,36,28,.12);--w-text:#2c1814;--w-muted:#75645b;--w-maroon:#762642;--w-maroon-dark:#521a31;--w-gold:#d4a447;--w-gold-dark:#a46e1d;--w-gold-soft:#f4e5bd;--w-cream-light:#fbf6ed}
-.worship-page{overflow:hidden;background:#fbf6ed}
+/* =========================================================
+   HINDU MAMANRAM ROGALAND
+   WORSHIP PAGE
+   ========================================================= */
 
-/* HERO */
-.worship-hero{position:relative;min-height:380px;display:flex;align-items:center;overflow:hidden;background:#fbf2e4 url('../assets/worship-hero.png') center center/cover no-repeat;border-bottom:1px solid var(--w-border)}
-.worship-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,249,239,.96) 0%,rgba(255,249,239,.86) 34%,rgba(255,249,239,.38) 57%,rgba(255,249,239,.04) 82%);pointer-events:none}
-.worship-hero-glow,.worship-mandala,.worship-lamp-art{display:none}
-.worship-hero-inner{position:relative;z-index:2;width:100%;padding-top:54px;padding-bottom:54px}
-.worship-hero-copy{max-width:760px}
-.worship-hero .eyebrow,.kicker{margin:0 0 8px;color:var(--w-gold-dark);font-size:13px;font-weight:600;letter-spacing:.04em}
-.worship-hero .eyebrow{display:inline-flex;padding:6px 12px;background:rgba(211,164,71,.22);border-radius:999px}
-.worship-hero h1{margin:8px 0 0;color:var(--w-maroon-dark);font-size:clamp(54px,5.4vw,78px);line-height:1.08;font-weight:500;text-shadow:0 1px 0 rgba(255,255,255,.4)}
-.worship-hero .lede{max-width:720px;margin:17px 0 0;color:#5f4b43;font-size:17px;line-height:1.75}
-.worship-hero-facts{display:flex;gap:14px;margin-top:25px}
-.hero-fact{display:flex;align-items:center;gap:12px;min-width:230px;padding:13px 16px;background:rgba(255,255,255,.91);border:1px solid rgba(68,36,28,.11);border-radius:13px;box-shadow:0 8px 22px rgba(75,42,26,.07);text-decoration:none;backdrop-filter:blur(4px)}
-.hero-fact-icon{display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;color:#fff;background:var(--w-maroon);border-radius:50%;font-size:17px}
-.hero-fact strong,.hero-fact span{display:block}.hero-fact strong{color:var(--w-maroon-dark);font-size:14px}.hero-fact div span{margin-top:3px;color:var(--w-muted);font-size:11px}
+   :root {
+    --w-paper: #fffdf8;
+    --w-border: rgba(68, 36, 28, 0.12);
+    --w-text: #2c1814;
+    --w-muted: #75645b;
 
-/* CALENDAR */
-.pooja-calendar-section{padding:42px 0 60px}.calendar-heading{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:22px}.calendar-heading h2{margin:0;color:var(--w-maroon-dark);font-size:34px}.calendar-intro{margin:7px 0 0;color:var(--w-muted);font-size:14px}.calendar-year-select{display:flex;align-items:center;gap:9px;color:var(--w-muted);font-size:13px}.calendar-year-select select{min-height:40px;padding:6px 32px 6px 12px;color:var(--w-text);background:#fff;border:1px solid var(--w-border);border-radius:9px}.worship-calendar{display:grid;gap:22px;width:100%}.worship-calendar .pooja-month{overflow:hidden;background:var(--w-paper);border:1px solid var(--w-border);border-radius:16px;box-shadow:0 9px 28px rgba(67,32,27,.045)}.worship-calendar .pooja-month-header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 20px;background:linear-gradient(90deg,rgba(110,44,70,.07),rgba(198,161,90,.07));border-bottom:1px solid var(--w-border)}.worship-calendar .pooja-month-header>div{display:flex;align-items:center;gap:11px}.worship-calendar .month-number{display:grid;place-items:center;width:34px;height:34px;color:var(--w-maroon);background:rgba(198,161,90,.16);border-radius:50%;font-size:13px;font-weight:600}.worship-calendar .pooja-month-header h3{color:var(--w-maroon-dark);font-size:20px}.worship-calendar .month-year{color:var(--w-muted);font-size:12px;font-weight:600}.worship-calendar .pooja-event{position:relative;display:grid;grid-template-columns:66px 68px minmax(220px,1fr) 150px 130px;align-items:center;gap:17px;min-height:106px;padding:16px 20px;background:#fffdf9;border-bottom:1px solid var(--w-border);transition:.2s ease}.worship-calendar .pooja-event:last-child{border-bottom:0}.worship-calendar .pooja-event:hover{background:#fff9ef}.worship-calendar .pooja-date{text-align:center}.worship-calendar .pooja-date strong{display:block;color:var(--w-maroon);font-family:"Cormorant Garamond",serif;font-size:35px;line-height:1}.worship-calendar .pooja-date span{display:block;margin-top:5px;color:var(--w-muted);font-size:11px}.worship-calendar .pooja-deity{display:flex;align-items:center;justify-content:center}.worship-calendar .pooja-deity img{display:block;width:58px;height:58px;object-fit:cover;background:#f5eadb;border:2px solid #ead7b7;border-radius:50%;box-shadow:0 4px 12px rgba(77,40,28,.08)}.worship-calendar .pooja-deity img.is-lamp{object-fit:contain;padding:3px}.worship-calendar .pooja-info{min-width:0}.worship-calendar .pooja-name{color:var(--w-maroon-dark);font-size:18px;line-height:1.45}.worship-calendar .pooja-sponsor{display:flex;align-items:center;gap:7px;margin:6px 0 0;color:var(--w-muted);font-size:12px}.worship-calendar .pooja-meta-icon{display:inline-grid;place-items:center;width:17px;height:17px;flex:0 0 17px;color:var(--w-gold-dark)}.worship-calendar .pooja-meta-icon svg{width:16px;height:16px}.worship-calendar .pooja-event-meta{display:flex;flex-direction:column;gap:7px;color:var(--w-muted);font-size:12px}.worship-calendar .pooja-event-meta>span{display:flex;align-items:center;gap:6px}.worship-calendar .pooja-event-meta strong{color:var(--w-text)}.worship-calendar .pooja-action{text-align:right}.worship-calendar .btn-detail{min-height:38px;padding:7px 11px;color:var(--w-maroon);background:#fff;border:1px solid rgba(110,44,70,.2);border-radius:8px;cursor:pointer;font:600 12px inherit}.worship-calendar .btn-detail:hover{color:#fff;background:var(--w-maroon)}.worship-calendar .next-badge{display:none;width:max-content;margin-bottom:4px;padding:3px 8px;color:var(--w-maroon);background:var(--w-gold-soft);border-radius:999px;font-size:10px;font-weight:600}.worship-calendar .pooja-event.is-next{background:linear-gradient(90deg,rgba(198,161,90,.13),#fffdf9 45%)}.worship-calendar .pooja-event.is-next::before{content:"";position:absolute;left:0;top:13px;bottom:13px;width:4px;background:var(--w-maroon);border-radius:0 4px 4px 0}.worship-calendar .pooja-event.is-next .next-badge{display:inline-flex}.worship-calendar .pooja-event.is-special:not(.is-next){background:linear-gradient(90deg,rgba(198,161,90,.055),#fffdf9)}.worship-calendar .pooja-event.is-past{opacity:.52}.worship-calendar .pooja-event.is-past:hover{opacity:.8}.worship-calendar .pooja-detail{display:none;grid-column:1/-1;padding:17px 0 3px;border-top:1px dashed var(--w-border)}.worship-calendar .pooja-event.is-open .pooja-detail{display:block}.worship-calendar .pooja-detail-inner{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(230px,1fr);gap:18px 28px}.worship-calendar .detail-venue{display:flex;align-items:flex-start;gap:9px}.worship-calendar .detail-venue strong{color:var(--w-maroon-dark)}.worship-calendar .detail-venue p{margin:4px 0 0;color:var(--w-muted);font-size:12px}.worship-calendar .prasadam-label{display:flex;flex-direction:column;gap:6px;color:var(--w-maroon-dark);font-size:12px;font-weight:600}.worship-calendar .prasadam{width:100%;min-height:40px;padding:7px 10px;background:#fff;border:1px solid var(--w-border);border-radius:8px;font:inherit}.worship-calendar .cal-photos{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px}.worship-calendar .cal-photos:empty{display:none}.worship-calendar .cal-photos img{width:76px;height:76px;object-fit:cover;border-radius:8px}.worship-calendar .cal-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:7px}.worship-calendar .cal-actions button{padding:7px 10px;color:var(--w-maroon);background:#fff;border:1px solid var(--w-border);border-radius:7px;cursor:pointer}.worship-calendar .pooja-closed{grid-template-columns:66px 68px minmax(220px,1fr);min-height:90px;background:rgba(242,236,227,.58)}.worship-calendar .pooja-closed-icon{display:grid;place-items:center;width:48px;height:48px;color:var(--w-muted);background:#f2e9dc;border-radius:50%}.calendar-empty{padding:35px;text-align:center;color:var(--w-muted);background:var(--w-paper);border:1px dashed var(--w-border);border-radius:14px}
+    --w-maroon: #762642;
+    --w-maroon-dark: #521a31;
 
-.worship-venue-section{padding:0 0 64px}.worship-venue-card{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:30px 34px;background:var(--w-maroon-dark);color:#fff;border-radius:18px;box-shadow:0 16px 40px rgba(62,22,40,.12)}.worship-venue-card h2{color:#fff;font-size:29px}.worship-venue-card p{max-width:680px;margin:8px 0 0;color:#eadfd9;font-size:14px}.worship-venue-card .kicker{color:#e8c98a}.worship-venue-card .venue-address{color:#fff;font-weight:600}
+    --w-gold: #d4a447;
+    --w-gold-dark: #a46e1d;
+    --w-gold-soft: #f4e5bd;
 
-@media(max-width:1000px){.worship-hero::before{background:linear-gradient(90deg,rgba(255,249,239,.96) 0%,rgba(255,249,239,.86) 48%,rgba(255,249,239,.20) 80%)}.worship-hero-copy{max-width:650px}}
-@media(max-width:900px){.worship-hero{min-height:auto;background-position:62% center}.summary-grid{grid-template-columns:1fr}.worship-calendar .pooja-event{grid-template-columns:60px 62px minmax(180px,1fr) 125px}.worship-calendar .pooja-action{grid-column:3/-1;text-align:left}.worship-venue-card{align-items:flex-start;flex-direction:column}}
-@media(max-width:650px){.worship-hero{background-position:68% center}.worship-hero::before{background:linear-gradient(90deg,rgba(255,249,239,.97) 0%,rgba(255,249,239,.92) 66%,rgba(255,249,239,.55) 100%)}.worship-hero-inner{padding-top:38px;padding-bottom:38px}.worship-hero h1{font-size:48px}.worship-hero .lede{font-size:15px;line-height:1.65}.worship-hero-facts{flex-direction:column;max-width:330px}.hero-fact{min-width:0;width:100%}.calendar-heading{align-items:flex-start;flex-direction:column}.worship-calendar .pooja-event{grid-template-columns:54px 54px minmax(0,1fr);gap:11px;padding:14px 12px}.worship-calendar .pooja-deity img{width:48px;height:48px}.worship-calendar .pooja-date strong{font-size:30px}.worship-calendar .pooja-event-meta{grid-column:3;flex-direction:row;flex-wrap:wrap}.worship-calendar .pooja-action{grid-column:3}.worship-calendar .pooja-detail{grid-column:1/-1}.worship-calendar .pooja-detail-inner{grid-template-columns:1fr}.worship-calendar .pooja-closed{grid-template-columns:54px 54px minmax(0,1fr)}.worship-venue-card{padding:24px 20px}}
+    --w-cream: #fbf6ed;
+}
+
+.worship-page {
+    overflow-x: hidden;
+    background: var(--w-cream);
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.worship-hero {
+    position: relative;
+
+    min-height: 430px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 249, 239, 0.98) 0%,
+            rgba(255, 249, 239, 0.94) 29%,
+            rgba(255, 249, 239, 0.74) 45%,
+            rgba(255, 249, 239, 0.22) 66%,
+            rgba(255, 249, 239, 0.03) 100%
+        ),
+        url("../assets/worship-hero.png");
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    border-bottom: 1px solid var(--w-border);
+}
+
+
+/* subtle warm overlay */
+.worship-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.05),
+            rgba(112,59,24,0.02)
+        );
+
+    pointer-events: none;
+}
+
+
+/*
+   Old decorative elements are disabled because
+   worship-hero.png already contains the temple,
+   Om symbol, lamp and flowers.
+*/
+
+.worship-hero-glow,
+.worship-mandala,
+.worship-lamp-art {
+    display: none !important;
+}
+
+
+/* Main content container */
+
+.worship-hero-inner {
+    position: relative;
+    z-index: 2;
+
+    width: min(calc(100% - 48px), 1360px);
+    margin: 0 auto;
+
+    padding: 58px 0;
+}
+
+
+/* Text area */
+
+.worship-hero-copy {
+    width: 620px;
+    max-width: 48%;
+}
+
+
+/* Small worship label */
+
+.worship-hero .eyebrow {
+    display: inline-flex;
+    align-items: center;
+
+    margin: 0 0 14px;
+    padding: 7px 13px;
+
+    color: var(--w-gold-dark);
+    background: rgba(212, 164, 71, 0.18);
+
+    border-radius: 999px;
+
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+
+/* Hero heading */
+
+.worship-hero h1 {
+    margin: 0;
+
+    color: var(--w-maroon-dark);
+
+    font-size: clamp(54px, 4.5vw, 74px);
+    font-weight: 500;
+    line-height: 1.12;
+}
+
+
+/* Hero description */
+
+.worship-hero .lede {
+    width: 100%;
+    max-width: 610px;
+
+    margin: 18px 0 0;
+
+    color: #624a40;
+
+    font-size: 17px;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   HERO FACT CARDS
+   ========================================================= */
+
+.worship-hero-facts {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin-top: 26px;
+}
+
+
+.hero-fact {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 220px;
+
+    padding: 13px 16px;
+
+    color: inherit;
+    text-decoration: none;
+
+    background: rgba(255, 255, 255, 0.93);
+
+    border: 1px solid rgba(68, 36, 28, 0.11);
+    border-radius: 13px;
+
+    box-shadow:
+        0 8px 24px rgba(75, 42, 26, 0.08);
+
+    backdrop-filter: blur(3px);
+}
+
+
+.hero-fact-icon {
+    display: grid;
+    place-items: center;
+
+    width: 40px;
+    height: 40px;
+
+    flex: 0 0 40px;
+
+    color: #fff;
+    background: var(--w-maroon);
+
+    border-radius: 50%;
+
+    font-size: 17px;
+}
+
+
+.hero-fact strong,
+.hero-fact span {
+    display: block;
+}
+
+
+.hero-fact strong {
+    color: var(--w-maroon-dark);
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.hero-fact div span {
+    margin-top: 3px;
+
+    color: var(--w-muted);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   GENERAL KICKER
+   ========================================================= */
+
+.kicker {
+    margin: 0 0 8px;
+
+    color: var(--w-gold-dark);
+
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+
+/* =========================================================
+   CALENDAR SECTION
+   ========================================================= */
+
+.pooja-calendar-section {
+    padding: 42px 0 60px;
+}
+
+
+.calendar-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    gap: 24px;
+
+    margin-bottom: 22px;
+}
+
+
+.calendar-heading h2 {
+    margin: 0;
+
+    color: var(--w-maroon-dark);
+
+    font-size: 34px;
+}
+
+
+.calendar-intro {
+    margin: 7px 0 0;
+
+    color: var(--w-muted);
+
+    font-size: 14px;
+}
+
+
+.calendar-year-select {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    color: var(--w-muted);
+
+    font-size: 13px;
+}
+
+
+.calendar-year-select select {
+    min-height: 40px;
+
+    padding: 6px 32px 6px 12px;
+
+    color: var(--w-text);
+    background: #fff;
+
+    border: 1px solid var(--w-border);
+    border-radius: 9px;
+}
+
+
+.worship-calendar {
+    display: grid;
+
+    gap: 22px;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   MONTH CARD
+   ========================================================= */
+
+.worship-calendar .pooja-month {
+    overflow: hidden;
+
+    background: var(--w-paper);
+
+    border: 1px solid var(--w-border);
+    border-radius: 16px;
+
+    box-shadow:
+        0 9px 28px rgba(67, 32, 27, 0.045);
+}
+
+
+.worship-calendar .pooja-month-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 18px;
+
+    padding: 14px 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(110, 44, 70, 0.07),
+            rgba(198, 161, 90, 0.07)
+        );
+
+    border-bottom: 1px solid var(--w-border);
+}
+
+
+.worship-calendar .pooja-month-header > div {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+}
+
+
+.worship-calendar .month-number {
+    display: grid;
+    place-items: center;
+
+    width: 34px;
+    height: 34px;
+
+    color: var(--w-maroon);
+    background: rgba(198, 161, 90, 0.16);
+
+    border-radius: 50%;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.worship-calendar .pooja-month-header h3 {
+    margin: 0;
+
+    color: var(--w-maroon-dark);
+
+    font-size: 20px;
+}
+
+
+.worship-calendar .month-year {
+    color: var(--w-muted);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   POOJA EVENT
+   ========================================================= */
+
+.worship-calendar .pooja-event {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        66px
+        68px
+        minmax(220px, 1fr)
+        150px
+        130px;
+
+    align-items: center;
+
+    gap: 17px;
+
+    min-height: 106px;
+
+    padding: 16px 20px;
+
+    background: #fffdf9;
+
+    border-bottom: 1px solid var(--w-border);
+
+    transition:
+        background 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+.worship-calendar .pooja-event:last-child {
+    border-bottom: 0;
+}
+
+
+.worship-calendar .pooja-event:hover {
+    background: #fff9ef;
+}
+
+
+/* Date */
+
+.worship-calendar .pooja-date {
+    text-align: center;
+}
+
+
+.worship-calendar .pooja-date strong {
+    display: block;
+
+    color: var(--w-maroon);
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: 35px;
+    line-height: 1;
+}
+
+
+.worship-calendar .pooja-date span {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--w-muted);
+
+    font-size: 11px;
+}
+
+
+/* Deity image */
+
+.worship-calendar .pooja-deity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.worship-calendar .pooja-deity img {
+    display: block;
+
+    width: 58px;
+    height: 58px;
+
+    object-fit: cover;
+
+    background: #f5eadb;
+
+    border: 2px solid #ead7b7;
+    border-radius: 50%;
+
+    box-shadow:
+        0 4px 12px rgba(77, 40, 28, 0.08);
+}
+
+
+.worship-calendar .pooja-deity img.is-lamp {
+    object-fit: contain;
+    padding: 3px;
+}
+
+
+/* Pooja information */
+
+.worship-calendar .pooja-info {
+    min-width: 0;
+}
+
+
+.worship-calendar .pooja-name {
+    color: var(--w-maroon-dark);
+
+    font-size: 18px;
+    line-height: 1.45;
+}
+
+
+.worship-calendar .pooja-sponsor {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin: 6px 0 0;
+
+    color: var(--w-muted);
+
+    font-size: 12px;
+}
+
+
+/* Icons */
+
+.worship-calendar .pooja-meta-icon {
+    display: inline-grid;
+    place-items: center;
+
+    width: 17px;
+    height: 17px;
+
+    flex: 0 0 17px;
+
+    color: var(--w-gold-dark);
+}
+
+
+.worship-calendar .pooja-meta-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+
+/* Event metadata */
+
+.worship-calendar .pooja-event-meta {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+
+    color: var(--w-muted);
+
+    font-size: 12px;
+}
+
+
+.worship-calendar .pooja-event-meta > span {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+
+.worship-calendar .pooja-event-meta strong {
+    color: var(--w-text);
+}
+
+
+/* =========================================================
+   DETAILS BUTTON
+   ========================================================= */
+
+.worship-calendar .pooja-action {
+    text-align: right;
+}
+
+
+.worship-calendar .btn-detail {
+    min-height: 38px;
+
+    padding: 7px 11px;
+
+    color: var(--w-maroon);
+    background: #fff;
+
+    border: 1px solid rgba(110, 44, 70, 0.20);
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+
+.worship-calendar .btn-detail:hover {
+    color: #fff;
+    background: var(--w-maroon);
+}
+
+
+/* =========================================================
+   NEXT POOJA
+   ========================================================= */
+
+.worship-calendar .next-badge {
+    display: none;
+
+    width: max-content;
+
+    margin-bottom: 4px;
+    padding: 3px 8px;
+
+    color: var(--w-maroon);
+    background: var(--w-gold-soft);
+
+    border-radius: 999px;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+
+.worship-calendar .pooja-event.is-next {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(198, 161, 90, 0.13),
+            #fffdf9 45%
+        );
+}
+
+
+.worship-calendar .pooja-event.is-next::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 13px;
+    bottom: 13px;
+
+    width: 4px;
+
+    background: var(--w-maroon);
+
+    border-radius: 0 4px 4px 0;
+}
+
+
+.worship-calendar .pooja-event.is-next .next-badge {
+    display: inline-flex;
+}
+
+
+.worship-calendar .pooja-event.is-special:not(.is-next) {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(198, 161, 90, 0.055),
+            #fffdf9
+        );
+}
+
+
+.worship-calendar .pooja-event.is-past {
+    opacity: 0.52;
+}
+
+
+.worship-calendar .pooja-event.is-past:hover {
+    opacity: 0.80;
+}
+
+
+/* =========================================================
+   EXPANDED DETAILS
+   ========================================================= */
+
+.worship-calendar .pooja-detail {
+    display: none;
+
+    grid-column: 1 / -1;
+
+    padding: 17px 0 3px;
+
+    border-top: 1px dashed var(--w-border);
+}
+
+
+.worship-calendar .pooja-event.is-open .pooja-detail {
+    display: block;
+}
+
+
+.worship-calendar .pooja-detail-inner {
+    display: grid;
+
+    grid-template-columns:
+        minmax(220px, 0.8fr)
+        minmax(230px, 1fr);
+
+    gap: 18px 28px;
+}
+
+
+.worship-calendar .detail-venue {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 9px;
+}
+
+
+.worship-calendar .detail-venue strong {
+    color: var(--w-maroon-dark);
+}
+
+
+.worship-calendar .detail-venue p {
+    margin: 4px 0 0;
+
+    color: var(--w-muted);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   PRASADAM
+   ========================================================= */
+
+.worship-calendar .prasadam-label {
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+
+    color: var(--w-maroon-dark);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+.worship-calendar .prasadam {
+    width: 100%;
+    min-height: 40px;
+
+    padding: 7px 10px;
+
+    background: #fff;
+
+    border: 1px solid var(--w-border);
+    border-radius: 8px;
+
+    font: inherit;
+}
+
+
+/* =========================================================
+   PHOTOS
+   ========================================================= */
+
+.worship-calendar .cal-photos {
+    grid-column: 1 / -1;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+
+.worship-calendar .cal-photos:empty {
+    display: none;
+}
+
+
+.worship-calendar .cal-photos img {
+    width: 76px;
+    height: 76px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.worship-calendar .cal-actions {
+    grid-column: 1 / -1;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+
+.worship-calendar .cal-actions button {
+    padding: 7px 10px;
+
+    color: var(--w-maroon);
+    background: #fff;
+
+    border: 1px solid var(--w-border);
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   CLOSED / HOLIDAY
+   ========================================================= */
+
+.worship-calendar .pooja-closed {
+    grid-template-columns:
+        66px
+        68px
+        minmax(220px, 1fr);
+
+    min-height: 90px;
+
+    background: rgba(242, 236, 227, 0.58);
+}
+
+
+.worship-calendar .pooja-closed-icon {
+    display: grid;
+    place-items: center;
+
+    width: 48px;
+    height: 48px;
+
+    color: var(--w-muted);
+    background: #f2e9dc;
+
+    border-radius: 50%;
+}
+
+
+.calendar-empty {
+    padding: 35px;
+
+    text-align: center;
+
+    color: var(--w-muted);
+    background: var(--w-paper);
+
+    border: 1px dashed var(--w-border);
+    border-radius: 14px;
+}
+
+
+/* =========================================================
+   VENUE
+   ========================================================= */
+
+.worship-venue-section {
+    padding: 0 0 64px;
+}
+
+
+.worship-venue-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding: 30px 34px;
+
+    color: #fff;
+    background: var(--w-maroon-dark);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 16px 40px rgba(62, 22, 40, 0.12);
+}
+
+
+.worship-venue-card h2 {
+    margin: 0;
+
+    color: #fff;
+
+    font-size: 29px;
+}
+
+
+.worship-venue-card p {
+    max-width: 680px;
+
+    margin: 8px 0 0;
+
+    color: #eadfd9;
+
+    font-size: 14px;
+}
+
+
+.worship-venue-card .kicker {
+    color: #e8c98a;
+}
+
+
+.worship-venue-card .venue-address {
+    color: #fff;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+    .worship-hero {
+        min-height: 410px;
+
+        background-position: 58% center;
+    }
+
+    .worship-hero-inner {
+        width: min(calc(100% - 40px), 1360px);
+    }
+
+    .worship-hero-copy {
+        width: 56%;
+        max-width: 56%;
+    }
+
+    .worship-hero h1 {
+        font-size: 56px;
+    }
+}
+
+
+/* =========================================================
+   SMALL TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .worship-hero {
+        min-height: 390px;
+
+        background-position: 62% center;
+    }
+
+    .worship-hero-copy {
+        width: 62%;
+        max-width: 62%;
+    }
+
+    .worship-calendar .pooja-event {
+        grid-template-columns:
+            60px
+            62px
+            minmax(180px, 1fr)
+            125px;
+    }
+
+    .worship-calendar .pooja-action {
+        grid-column: 3 / -1;
+
+        text-align: left;
+    }
+
+    .worship-venue-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .worship-hero {
+        min-height: auto;
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(255,249,239,0.98) 0%,
+                rgba(255,249,239,0.93) 60%,
+                rgba(255,249,239,0.70) 100%
+            ),
+            url("../assets/worship-hero.png");
+
+        background-size: cover;
+        background-position: 66% center;
+    }
+
+
+    .worship-hero-inner {
+        width: calc(100% - 32px);
+
+        padding: 40px 0;
+    }
+
+
+    .worship-hero-copy {
+        width: 100%;
+        max-width: 100%;
+    }
+
+
+    .worship-hero h1 {
+        font-size: clamp(42px, 13vw, 58px);
+    }
+
+
+    .worship-hero .lede {
+        max-width: 100%;
+
+        font-size: 15px;
+        line-height: 1.65;
+    }
+
+
+    .worship-hero-facts {
+        flex-direction: column;
+
+        max-width: 330px;
+    }
+
+
+    .hero-fact {
+        width: 100%;
+        min-width: 0;
+    }
+
+
+    /* Calendar heading */
+
+    .calendar-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    .calendar-heading h2 {
+        font-size: 29px;
+    }
+
+
+    /* Event */
+
+    .worship-calendar .pooja-event {
+        grid-template-columns:
+            54px
+            54px
+            minmax(0, 1fr);
+
+        gap: 11px;
+
+        padding: 14px 12px;
+    }
+
+
+    .worship-calendar .pooja-deity img {
+        width: 48px;
+        height: 48px;
+    }
+
+
+    .worship-calendar .pooja-date strong {
+        font-size: 30px;
+    }
+
+
+    .worship-calendar .pooja-event-meta {
+        grid-column: 3;
+
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+
+    .worship-calendar .pooja-action {
+        grid-column: 3;
+    }
+
+
+    .worship-calendar .pooja-detail {
+        grid-column: 1 / -1;
+    }
+
+
+    .worship-calendar .pooja-detail-inner {
+        grid-template-columns: 1fr;
+    }
+
+
+    .worship-calendar .pooja-closed {
+        grid-template-columns:
+            54px
+            54px
+            minmax(0, 1fr);
+    }
+
+
+    .worship-venue-card {
+        padding: 24px 20px;
+    }
+}
