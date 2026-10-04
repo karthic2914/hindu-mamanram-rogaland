@@ -8,7 +8,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hind+Madurai:wght@400;500;600&family=Tiro+Tamil&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hind+Madurai:wght@400;500;600;700&family=Tiro+Tamil&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="css/styles.css?v=20261004d">
   <link rel="stylesheet" href="css/worship-v2.css?v=20261004j">
@@ -25,15 +25,77 @@
     .hero-fact-icon svg{width:21px!important;height:21px!important;display:block!important;stroke:currentColor!important}
     .hero-fact>div{display:flex;flex-direction:column;justify-content:center;min-height:42px}
 
-    /* Font Awesome navigation icons */
+    /* Worship navigation UX */
     @media (min-width:981px){
-      #site-nav>.nav-item>.nav-link,#site-nav>.nav-item>.nav-parent{display:inline-flex!important;align-items:center!important;gap:8px!important}
-      #site-nav>.nav-item>.nav-link::before,#site-nav>.nav-item>.nav-parent::before{display:inline-block;width:17px;text-align:center;color:#762642;font-family:"Font Awesome 6 Free"!important;font-size:13px;font-weight:900!important;line-height:1;-webkit-font-smoothing:antialiased}
-      #site-nav>.nav-item:nth-child(1)>.nav-link::before{content:"\f015"}
-      #site-nav>.nav-item:nth-child(2)>.nav-parent::before{content:"\f004"}
-      #site-nav>.nav-item:nth-child(3)>.nav-parent::before{content:"\f0ad"}
-      #site-nav>.nav-item:nth-child(4)>.nav-parent::before{content:"\f03d"}
-      #site-nav>.nav-item:nth-child(5)>.nav-link::before{content:"\f0e0"}
+      #site-nav{gap:6px!important}
+      #site-nav>.nav-item>.nav-link,
+      #site-nav>.nav-item>.nav-parent{
+        display:inline-flex!important;
+        align-items:center!important;
+        justify-content:center!important;
+        gap:9px!important;
+        min-height:46px!important;
+        padding:11px 14px!important;
+        border-radius:9px!important;
+        font-family:"Hind Madurai","Nirmala UI","Segoe UI",sans-serif!important;
+        font-size:15.5px!important;
+        font-weight:600!important;
+        line-height:1.2!important;
+        color:#2c1814!important;
+        transition:background-color .2s ease,color .2s ease,box-shadow .2s ease,transform .2s ease!important;
+      }
+      #site-nav>.nav-item>.nav-link::before,
+      #site-nav>.nav-item>.nav-parent::before{
+        display:inline-flex!important;
+        align-items:center!important;
+        justify-content:center!important;
+        width:19px!important;
+        flex:0 0 19px!important;
+        color:#8b2346!important;
+        font-family:"Font Awesome 6 Free"!important;
+        font-size:16px!important;
+        font-weight:900!important;
+        line-height:1!important;
+        -webkit-font-smoothing:antialiased;
+      }
+      #site-nav>.nav-item:nth-child(1)>.nav-link::before{content:"\f015"!important}
+      #site-nav>.nav-item:nth-child(2)>.nav-parent::before{content:"\f66f"!important}
+      #site-nav>.nav-item:nth-child(3)>.nav-parent::before{content:"\f4c4"!important}
+      #site-nav>.nav-item:nth-child(4)>.nav-parent::before{content:"\f144"!important}
+      #site-nav>.nav-item:nth-child(5)>.nav-link::before{content:"\f0e0"!important}
+
+      #site-nav>.nav-item>.nav-link:hover,
+      #site-nav>.nav-item>.nav-parent:hover{
+        background:#f9e9ed!important;
+        color:#8b2346!important;
+        transform:translateY(-1px)!important;
+      }
+      #site-nav>.nav-item>.nav-link.is-active,
+      #site-nav>.nav-item>.nav-parent.is-active{
+        background:#fff2f4!important;
+        color:#8b2346!important;
+        font-weight:700!important;
+        box-shadow:inset 0 -3px 0 #8b2346!important;
+      }
+      #site-nav>.nav-item>.nav-link.is-active::after,
+      #site-nav>.nav-item>.nav-parent.is-active::after{display:none!important}
+
+      #site-nav .menu{
+        top:calc(100% + 6px)!important;
+        min-width:235px!important;
+        padding:8px!important;
+        border-radius:12px!important;
+        border:1px solid rgba(110,44,70,.12)!important;
+        box-shadow:0 18px 45px rgba(62,22,40,.14)!important;
+      }
+      #site-nav .menu a{
+        padding:10px 12px!important;
+        border-radius:8px!important;
+        font-family:"Hind Madurai","Nirmala UI",sans-serif!important;
+        font-weight:500!important;
+        transition:background .18s ease,color .18s ease!important;
+      }
+      #site-nav .menu a:hover{background:#f9e9ed!important;color:#8b2346!important}
     }
 
     @media(max-width:900px){.worship-hero{min-height:500px;background-position:62% center!important}.worship-hero::after{background:linear-gradient(90deg,rgba(255,250,241,.97) 0%,rgba(255,250,241,.90) 55%,rgba(255,250,241,.28) 100%)}.worship-hero-copy{width:min(620px,76%)!important}}
