@@ -11,6 +11,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hind+Madurai:wght@400;500;600&family=Tiro+Tamil&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css?v=20261004d">
   <link rel="stylesheet" href="css/worship-v2.css?v=20261004h">
+  <style>
+    /* Compact worship intro — intentionally scoped to this page */
+    .worship-page{overflow:hidden;background:#fbf6ed}
+    .worship-hero{padding:42px 0 34px;background:linear-gradient(135deg,#f8f1e6 0%,#fffaf2 62%,#f4eadb 100%);border-bottom:1px solid rgba(68,36,28,.10)}
+    .worship-hero-inner{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:48px;align-items:end}
+    .worship-hero-inner::after{display:none!important}
+    .worship-hero-copy{max-width:820px}
+    .worship-hero .eyebrow{margin:0 0 8px;color:#9a6b2a;font-size:13px;font-weight:600;letter-spacing:.04em}
+    .worship-hero h1{margin:0;color:#4c1c32;font-size:clamp(42px,4.3vw,62px);line-height:1.12}
+    .worship-hero .lede{max-width:760px;margin:13px 0 0;color:#75645b;font-size:17px;line-height:1.7}
+    .worship-hero-facts{display:flex;gap:12px;align-items:stretch}
+    .hero-fact{display:flex;align-items:center;gap:11px;min-width:190px;padding:13px 16px;background:rgba(255,255,255,.76);border:1px solid rgba(68,36,28,.10);border-radius:13px;box-shadow:0 7px 20px rgba(67,32,27,.035)}
+    .hero-fact-icon{display:grid;place-items:center;width:36px;height:36px;flex:0 0 36px;color:#fff;background:#6e2c46;border-radius:50%;font-size:16px}
+    .hero-fact strong,.hero-fact span{display:block}
+    .hero-fact strong{color:#4c1c32;font-size:14px;line-height:1.25}
+    .hero-fact span{margin-top:3px;color:#75645b;font-size:11px}
+    .worship-summary,.worship-quick-nav{display:none!important}
+    .pooja-calendar-section{padding:40px 0 60px}
+    .calendar-heading{margin-bottom:20px}
+    @media(max-width:900px){.worship-hero-inner{grid-template-columns:1fr;gap:22px}.worship-hero-facts{justify-content:flex-start}.hero-fact{min-width:0;flex:1}}
+    @media(max-width:650px){.worship-hero{padding:32px 0 27px}.worship-hero h1{font-size:42px}.worship-hero .lede{font-size:15px;line-height:1.65}.worship-hero-facts{flex-direction:column}.hero-fact{width:100%}.pooja-calendar-section{padding-top:32px}}
+  </style>
 </head>
 <body data-page="worship" data-title-ta="இறைவழிபாடு — இந்து மாமன்றம் ரூகலாண்ட்" data-title-en="Worship — Hindu Mamanram Rogaland">
   <header id="site-header"></header>
@@ -18,31 +40,22 @@
   <main id="main" class="worship-page">
     <section class="worship-hero">
       <div class="wrap worship-hero-inner">
-        <p class="eyebrow" data-i18n="worship.eyebrow">ஆன்மீகம்</p>
-        <h1 data-i18n="worship.title">இறைவழிபாடு</h1>
-        <p class="lede" data-i18n="worship.lead">மாதாந்த பூஜை வழிபாடுகள் மற்றும் சிறப்பு நிகழ்வுகளின் 2026 ஆம் ஆண்டு அட்டவணை. பூஜை வழிபாடுகள் 18:30 மணிக்கு ஆரம்பமாகும்.</p>
-        <nav class="worship-quick-nav" aria-label="Worship sections">
-          <a class="worship-quick-link active" href="#pooja-calendar">பூஜை நாட்கள்</a>
-          <a class="worship-quick-link" href="committee.html#send">பிரசாதம்</a>
-          <a class="worship-quick-link" href="#venue">பூஜை இடம்</a>
-        </nav>
-      </div>
-    </section>
+        <div class="worship-hero-copy">
+          <p class="eyebrow" data-i18n="worship.eyebrow">ஆன்மீகம்</p>
+          <h1 data-i18n="worship.title">இறைவழிபாடு</h1>
+          <p class="lede" data-i18n="worship.lead">மாதாந்த பூஜை வழிபாடுகள் மற்றும் சிறப்பு நிகழ்வுகளின் 2026 ஆம் ஆண்டு அட்டவணை. பூஜை வழிபாடுகள் 18:30 மணிக்கு ஆரம்பமாகும்.</p>
+        </div>
 
-    <section class="worship-summary">
-      <div class="wrap summary-grid">
-        <article class="summary-card">
-          <span class="summary-icon">◷</span>
-          <div><strong>18:30</strong><span>பூஜை ஆரம்பம்</span></div>
-        </article>
-        <article class="summary-card">
-          <span class="summary-icon">⌖</span>
-          <div><strong>Sandnes</strong><span>Varatun Gård</span></div>
-        </article>
-        <article class="summary-card">
-          <span class="summary-icon">ॐ</span>
-          <div><strong>மாதந்தோறும்</strong><span>பூஜை வழிபாடு</span></div>
-        </article>
+        <div class="worship-hero-facts" aria-label="Pooja information">
+          <div class="hero-fact">
+            <span class="hero-fact-icon" aria-hidden="true">◷</span>
+            <div><strong>18:30</strong><span>பூஜை ஆரம்பம்</span></div>
+          </div>
+          <a class="hero-fact" href="#venue" style="text-decoration:none">
+            <span class="hero-fact-icon" aria-hidden="true">⌖</span>
+            <div><strong>Varatun Gård</strong><span>Sandnes · பூஜை இடம்</span></div>
+          </a>
+        </div>
       </div>
     </section>
 
