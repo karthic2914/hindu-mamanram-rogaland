@@ -10,7 +10,95 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hind+Madurai:wght@400;500;600&family=Tiro+Tamil&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css?v=20261004d">
-  <link rel="stylesheet" href="css/worship-v2.css?v=20261004j">
+  <link rel="stylesheet" href="css/worship-v2.css?v=20261004k">
+  <style>
+    /* Hero override: keeps text inside the site grid and preserves the banner artwork */
+    .worship-hero {
+      min-height: 390px;
+      background-image: url("assets/worship-hero.png") !important;
+      background-size: cover !important;
+      background-position: center center !important;
+      background-repeat: no-repeat !important;
+    }
+    .worship-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(90deg, rgba(255,250,241,.96) 0%, rgba(255,250,241,.90) 27%, rgba(255,250,241,.62) 42%, rgba(255,250,241,.12) 57%, rgba(255,250,241,0) 70%);
+      pointer-events: none;
+    }
+    .worship-hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(calc(100% - 48px), 1360px) !important;
+      margin-inline: auto !important;
+      padding: 42px 0 44px !important;
+    }
+    .worship-hero-copy {
+      width: min(610px, 47%) !important;
+      max-width: none !important;
+    }
+    .worship-hero h1 {
+      margin: 0 !important;
+      font-size: clamp(48px, 4.25vw, 70px) !important;
+      line-height: 1.08 !important;
+    }
+    .worship-hero .lede {
+      max-width: 590px !important;
+      margin-top: 16px !important;
+      font-size: 16px !important;
+      line-height: 1.7 !important;
+    }
+    .worship-hero-facts {
+      margin-top: 22px !important;
+      gap: 12px !important;
+    }
+    .hero-fact {
+      min-width: 0 !important;
+      width: 210px;
+      padding: 12px 14px !important;
+    }
+    @media (max-width: 900px) {
+      .worship-hero {
+        min-height: 500px;
+        background-position: 62% center !important;
+      }
+      .worship-hero::after {
+        background: linear-gradient(90deg, rgba(255,250,241,.97) 0%, rgba(255,250,241,.90) 55%, rgba(255,250,241,.28) 100%);
+      }
+      .worship-hero-copy {
+        width: min(620px, 76%) !important;
+      }
+    }
+    @media (max-width: 640px) {
+      .worship-hero {
+        min-height: 560px;
+        align-items: flex-end;
+        background-position: 70% center !important;
+      }
+      .worship-hero::after {
+        background: linear-gradient(180deg, rgba(255,250,241,.18) 0%, rgba(255,250,241,.90) 45%, rgba(255,250,241,.99) 100%);
+      }
+      .worship-hero-inner {
+        width: min(calc(100% - 32px), 1360px) !important;
+        padding: 150px 0 30px !important;
+      }
+      .worship-hero-copy {
+        width: 100% !important;
+      }
+      .worship-hero h1 {
+        font-size: clamp(42px, 13vw, 58px) !important;
+      }
+      .worship-hero-facts {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+      }
+      .hero-fact {
+        width: auto;
+      }
+    }
+  </style>
 </head>
 <body data-page="worship" data-title-ta="இறைவழிபாடு — இந்து மாமன்றம் ரூகலாண்ட்" data-title-en="Worship — Hindu Mamanram Rogaland">
   <header id="site-header"></header>
