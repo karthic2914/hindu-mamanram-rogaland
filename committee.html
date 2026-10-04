@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>நிர்வாகம் — இந்து மாமன்றம் ரூகலாண்ட்</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hind+Madurai:wght@400;500;600&family=Tiro+Tamil&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=20261004">
+</head>
+<body data-page="committee" data-title-ta="நிர்வாகம் — இந்து மாமன்றம் ரூகலாண்ட்" data-title-en="Committee — Hindu Mamanram Rogaland">
+  <header id="site-header"></header>
+  <main id="main">
+    <div class="wrap page-hero">
+      <p class="eyebrow" data-ta="ஆன்மீகம்" data-en="Spiritual life">ஆன்மீகம்</p>
+      <h1 data-ta="நிர்வாகம்" data-en="Committee">நிர்வாகம்</h1>
+      <p class="lede" data-ta="பொதுப் பூஜையின் பிரசாதம், கோவில் அஞ்சல், குழு செய்தி, தொடர்புகள், நாட்கள், படங்கள். இவை இந்த உலாவியில் சேமிக்கப்படும்." data-en="Prasadam for a common pooja, temple mail, the group message, contacts, dates, and photos. These stay in this browser.">பொதுப் பூஜையின் பிரசாதம், கோவில் அஞ்சல், குழு செய்தி, தொடர்புகள், நாட்கள், படங்கள். இவை இந்த உலாவியில் சேமிக்கப்படும்.</p>
+      <p><a class="text-link" href="admin/" data-ta="அனைவரும் காணும் அறிவிப்பும் பூஜை நாளும் இங்கே" data-en="Notices and pooja dates everyone can see">அனைவரும் காணும் அறிவிப்பும் பூஜை நாளும் இங்கே</a></p>
+    </div>
+    <div class="wrap page-body desk">
+      <p class="note" id="desk-status"></p>
+
+      <section class="desk-block" id="send">
+        <h2 data-ta="பூஜை அறிவிப்பு" data-en="Pooja notice">பூஜை அறிவிப்பு</h2>
+        <label><span data-ta="பூஜை" data-en="Pooja">பூஜை</span>
+          <select id="send-pooja"></select>
+        </label>
+        <div id="send-prasadam"></div>
+        <label><span data-ta="இந்து மாமன்றம் குழு அஞ்சல்" data-en="Hindu Mamanram group email">இந்து மாமன்றம் குழு அஞ்சல்</span>
+          <input id="group-email" type="email" data-ph-ta="குழு அஞ்சல் முகவரி" data-ph-en="Group email address">
+        </label>
+        <pre class="msg-preview" id="send-preview"></pre>
+        <div class="actions">
+          <button class="btn btn-primary" id="send-mail" type="button" data-ta="கோவில் அஞ்சலில் திற" data-en="Open temple mail">கோவில் அஞ்சலில் திற</button>
+          <button class="btn btn-ghost" id="send-group" type="button" data-ta="குழுவுக்கு அனுப்பு" data-en="Send to the group">குழுவுக்கு அனுப்பு</button>
+          <button class="btn btn-ghost" id="send-wa" type="button" data-ta="வாட்ஸ்அப் குழு" data-en="WhatsApp group">வாட்ஸ்அப் குழு</button>
+        </div>
+      </section>
+
+      <section class="desk-block" id="contacts">
+        <h2 data-ta="தொடர்புகள்" data-en="Contacts">தொடர்புகள்</h2>
+        <p data-ta="பெயர், தொலைபேசி, அஞ்சல் என இங்கே சேர்க்கலாம், மாற்றலாம், நீக்கலாம்." data-en="Add, change, or remove a name, phone, and email here.">பெயர், தொலைபேசி, அஞ்சல் என இங்கே சேர்க்கலாம், மாற்றலாம், நீக்கலாம்.</p>
+        <form id="contact-form" class="stack-form">
+          <input id="c-name" required data-ph-ta="பெயர்" data-ph-en="Name" aria-label="பெயர்">
+          <input id="c-phone" type="tel" data-ph-ta="தொலைபேசி" data-ph-en="Telephone" aria-label="தொலைபேசி">
+          <input id="c-email" type="email" data-ph-ta="அஞ்சல்" data-ph-en="Email" aria-label="அஞ்சல்">
+          <button class="btn btn-primary" id="c-save" type="submit" data-ta="சேர்" data-en="Add">சேர்</button>
+        </form>
+        <div class="desk-tools">
+          <input id="contact-search" type="search" data-ph-ta="தொடர்பைத் தேடு" data-ph-en="Search contacts">
+          <span id="contact-count"></span>
+          <button type="button" id="contact-export" data-ta="நகல் எடு" data-en="Export">நகல் எடு</button>
+          <label class="file-btn"><span data-ta="கொண்டுவா" data-en="Import">கொண்டுவா</span><input id="contact-import" type="file" accept="application/json,.json"></label>
+        </div>
+        <div id="contact-list"></div>
+      </section>
+
+      <section class="desk-block" id="dates">
+        <h2 data-ta="பூஜை நாட்கள்" data-en="Pooja dates">பூஜை நாட்கள்</h2>
+        <p data-ta="நாளை 30.01.2026 என்று எழுதுங்கள். பூஜை பெயரையும் உபயதாரரையும் மாற்றிவிட்டு வேறு இடத்தில் சொடுக்கவும்." data-en="Write the date as 30.01.2026. Change the pooja name or sponsor, then click away.">நாளை 30.01.2026 என்று எழுதுங்கள். பூஜை பெயரையும் உபயதாரரையும் மாற்றிவிட்டு வேறு இடத்தில் சொடுக்கவும்.</p>
+        <div class="date-head" aria-hidden="true">
+          <span></span>
+          <span data-ta="நாள்" data-en="Date">நாள்</span>
+          <span data-ta="பூஜை" data-en="Pooja">பூஜை</span>
+          <span data-ta="உபயதாரர்" data-en="Sponsor">உபயதாரர்</span>
+        </div>
+        <div id="date-list"></div>
+        <button class="btn btn-ghost" id="date-reset" type="button" data-ta="வெளியிட்ட அட்டவணைக்குத் திரும்பு" data-en="Restore the published calendar">வெளியிட்ட அட்டவணைக்குத் திரும்பு</button>
+      </section>
+
+      <section class="desk-block" id="photos">
+        <h2 data-ta="பொதுப் பூஜை படங்கள்" data-en="Common pooja photos">பொதுப் பூஜை படங்கள்</h2>
+        <p data-ta="படங்களைக் கீழுள்ள இடத்தில் இடுங்கள். அவை அந்தப் பூஜை நாளிலும் நிழற்படப் பக்கத்திலும் தெரியும்." data-en="Drop photographs in the space below. They show on that pooja day and on the photographs page.">படங்களைக் கீழுள்ள இடத்தில் இடுங்கள். அவை அந்தப் பூஜை நாளிலும் நிழற்படப் பக்கத்திலும் தெரியும்.</p>
+        <div id="photo-list"></div>
+        <h3 class="album-title" data-ta="ஆல்ப இணைப்பு" data-en="Album link">ஆல்ப இணைப்பு</h3>
+        <form id="album-form" class="stack-form">
+          <input id="album-title" data-ph-ta="ஆல்பப் பெயர்" data-ph-en="Album name" aria-label="ஆல்பப் பெயர்">
+          <input id="album-url" type="url" data-ph-ta="ஆல்ப இணைப்பு" data-ph-en="Album link" aria-label="ஆல்ப இணைப்பு">
+          <button class="btn btn-primary" type="submit" data-ta="ஆல்பம் சேர்" data-en="Add album">ஆல்பம் சேர்</button>
+        </form>
+        <ul id="album-list" class="album-list"></ul>
+      </section>
+
+      <section class="desk-block" id="member">
+        <h2 data-ta="அங்கத்துவப் படிவம்" data-en="Membership form">அங்கத்துவப் படிவம்</h2>
+        <p data-ta="ரகு தயாரித்த எளிய படிவத்தின் இணைப்பை இங்கே ஒட்டுங்கள். இணைப்பு இல்லையென்றால் இருக்கும் படிவம் திறக்கும்." data-en="Paste the link to the simplified form Ragu prepared. Until then, the existing form opens.">ரகு தயாரித்த எளிய படிவத்தின் இணைப்பை இங்கே ஒட்டுங்கள். இணைப்பு இல்லையென்றால் இருக்கும் படிவம் திறக்கும்.</p>
+        <form id="member-form" class="stack-form">
+          <input id="member-url" type="url" data-ph-ta="படிவ இணைப்பு" data-ph-en="Form link" aria-label="படிவ இணைப்பு">
+          <button class="btn btn-primary" type="submit" data-ta="இணைப்பை வை" data-en="Save link">இணைப்பை வை</button>
+          <a class="btn btn-ghost" id="member-open" href="https://drive.google.com/file/d/1r3KylsjU2gi9ltvv-0XzuL-FSpJ1m9DA/view?usp=sharing" target="_blank" rel="noopener" data-ta="படிவத்தைத் திற" data-en="Open the form">படிவத்தைத் திற</a>
+        </form>
+      </section>
+    </div>
+  </main>
+  <footer id="site-footer"></footer>
+  <script src="js/pooja-data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/committee.js?v=20261004"></script>
+</body>
+</html>

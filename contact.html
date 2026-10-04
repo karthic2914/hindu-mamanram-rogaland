@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>தொடர்பு — இந்து மாமன்றம் ரூகலாண்ட்</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hind+Madurai:wght@400;500;600&family=Tiro+Tamil&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="contact" data-title-ta="தொடர்பு — இந்து மாமன்றம் ரூகலாண்ட்" data-title-en="Contact — Hindu Mamanram Rogaland">
+  <header id="site-header"></header>
+  <main id="main">
+    <div class="wrap page-hero">
+      <p class="eyebrow" data-i18n="contact.eyebrow">இந்து மாமன்றம் ரூகலாண்ட்</p>
+      <h1 data-i18n="contact.title">தொடர்பு</h1>
+      <p class="lede" data-i18n="contact.lead">எங்களுக்கு எழுதுங்கள், அல்லது கீழுள்ள படிவத்தைப் பயன்படுத்துங்கள். கூடிய விரைவில் நாங்கள் உங்களை அழைப்போம்.</p>
+    </div>
+    <div class="wrap page-body">
+      <div class="grid-2">
+        <div>
+          <article class="card">
+            <h3 data-i18n="contact.address">எமது முகவரி</h3>
+            <p>Hindu Mamanram Rogaland<br>Postboks 1005 Lura<br>4391 Sandnes<br>Norway</p>
+            <p><a href="mailto:hindu@mamanram.no">hindu@mamanram.no</a></p>
+            <p class="vipps-pay">
+              <span class="vipps-logo" aria-hidden="true">vipps</span>
+              <a class="vipps-num" href="tel:+4746677855">+47 466 77 855</a>
+            </p>
+          </article>
+          <p data-i18n="contact.note">பூஜை வழிபாடுகள் மற்றும் இதர நிகழ்வுகள் பற்றிய அறிவித்தல்களை உங்கள் கைத்தொலைபேசியில் குறுந்தகவல் மூலமாக அல்லது மின்னஞ்சல் வழியாக அறிந்துகொள்வதற்கும், அவ்வப்போது வேறு முக்கிய தகவல்களை நாங்கள் பகிர்ந்துகொள்வதற்கும், உங்கள் கைத்தொலைபேசி இலக்கம் மற்றும் மின்னஞ்சல் முகவரியைப் பதிவுசெய்துகொள்ளும்படி வேண்டுகிறோம்.</p>
+        </div>
+        <div>
+          <form class="contact-form" id="contact-form">
+            <p data-i18n="contact.form">தொடர்பு கொள்வதற்கு கீழ்காணும் படிவத்தையும் பயன்படுத்துங்கள்.</p>
+            <label for="c-name"><span data-i18n="contact.name">பெயர்</span> <span class="req">*</span></label>
+            <input id="c-name" name="entry.1771416670" required autocomplete="name">
+            <label for="c-phone"><span data-i18n="contact.phone">தொலைபேசி</span> <span class="req">*</span></label>
+            <input id="c-phone" name="entry.1955140266" type="tel" required autocomplete="tel">
+            <label for="c-email"><span data-i18n="contact.email">மின்னஞ்சல்</span></label>
+            <input id="c-email" name="entry.661581145" type="email" autocomplete="email">
+            <label for="c-remarks"><span data-i18n="contact.remarks">குறிப்புகள்</span> <span class="req">*</span></label>
+            <textarea id="c-remarks" name="entry.252900192" required></textarea>
+            <button class="btn btn-primary" type="submit"><span data-i18n="contact.send">அனுப்பு</span></button>
+            <p class="form-ok" id="form-ok" hidden data-i18n="contact.sent">உங்கள் செய்தி அனுப்பப்பட்டது. கூடிய விரைவில் நாங்கள் உங்களை அழைப்போம்.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer id="site-footer"></footer>
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById("contact-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const body = new FormData(form);
+      fetch("https://docs.google.com/forms/d/e/1FAIpQLScVyUdkLOhVoB86YdDqk-hXfXz9TtaJqx6OmEXotbgEmanQEQ/formResponse", {
+        method: "POST",
+        mode: "no-cors",
+        body: body
+      }).then(function () {
+        form.reset();
+        document.getElementById("form-ok").hidden = false;
+      });
+    });
+  </script>
+</body>
+</html>
