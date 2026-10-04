@@ -10,167 +10,50 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hind+Madurai:wght@400;500;600&family=Tiro+Tamil&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css?v=20261004d">
-  <link rel="stylesheet" href="css/worship-v2.css?v=20261004k">
+  <link rel="stylesheet" href="css/worship-v2.css?v=20261004j">
   <style>
-    /* Hero override: keeps text inside the site grid and preserves the banner artwork */
-    .worship-hero {
-      min-height: 390px;
-      background-image: url("assets/worship-hero.png") !important;
-      background-size: cover !important;
-      background-position: center center !important;
-      background-repeat: no-repeat !important;
-    }
-    .worship-hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      background: linear-gradient(90deg, rgba(255,250,241,.96) 0%, rgba(255,250,241,.90) 27%, rgba(255,250,241,.62) 42%, rgba(255,250,241,.12) 57%, rgba(255,250,241,0) 70%);
-      pointer-events: none;
-    }
-    .worship-hero-inner {
-      position: relative;
-      z-index: 2;
-      width: min(calc(100% - 48px), 1360px) !important;
-      margin-inline: auto !important;
-      padding: 42px 0 44px !important;
-    }
-    .worship-hero-copy {
-      width: min(610px, 47%) !important;
-      max-width: none !important;
-    }
-    .worship-hero h1 {
-      margin: 0 !important;
-      font-size: clamp(48px, 4.25vw, 70px) !important;
-      line-height: 1.08 !important;
-    }
-    .worship-hero .lede {
-      max-width: 590px !important;
-      margin-top: 16px !important;
-      font-size: 16px !important;
-      line-height: 1.7 !important;
-    }
-    .worship-hero-facts {
-      margin-top: 22px !important;
-      gap: 12px !important;
-    }
-    .hero-fact {
-      min-width: 0 !important;
-      width: 210px;
-      padding: 12px 14px !important;
-    }
-    @media (max-width: 900px) {
-      .worship-hero {
-        min-height: 500px;
-        background-position: 62% center !important;
-      }
-      .worship-hero::after {
-        background: linear-gradient(90deg, rgba(255,250,241,.97) 0%, rgba(255,250,241,.90) 55%, rgba(255,250,241,.28) 100%);
-      }
-      .worship-hero-copy {
-        width: min(620px, 76%) !important;
-      }
-    }
-    @media (max-width: 640px) {
-      .worship-hero {
-        min-height: 560px;
-        align-items: flex-end;
-        background-position: 70% center !important;
-      }
-      .worship-hero::after {
-        background: linear-gradient(180deg, rgba(255,250,241,.18) 0%, rgba(255,250,241,.90) 45%, rgba(255,250,241,.99) 100%);
-      }
-      .worship-hero-inner {
-        width: min(calc(100% - 32px), 1360px) !important;
-        padding: 150px 0 30px !important;
-      }
-      .worship-hero-copy {
-        width: 100% !important;
-      }
-      .worship-hero h1 {
-        font-size: clamp(42px, 13vw, 58px) !important;
-      }
-      .worship-hero-facts {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr;
-      }
-      .hero-fact {
-        width: auto;
-      }
-    }
+    .worship-hero { min-height:390px; background-image:url("assets/worship-hero.png") !important; background-size:cover !important; background-position:center center !important; background-repeat:no-repeat !important; }
+    .worship-hero::after { content:""; position:absolute; inset:0; z-index:0; background:linear-gradient(90deg,rgba(255,250,241,.96) 0%,rgba(255,250,241,.90) 27%,rgba(255,250,241,.62) 42%,rgba(255,250,241,.12) 57%,rgba(255,250,241,0) 70%); pointer-events:none; }
+    .worship-hero-inner { position:relative; z-index:2; width:min(calc(100% - 48px),1360px) !important; margin-inline:auto !important; padding:42px 0 44px !important; }
+    .worship-hero-copy { width:min(610px,47%) !important; max-width:none !important; }
+    .worship-hero h1 { margin:0 !important; font-size:clamp(48px,4.25vw,70px) !important; line-height:1.08 !important; }
+    .worship-hero .lede { max-width:590px !important; margin-top:16px !important; font-size:16px !important; line-height:1.7 !important; }
+    .worship-hero-facts { margin-top:22px !important; gap:12px !important; }
+    .hero-fact { min-width:0 !important; width:210px; padding:12px 14px !important; }
+    .hero-fact-icon svg { width:20px; height:20px; display:block; stroke:currentColor; }
+    @media (max-width:900px) { .worship-hero { min-height:500px; background-position:62% center !important; } .worship-hero::after { background:linear-gradient(90deg,rgba(255,250,241,.97) 0%,rgba(255,250,241,.90) 55%,rgba(255,250,241,.28) 100%); } .worship-hero-copy { width:min(620px,76%) !important; } }
+    @media (max-width:640px) { .worship-hero { min-height:560px; align-items:flex-end; background-position:70% center !important; } .worship-hero::after { background:linear-gradient(180deg,rgba(255,250,241,.18) 0%,rgba(255,250,241,.90) 45%,rgba(255,250,241,.99) 100%); } .worship-hero-inner { width:min(calc(100% - 32px),1360px) !important; padding:150px 0 30px !important; } .worship-hero-copy { width:100% !important; } .worship-hero h1 { font-size:clamp(42px,13vw,58px) !important; } .worship-hero-facts { display:grid !important; grid-template-columns:1fr 1fr; } .hero-fact { width:auto; } }
   </style>
 </head>
 <body data-page="worship" data-title-ta="இறைவழிபாடு — இந்து மாமன்றம் ரூகலாண்ட்" data-title-en="Worship — Hindu Mamanram Rogaland">
   <header id="site-header"></header>
-
   <main id="main" class="worship-page">
     <section class="worship-hero">
       <div class="worship-hero-glow" aria-hidden="true"></div>
       <div class="worship-mandala" aria-hidden="true"><span>ॐ</span></div>
       <div class="worship-lamp-art" aria-hidden="true"></div>
-
       <div class="wrap worship-hero-inner">
         <div class="worship-hero-copy">
           <p class="eyebrow" data-i18n="worship.eyebrow">ஆன்மீகம்</p>
           <h1 data-i18n="worship.title">இறைவழிபாடு</h1>
           <p class="lede" data-i18n="worship.lead">மாதாந்த பூஜை வழிபாடுகள் மற்றும் சிறப்பு நிகழ்வுகளின் 2026 ஆம் ஆண்டு அட்டவணை. பூஜை வழிபாடுகள் 18:30 மணிக்கு ஆரம்பமாகும்.</p>
-
           <div class="worship-hero-facts" aria-label="Pooja information">
             <div class="hero-fact">
-              <span class="hero-fact-icon" aria-hidden="true">◷</span>
+              <span class="hero-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.4 2"/></svg></span>
               <div><strong>18:30</strong><span>பூஜை ஆரம்பம்</span></div>
             </div>
             <a class="hero-fact" href="#venue">
-              <span class="hero-fact-icon" aria-hidden="true">⌖</span>
+              <span class="hero-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5.2-8 11-8 11S4 15.2 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
               <div><strong>Varatun Gård</strong><span>Sandnes · பூஜை இடம்</span></div>
             </a>
           </div>
         </div>
       </div>
     </section>
-
-    <section class="pooja-calendar-section" id="pooja-calendar">
-      <div class="wrap">
-        <div class="calendar-heading">
-          <div>
-            <p class="kicker">ஆன்மீக நிகழ்வுகள்</p>
-            <h2><span id="calendar-year-title">2026</span> பூஜை நாட்கள்</h2>
-            <p class="calendar-intro">வரவிருக்கும் மாதாந்த பூஜைகள் மற்றும் சிறப்பு நிகழ்வுகள்</p>
-          </div>
-          <div class="calendar-tools">
-            <label class="calendar-year-select">
-              <span>ஆண்டு</span>
-              <select id="pooja-year-select" aria-label="Year">
-                <option value="2026">2026</option>
-              </select>
-            </label>
-          </div>
-        </div>
-
-        <div class="cal-year worship-calendar hm-pooja-calendar" id="pooja-year"></div>
-        <div class="calendar-empty" id="calendar-empty" hidden>
-          <p>இந்த ஆண்டிற்கான பூஜை நாட்கள் இல்லை.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="worship-venue-section" id="venue">
-      <div class="wrap worship-venue-card">
-        <div>
-          <p class="kicker">பூஜை நடைபெறும் இடம்</p>
-          <h2>Varatun Gård</h2>
-          <p>இந்து மாமன்றத்தின் பூஜை வழிபாடுகள் Sandnes நகரில் உள்ள Varatun Gård மண்டபத்தில் நடைபெறுகின்றன.</p>
-          <p class="venue-address">Varatun Gård, Varatun hagen, Sandnes, Norway</p>
-        </div>
-        <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=Varatun+G%C3%A5rd+Varatun+hagen+Sandnes" target="_blank" rel="noopener">வரைபடத்தைத் திறக்க →</a>
-      </div>
-    </section>
+    <section class="pooja-calendar-section" id="pooja-calendar"><div class="wrap"><div class="calendar-heading"><div><p class="kicker">ஆன்மீக நிகழ்வுகள்</p><h2><span id="calendar-year-title">2026</span> பூஜை நாட்கள்</h2><p class="calendar-intro">வரவிருக்கும் மாதாந்த பூஜைகள் மற்றும் சிறப்பு நிகழ்வுகள்</p></div><div class="calendar-tools"><label class="calendar-year-select"><span>ஆண்டு</span><select id="pooja-year-select" aria-label="Year"><option value="2026">2026</option></select></label></div></div><div class="cal-year worship-calendar hm-pooja-calendar" id="pooja-year"></div><div class="calendar-empty" id="calendar-empty" hidden><p>இந்த ஆண்டிற்கான பூஜை நாட்கள் இல்லை.</p></div></div></section>
+    <section class="worship-venue-section" id="venue"><div class="wrap worship-venue-card"><div><p class="kicker">பூஜை நடைபெறும் இடம்</p><h2>Varatun Gård</h2><p>இந்து மாமன்றத்தின் பூஜை வழிபாடுகள் Sandnes நகரில் உள்ள Varatun Gård மண்டபத்தில் நடைபெறுகின்றன.</p><p class="venue-address">Varatun Gård, Varatun hagen, Sandnes, Norway</p></div><a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=Varatun+G%C3%A5rd+Varatun+hagen+Sandnes" target="_blank" rel="noopener">வரைபடத்தைத் திறக்க →</a></div></section>
   </main>
-
   <footer id="site-footer"></footer>
-  <script src="js/pooja-data.js"></script>
-  <script src="js/store.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/worship.js?v=20261004f"></script>
+  <script src="js/pooja-data.js"></script><script src="js/store.js"></script><script src="js/main.js"></script><script src="js/worship.js?v=20261004f"></script>
 </body>
 </html>
