@@ -24,106 +24,27 @@
     .hero-fact-icon{display:grid!important;place-items:center!important;width:42px!important;height:42px!important;flex:0 0 42px!important}
     .hero-fact-icon svg{width:21px!important;height:21px!important;display:block!important;stroke:currentColor!important}
     .hero-fact>div{display:flex;flex-direction:column;justify-content:center;min-height:42px}
-
-    /* Worship navigation UX */
     @media (min-width:981px){
       #site-nav{gap:6px!important}
-      #site-nav>.nav-item>.nav-link,
-      #site-nav>.nav-item>.nav-parent{
-        display:inline-flex!important;
-        align-items:center!important;
-        justify-content:center!important;
-        gap:9px!important;
-        min-height:46px!important;
-        padding:11px 14px!important;
-        border-radius:9px!important;
-        font-family:"Hind Madurai","Nirmala UI","Segoe UI",sans-serif!important;
-        font-size:15.5px!important;
-        font-weight:600!important;
-        line-height:1.2!important;
-        color:#2c1814!important;
-        transition:background-color .2s ease,color .2s ease,box-shadow .2s ease,transform .2s ease!important;
-      }
-      #site-nav>.nav-item>.nav-link::before,
-      #site-nav>.nav-item>.nav-parent::before{
-        display:inline-flex!important;
-        align-items:center!important;
-        justify-content:center!important;
-        width:19px!important;
-        flex:0 0 19px!important;
-        color:#8b2346!important;
-        font-family:"Font Awesome 6 Free"!important;
-        font-size:16px!important;
-        font-weight:900!important;
-        line-height:1!important;
-        -webkit-font-smoothing:antialiased;
-      }
+      #site-nav>.nav-item>.nav-link,#site-nav>.nav-item>.nav-parent{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:9px!important;min-height:46px!important;padding:11px 14px!important;border-radius:9px!important;font-family:"Hind Madurai","Nirmala UI","Segoe UI",sans-serif!important;font-size:15.5px!important;font-weight:600!important;line-height:1.2!important;color:#2c1814!important;transition:background-color .2s ease,color .2s ease,box-shadow .2s ease,transform .2s ease!important}
+      #site-nav>.nav-item>.nav-link::before,#site-nav>.nav-item>.nav-parent::before{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:19px!important;flex:0 0 19px!important;color:#8b2346!important;font-family:"Font Awesome 6 Free"!important;font-size:16px!important;font-weight:900!important;line-height:1!important;-webkit-font-smoothing:antialiased}
       #site-nav>.nav-item:nth-child(1)>.nav-link::before{content:"\f015"!important}
       #site-nav>.nav-item:nth-child(2)>.nav-parent::before{content:"\f66f"!important}
       #site-nav>.nav-item:nth-child(3)>.nav-parent::before{content:"\f4c4"!important}
       #site-nav>.nav-item:nth-child(4)>.nav-parent::before{content:"\f144"!important}
       #site-nav>.nav-item:nth-child(5)>.nav-link::before{content:"\f0e0"!important}
-
-      /* Clear Font Awesome down chevron on every dropdown parent */
-      #site-nav>.nav-item>.nav-parent::after{
-        content:"\f078"!important;
-        position:static!important;
-        display:inline-flex!important;
-        align-items:center!important;
-        justify-content:center!important;
-        width:auto!important;
-        height:auto!important;
-        margin-left:2px!important;
-        background:none!important;
-        border-radius:0!important;
-        color:#8b2346!important;
-        font-family:"Font Awesome 6 Free"!important;
-        font-size:11px!important;
-        font-weight:900!important;
-        line-height:1!important;
-        transform:none!important;
-        transition:transform .2s ease!important;
-        -webkit-font-smoothing:antialiased;
-      }
-      #site-nav>.nav-item:hover>.nav-parent::after,
-      #site-nav>.nav-item:focus-within>.nav-parent::after{
-        transform:rotate(180deg)!important;
-      }
-
-      #site-nav>.nav-item>.nav-link:hover,
-      #site-nav>.nav-item>.nav-parent:hover{
-        background:#f9e9ed!important;
-        color:#8b2346!important;
-        transform:translateY(-1px)!important;
-      }
-      #site-nav>.nav-item>.nav-link.is-active,
-      #site-nav>.nav-item>.nav-parent.is-active{
-        background:#fff2f4!important;
-        color:#8b2346!important;
-        font-weight:700!important;
-        box-shadow:inset 0 -3px 0 #8b2346!important;
-      }
+      #site-nav>.nav-item>.nav-parent::after{content:"\f078"!important;position:static!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;width:auto!important;height:auto!important;margin-left:2px!important;background:none!important;border-radius:0!important;color:#8b2346!important;font-family:"Font Awesome 6 Free"!important;font-size:11px!important;font-weight:900!important;line-height:1!important;transform:none!important;transition:transform .2s ease!important;-webkit-font-smoothing:antialiased}
+      #site-nav>.nav-item:hover>.nav-parent::after,#site-nav>.nav-item:focus-within>.nav-parent::after{transform:rotate(180deg)!important}
+      #site-nav>.nav-item>.nav-link:hover,#site-nav>.nav-item>.nav-parent:hover{background:#f9e9ed!important;color:#8b2346!important;transform:translateY(-1px)!important}
+      #site-nav>.nav-item>.nav-link.is-active,#site-nav>.nav-item>.nav-parent.is-active{background:#fff2f4!important;color:#8b2346!important;font-weight:700!important;box-shadow:inset 0 -3px 0 #8b2346!important}
       #site-nav>.nav-item>.nav-link.is-active::after{display:none!important}
       #site-nav>.nav-item>.nav-parent.is-active::after{display:inline-flex!important}
-
-      #site-nav .menu{
-        top:calc(100% + 6px)!important;
-        min-width:235px!important;
-        padding:8px!important;
-        border-radius:12px!important;
-        border:1px solid rgba(110,44,70,.12)!important;
-        box-shadow:0 18px 45px rgba(62,22,40,.14)!important;
-      }
-      #site-nav .menu a{
-        padding:10px 12px!important;
-        border-radius:8px!important;
-        font-family:"Hind Madurai","Nirmala UI",sans-serif!important;
-        font-weight:500!important;
-        transition:background .18s ease,color .18s ease!important;
-      }
+      /* Keep dropdown physically connected to its parent: no hover dead-zone. */
+      #site-nav .menu{top:100%!important;margin-top:0!important;min-width:235px!important;padding:8px!important;border-radius:12px!important;border:1px solid rgba(110,44,70,.12)!important;box-shadow:0 18px 45px rgba(62,22,40,.14)!important}
+      #site-nav .menu::before{content:"";position:absolute;left:0;right:0;top:-8px;height:8px;background:transparent}
+      #site-nav .menu a{padding:10px 12px!important;border-radius:8px!important;font-family:"Hind Madurai","Nirmala UI",sans-serif!important;font-weight:500!important;transition:background .18s ease,color .18s ease!important}
       #site-nav .menu a:hover{background:#f9e9ed!important;color:#8b2346!important}
     }
-
     @media(max-width:900px){.worship-hero{min-height:500px;background-position:62% center!important}.worship-hero::after{background:linear-gradient(90deg,rgba(255,250,241,.97) 0%,rgba(255,250,241,.90) 55%,rgba(255,250,241,.28) 100%)}.worship-hero-copy{width:min(620px,76%)!important}}
     @media(max-width:640px){.worship-hero{min-height:560px;align-items:flex-end;background-position:70% center!important}.worship-hero::after{background:linear-gradient(180deg,rgba(255,250,241,.18) 0%,rgba(255,250,241,.90) 45%,rgba(255,250,241,.99) 100%)}.worship-hero-inner{width:min(calc(100% - 32px),var(--max))!important;padding:150px 0 30px!important}.worship-hero-copy{width:100%!important}.worship-hero h1{font-size:clamp(42px,13vw,58px)!important}.worship-hero-facts{display:grid!important;grid-template-columns:1fr 1fr}.hero-fact{width:auto}}
   </style>
@@ -132,26 +53,8 @@
   <header id="site-header"></header>
   <main id="main" class="worship-page">
     <section class="worship-hero">
-      <div class="worship-hero-glow" aria-hidden="true"></div>
-      <div class="worship-mandala" aria-hidden="true"><span>ॐ</span></div>
-      <div class="worship-lamp-art" aria-hidden="true"></div>
-      <div class="wrap worship-hero-inner">
-        <div class="worship-hero-copy">
-          <p class="eyebrow" data-i18n="worship.eyebrow">ஆன்மீகம்</p>
-          <h1 data-i18n="worship.title">இறைவழிபாடு</h1>
-          <p class="lede" data-i18n="worship.lead">மாதாந்த பூஜை வழிபாடுகள் மற்றும் சிறப்பு நிகழ்வுகளின் 2026 ஆம் ஆண்டு அட்டவணை. பூஜை வழிபாடுகள் 18:30 மணிக்கு ஆரம்பமாகும்.</p>
-          <div class="worship-hero-facts" aria-label="Pooja information">
-            <div class="hero-fact">
-              <span class="hero-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.4 2"/></svg></span>
-              <div><strong>18:30</strong><span>பூஜை ஆரம்பம்</span></div>
-            </div>
-            <a class="hero-fact" href="#venue">
-              <span class="hero-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5.2-8 11-8 11S4 15.2 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
-              <div><strong>Varatun Gård</strong><span>Sandnes · பூஜை இடம்</span></div>
-            </a>
-          </div>
-        </div>
-      </div>
+      <div class="worship-hero-glow" aria-hidden="true"></div><div class="worship-mandala" aria-hidden="true"><span>ॐ</span></div><div class="worship-lamp-art" aria-hidden="true"></div>
+      <div class="wrap worship-hero-inner"><div class="worship-hero-copy"><p class="eyebrow" data-i18n="worship.eyebrow">ஆன்மீகம்</p><h1 data-i18n="worship.title">இறைவழிபாடு</h1><p class="lede" data-i18n="worship.lead">மாதாந்த பூஜை வழிபாடுகள் மற்றும் சிறப்பு நிகழ்வுகளின் 2026 ஆம் ஆண்டு அட்டவணை. பூஜை வழிபாடுகள் 18:30 மணிக்கு ஆரம்பமாகும்.</p><div class="worship-hero-facts" aria-label="Pooja information"><div class="hero-fact"><span class="hero-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.4 2"/></svg></span><div><strong>18:30</strong><span>பூஜை ஆரம்பம்</span></div></div><a class="hero-fact" href="#venue"><span class="hero-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5.2-8 11-8 11S4 15.2 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><strong>Varatun Gård</strong><span>Sandnes · பூஜை இடம்</span></div></a></div></div></div>
     </section>
     <section class="pooja-calendar-section" id="pooja-calendar"><div class="wrap"><div class="calendar-heading"><div><p class="kicker">ஆன்மீக நிகழ்வுகள்</p><h2><span id="calendar-year-title">2026</span> பூஜை நாட்கள்</h2><p class="calendar-intro">வரவிருக்கும் மாதாந்த பூஜைகள் மற்றும் சிறப்பு நிகழ்வுகள்</p></div><div class="calendar-tools"><label class="calendar-year-select"><span>ஆண்டு</span><select id="pooja-year-select" aria-label="Year"><option value="2026">2026</option></select></label></div></div><div class="cal-year worship-calendar hm-pooja-calendar" id="pooja-year"></div><div class="calendar-empty" id="calendar-empty" hidden><p>இந்த ஆண்டிற்கான பூஜை நாட்கள் இல்லை.</p></div></div></section>
     <section class="worship-venue-section" id="venue"><div class="wrap worship-venue-card"><div><p class="kicker">பூஜை நடைபெறும் இடம்</p><h2>Varatun Gård</h2><p>இந்து மாமன்றத்தின் பூஜை வழிபாடுகள் Sandnes நகரில் உள்ள Varatun Gård மண்டபத்தில் நடைபெறுகின்றன.</p><p class="venue-address">Varatun Gård, Varatun hagen, Sandnes, Norway</p></div><a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=Varatun+G%C3%A5rd+Varatun+hagen+Sandnes" target="_blank" rel="noopener">வரைபடத்தைத் திறக்க →</a></div></section>
