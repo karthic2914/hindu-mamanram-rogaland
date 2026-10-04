@@ -9,12 +9,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hind+Madurai:wght@400;500;600&family=Tiro+Tamil&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="css/styles.css?v=20261004d">
   <link rel="stylesheet" href="css/worship-v2.css?v=20261004j">
   <style>
     .worship-hero{min-height:390px;background-image:url("assets/worship-hero.png")!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
     .worship-hero::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(255,250,241,.97) 0%,rgba(255,250,241,.91) 27%,rgba(255,250,241,.60) 43%,rgba(255,250,241,.10) 58%,rgba(255,250,241,0) 70%);pointer-events:none}
-    /* Keep hero content on exactly the same site grid as the calendar below */
     .worship-hero-inner{position:relative;z-index:2;width:min(var(--max),calc(100% - 48px))!important;margin:0 auto!important;padding:42px 0 44px!important}
     .worship-hero-copy{width:min(610px,48%)!important;max-width:none!important}
     .worship-hero h1{margin:0!important;font-size:clamp(48px,4.25vw,70px)!important;line-height:1.08!important}
@@ -25,15 +25,15 @@
     .hero-fact-icon svg{width:21px!important;height:21px!important;display:block!important;stroke:currentColor!important}
     .hero-fact>div{display:flex;flex-direction:column;justify-content:center;min-height:42px}
 
-    /* Small, restrained icons in the desktop navigation */
+    /* Font Awesome navigation icons */
     @media (min-width:981px){
-      #site-nav>.nav-item>.nav-link,#site-nav>.nav-item>.nav-parent{display:inline-flex!important;align-items:center!important;gap:7px!important}
-      #site-nav>.nav-item>.nav-link::before,#site-nav>.nav-item>.nav-parent::before{display:inline-grid;place-items:center;width:18px;height:18px;color:#762642;font-size:15px;font-family:Arial,"Noto Sans Symbols",sans-serif;font-weight:400;line-height:1}
-      #site-nav>.nav-item:nth-child(1)>.nav-link::before{content:"⌂"}
-      #site-nav>.nav-item:nth-child(2)>.nav-parent::before{content:"ॐ";font-size:16px}
-      #site-nav>.nav-item:nth-child(3)>.nav-parent::before{content:"✦";font-size:13px}
-      #site-nav>.nav-item:nth-child(4)>.nav-parent::before{content:"▣";font-size:13px}
-      #site-nav>.nav-item:nth-child(5)>.nav-link::before{content:"✉";font-size:13px}
+      #site-nav>.nav-item>.nav-link,#site-nav>.nav-item>.nav-parent{display:inline-flex!important;align-items:center!important;gap:8px!important}
+      #site-nav>.nav-item>.nav-link::before,#site-nav>.nav-item>.nav-parent::before{display:inline-block;width:17px;text-align:center;color:#762642;font-family:"Font Awesome 6 Free"!important;font-size:13px;font-weight:900!important;line-height:1;-webkit-font-smoothing:antialiased}
+      #site-nav>.nav-item:nth-child(1)>.nav-link::before{content:"\f015"}
+      #site-nav>.nav-item:nth-child(2)>.nav-parent::before{content:"\f004"}
+      #site-nav>.nav-item:nth-child(3)>.nav-parent::before{content:"\f0ad"}
+      #site-nav>.nav-item:nth-child(4)>.nav-parent::before{content:"\f03d"}
+      #site-nav>.nav-item:nth-child(5)>.nav-link::before{content:"\f0e0"}
     }
 
     @media(max-width:900px){.worship-hero{min-height:500px;background-position:62% center!important}.worship-hero::after{background:linear-gradient(90deg,rgba(255,250,241,.97) 0%,rgba(255,250,241,.90) 55%,rgba(255,250,241,.28) 100%)}.worship-hero-copy{width:min(620px,76%)!important}}
