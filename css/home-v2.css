@@ -1238,3 +1238,50 @@ body[data-page="home"] .card { min-height: 210px; }
     margin: -4px auto 4px;
   }
 }
+
+/* Approved emblem: taller temple-arch silhouette, luminous burgundy and
+   prominent circular crest. Scoped to desktop hero only. */
+@media (min-width: 1101px) {
+  body[data-page="home"] .home-hero .seal-card {
+    width: clamp(265px, 20.5vw, 325px);
+    min-height: 0;
+    aspect-ratio: 0.82;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 29px 18px 19px;
+    border-radius: 52% 52% 15px 15px / 39% 39% 15px 15px;
+    background: radial-gradient(ellipse at 48% 12%, #941341 0%, #711537 43%, #50172f 100%);
+    box-shadow: 0 16px 28px rgba(83, 35, 42, .18);
+  }
+  body[data-page="home"] .home-hero .seal-img {
+    display: block;
+    width: 73%;
+    height: auto;
+    aspect-ratio: 1;
+    flex: 0 0 auto;
+    object-fit: contain;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(235, 194, 124, .55);
+  }
+  body[data-page="home"] .home-hero .seal-card figcaption {
+    margin-top: 15px;
+    width: 100%;
+  }
+  body[data-page="home"] .home-hero .seal-card strong {
+    font-size: clamp(19px, 1.45vw, 23px);
+    line-height: 1.25;
+  }
+  body[data-page="home"] .home-hero .seal-latin {
+    margin-top: 7px;
+    font-size: 12px;
+    letter-spacing: .2em;
+  }
+  body[data-page="home"] .home-hero .seal-est {
+    margin-top: 7px;
+    font-size: 11px;
+    letter-spacing: .18em;
+  }
+}
