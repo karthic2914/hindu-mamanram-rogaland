@@ -1,0 +1,244 @@
+/* home-v3-sections.css - membership band + footer (matches mockup) */
+:root {
+  --hm-maroon: #7d1538;
+  --hm-maroon-deep: #5e0f2a;
+  --hm-gold: #c9973a;
+  --hm-gold-soft: #e8c98a;
+  --hm-cream: #fffaf2;
+  --hm-ink: #3d2a2a;
+}
+
+/* ---------- TA / EN switching for new labels ---------- */
+.hm-member [data-lang="en"], .hm-footer [data-lang="en"] { display: none; }
+html[lang^="en"] .hm-member [data-lang="en"], html[lang^="en"] .hm-footer [data-lang="en"] { display: inline; }
+html[lang^="en"] .hm-member [data-lang="ta"], html[lang^="en"] .hm-footer [data-lang="ta"] { display: none; }
+
+/* =================== MEMBERSHIP =================== */
+.section.hm-member { padding-top: 8px; padding-bottom: 48px; }
+.hm-member-card {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr) auto;
+  align-items: center;
+  background: var(--hm-cream);
+  border-radius: 18px;
+  box-shadow: 0 6px 24px rgba(94, 15, 42, .08);
+  overflow: hidden;
+  min-height: 160px;
+}
+.hm-member-photo {
+  align-self: stretch;
+  min-height: 160px;
+  background:
+    url("../assets/membership-hands.jpg") center / cover no-repeat,
+    radial-gradient(circle at 45% 45%, #fff3d6 0%, #f3cf8c 35%, #d9a55a 65%, #b9834a 100%);
+  /* curved right edge like the mockup */
+  clip-path: ellipse(100% 120% at 0% 50%);
+}
+.hm-member-body { padding: 22px 28px 24px; }
+.hm-member-kicker {
+  margin: 0 0 2px;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--hm-maroon);
+}
+.hm-member-title {
+  margin: 0 0 8px;
+  font-size: clamp(1.45rem, 2.1vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--hm-maroon);
+}
+.hm-member-text {
+  margin: 0 0 14px;
+  max-width: 60ch;
+  font-size: .92rem;
+  line-height: 1.6;
+  color: var(--hm-ink);
+}
+.hm-member-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 18px;
+  border-radius: 8px;
+  background: var(--hm-maroon);
+  color: #fff;
+  font-size: .9rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(125, 21, 56, .25);
+}
+.hm-member-btn:hover { background: var(--hm-maroon-deep); color: #fff; }
+.hm-member-btn:focus-visible { outline: 3px solid var(--hm-gold); outline-offset: 2px; }
+
+.hm-member-pay {
+  margin: 22px 0;
+  padding: 4px 40px 4px 36px;
+  border-left: 1.5px solid var(--hm-gold);
+}
+.hm-pay-label {
+  margin: 0 0 8px;
+  font-size: .85rem;
+  color: var(--hm-maroon);
+  line-height: 1.4;
+}
+.hm-pay-label b { display: block; font-size: 1rem; font-weight: 700; }
+.hm-vipps-logo {
+  display: inline-block;
+  padding: 3px 16px 5px;
+  border-radius: 6px;
+  background: #ff5b24;
+  color: #fff;
+  font: 700 1.35rem/1.2 "Hind Madurai", system-ui, sans-serif;
+  letter-spacing: .01em;
+}
+.hm-vipps-num {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--hm-maroon);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .hm-member-card { grid-template-columns: 160px minmax(0, 1fr); }
+  .hm-member-pay {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 18px 28px 22px;
+    border-left: 0;
+    border-top: 1.5px solid var(--hm-gold-soft);
+  }
+}
+@media (max-width: 600px) {
+  .hm-member-card { grid-template-columns: 1fr; }
+  .hm-member-photo { min-height: 120px; clip-path: ellipse(120% 100% at 50% 0%); }
+}
+
+/* =================== FOOTER =================== */
+.hm-footer {
+  position: relative;
+  background: linear-gradient(180deg, var(--hm-maroon) 0%, var(--hm-maroon-deep) 100%);
+  color: #f6e7ea;
+  padding: 26px 0 0;
+  font-size: .88rem;
+}
+.hm-footer a { color: #f6e7ea; text-decoration: none; }
+.hm-footer a:hover { color: var(--hm-gold-soft); }
+.hm-footer a:focus-visible { outline: 2px solid var(--hm-gold); outline-offset: 2px; }
+
+.hm-foot-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.1fr;
+  gap: 28px;
+  padding-bottom: 18px;
+}
+.hm-foot-brand { display: flex; align-items: center; gap: 14px; }
+.hm-foot-logo {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--hm-gold);
+  background: #fff url("../assets/hm-seal.jpg") center / cover no-repeat;
+  box-shadow: 0 0 0 3px rgba(201, 151, 58, .25);
+}
+.hm-foot-brand strong { display: block; font-size: 1.05rem; font-weight: 600; color: #fff; }
+.hm-foot-brand small {
+  display: block;
+  margin-top: 4px;
+  font-size: .7rem;
+  letter-spacing: .14em;
+  color: var(--hm-gold-soft);
+}
+
+.hm-foot-col h3 {
+  margin: 0 0 8px;
+  font-size: .95rem;
+  font-weight: 600;
+  color: #fff;
+}
+.hm-foot-col ul { list-style: none; margin: 0; padding: 0; }
+.hm-foot-col li { margin: 0 0 3px; }
+.hm-foot-line { display: flex; align-items: flex-start; gap: 10px; margin: 0 0 6px; line-height: 1.45; }
+.hm-foot-line svg { flex: 0 0 auto; width: 18px; height: 18px; margin-top: 1px; color: var(--hm-gold-soft); }
+
+.hm-foot-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 12px 0 14px;
+  border-top: 1px solid rgba(232, 201, 138, .35);
+  font-size: .78rem;
+}
+.hm-foot-bottom p { margin: 0; }
+
+/* gold kolam-style border along the bottom */
+.hm-foot-border {
+  height: 12px;
+  background-color: var(--hm-maroon-deep);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12' viewBox='0 0 24 12'%3E%3Cpath d='M0 6h24' stroke='%23c9973a' stroke-width='1'/%3E%3Cpath d='M12 1l5 5-5 5-5-5z' fill='none' stroke='%23c9973a' stroke-width='1.2'/%3E%3Ccircle cx='0' cy='6' r='1.4' fill='%23e8c98a'/%3E%3Ccircle cx='24' cy='6' r='1.4' fill='%23e8c98a'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center;
+  border-top: 1px solid var(--hm-gold);
+}
+
+@media (max-width: 900px) {
+  .hm-foot-grid { grid-template-columns: 1fr 1fr; }
+  .hm-foot-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 520px) {
+  .hm-foot-grid { grid-template-columns: 1fr; }
+  .hm-foot-bottom { flex-direction: column; }
+}
+
+/* ---- v3.1: inward curve + faded photo (mockup) ---- */
+.hm-member-photo {
+  position: relative;
+  clip-path: none;
+  background:
+    linear-gradient(90deg, rgba(255,250,242,.30) 0%, rgba(255,250,242,.55) 70%, rgba(255,250,242,.75) 100%),
+    url("../assets/membership-hands.jpg") center 40% / cover no-repeat,
+    radial-gradient(circle at 45% 45%, #fff3d6 0%, #f3cf8c 40%, #e2b878 100%);
+  overflow: hidden;
+}
+/* cream shape curving INTO the photo from the right */
+.hm-member-photo::after {
+  content: "";
+  position: absolute;
+  top: -25%;
+  bottom: -25%;
+  right: -70px;
+  width: 130px;
+  border-radius: 50%;
+  background: var(--hm-cream);
+  box-shadow: -4px 0 14px rgba(94, 15, 42, .10);
+}
+.hm-member-card { box-shadow: 0 6px 24px rgba(94,15,42,.08), inset 0 0 0 1px rgba(201,151,58,.12); }
+
+@media (max-width: 600px) {
+  .hm-member-photo::after {
+    top: auto; bottom: -60px; left: -25%; right: -25%;
+    width: auto; height: 110px;
+    box-shadow: 0 -4px 14px rgba(94,15,42,.10);
+  }
+}
+
+/* ---- v3.2: compact height (mockup proportions) ---- */
+.hm-member-card { min-height: 0; }
+.hm-member-photo { min-height: 0; }
+.hm-member-body { padding: 16px 20px 18px 18px; }
+.hm-member-kicker { font-size: .8rem; margin-bottom: 0; }
+.hm-member-title { font-size: clamp(1.3rem, 1.7vw, 1.6rem); margin: 0 0 4px; line-height: 1.2; }
+.hm-member-text { max-width: none; font-size: .88rem; line-height: 1.5; margin: 0 0 10px; }
+.hm-member-btn { padding: 7px 16px; font-size: .85rem; }
+
+.hm-member-pay { margin: 16px 0; padding: 2px 36px 2px 32px; }
+.hm-pay-label { margin: 0 0 6px; font-size: .8rem; line-height: 1.3; }
+.hm-pay-label b { font-size: .95rem; }
+.hm-vipps-logo { font-size: 1.15rem; padding: 2px 14px 4px; }
+.hm-vipps-num { margin-top: 6px; font-size: 1.4rem; }
+.section.hm-member { padding-bottom: 36px; }

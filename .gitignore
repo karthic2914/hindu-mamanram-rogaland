@@ -1,0 +1,19 @@
+/data/auth.json
+/private/
+/hm-private/
+/sessions/
+
+*.bak-*
+
+# Local backups and temporary files
+/backups/
+*.log
+.env
+.env.*
+!.env.example
+
+# Local development files
+/bin/
+/node_modules/
+
+/includes/database.php

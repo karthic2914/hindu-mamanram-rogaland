@@ -1,0 +1,221 @@
+/* =====================================================
+   SAVE AS: css/hero-v3.css  (HINDU_MAMANRAM/css/hero-v3.css)
+   Load AFTER css/home-v2.css in index.html <head>
+   ===================================================== */
+
+:root {
+  --hm3-maroon: #7a1735;
+  --hm3-maroon-deep: #4a0c20;
+  --hm3-gold: #c9962e;
+  --hm3-gold-light: #f0d27a;
+  --hm3-cream: #f8efe2;
+  --hm3-ink: #35231c;
+}
+
+/* ---------- Section + background ---------- */
+.hm3-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 70% at 80% 45%, rgba(240, 210, 122, .22), transparent 70%),
+    linear-gradient(180deg, #fbf3e6 0%, var(--hm3-cream) 100%);
+  padding: clamp(48px, 7vw, 96px) 0 0;
+  font-family: 'Noto Sans Tamil', sans-serif;
+  color: var(--hm3-ink);
+}
+
+/* Ganesha: large, warm, fading softly into the cream (no hard edge) */
+.hm3-ganesha {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: auto;
+  max-width: 55%;
+  object-fit: cover;
+  object-position: right top;
+  opacity: .5;
+  filter: sepia(.4) saturate(.75) brightness(1.08);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 40%), linear-gradient(0deg, transparent 0%, #000 25%);
+  -webkit-mask-composite: source-in;
+          mask-image: linear-gradient(90deg, transparent 0%, #000 40%), linear-gradient(0deg, transparent 0%, #000 25%);
+          mask-composite: intersect;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Faint gopuram watermark behind the title */
+.hm3-gopuram {
+  position: absolute;
+  top: 8%;
+  left: 30%;
+  width: 300px;
+  opacity: .06;
+  filter: grayscale(1) sepia(1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hm3-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  align-items: center;
+  gap: clamp(24px, 4vw, 64px);
+}
+
+/* ---------- Text column ---------- */
+.hm3-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 18px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #5a3a2c;
+}
+.hm3-eyebrow span {
+  width: 44px;
+  height: 2px;
+  background: var(--hm3-gold);
+}
+
+.hm3-title {
+  margin: 0 0 22px;
+  font-family: 'Noto Serif Tamil', serif;
+  font-weight: 900;
+  font-size: clamp(46px, 6.2vw, 104px);
+  line-height: 1.1;
+  letter-spacing: -.01em;
+  background: linear-gradient(180deg, #92213f 0%, var(--hm3-maroon-deep) 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 1px rgba(74, 12, 32, .18));
+}
+.hm3-title span { display: block; }
+
+.hm3-lead {
+  max-width: 38em;
+  margin: 0 0 32px;
+  font-size: clamp(16px, 1.25vw, 19px);
+  font-weight: 500;
+  line-height: 1.75;
+  color: #3e2a22;
+}
+
+.hm3-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+
+.hm3-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 30px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 17px;
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.hm3-btn:focus-visible { outline: 3px solid var(--hm3-gold); outline-offset: 3px; }
+.hm3-btn--primary {
+  color: #fff;
+  background: linear-gradient(180deg, #8f1e3e, var(--hm3-maroon-deep));
+  box-shadow: 0 10px 22px -8px rgba(74, 12, 32, .55);
+}
+.hm3-btn--primary:hover { transform: translateY(-2px); box-shadow: 0 14px 26px -8px rgba(74, 12, 32, .6); }
+.hm3-btn--ghost {
+  color: var(--hm3-maroon-deep);
+  background: #fffaf3;
+  border: 1.5px solid rgba(201, 150, 46, .45);
+  box-shadow: 0 6px 16px -8px rgba(74, 12, 32, .25);
+}
+.hm3-btn--ghost:hover { border-color: var(--hm3-gold); }
+
+/* ---------- Arch card ---------- */
+.hm3-arch {
+  position: relative;
+  justify-self: center;
+  width: min(100%, 400px);
+  margin: 0;
+  padding: 56px 32px 36px;
+  border-radius: 220px 220px 24px 24px;
+  background: linear-gradient(180deg, #841a3b 0%, var(--hm3-maroon-deep) 100%);
+  box-shadow:
+    0 40px 70px -24px rgba(74, 12, 32, .55),
+    inset 0 0 0 2px rgba(240, 210, 122, .55);
+  text-align: center;
+}
+/* thin inner gold line */
+.hm3-arch::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 210px 210px 16px 16px;
+  border: 1px solid rgba(240, 210, 122, .3);
+  pointer-events: none;
+}
+
+.hm3-seal {
+  width: 82%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 50%;
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, .4));
+}
+
+.hm3-arch figcaption { display: grid; gap: 6px; margin-top: 18px; }
+.hm3-arch strong {
+  font-family: 'Noto Serif Tamil', serif;
+  font-weight: 800;
+  font-size: clamp(24px, 2.2vw, 32px);
+  color: #fff;
+}
+.hm3-arch-en {
+  font-family: 'Noto Serif Tamil', serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: .26em;
+  color: var(--hm3-gold-light);
+}
+.hm3-arch-est {
+  font-size: 13px;
+  letter-spacing: .22em;
+  color: rgba(240, 210, 122, .8);
+}
+
+/* ---------- Wave + lotus ---------- */
+.hm3-divider {
+  position: relative;
+  z-index: 1;
+  margin-top: -20px;
+  height: 90px;
+}
+.hm3-divider > svg:first-child { width: 100%; height: 100%; display: block; }
+.hm3-lotus {
+  position: absolute;
+  left: 50%;
+  top: 2px;
+  width: 110px;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 14px rgba(240, 210, 122, .75));
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .hm3-inner { grid-template-columns: 1fr; }
+  .hm3-ganesha { display: none; }
+  .hm3-gopuram { left: auto; right: -40px; }
+  .hm3-arch { margin-top: 24px; }
+}
+@media (max-width: 560px) {
+  .hm3-title { font-size: 44px; }
+  .hm3-btn { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hm3-btn { transition: none; }
+}

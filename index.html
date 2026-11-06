@@ -15,31 +15,38 @@
   >
   
 
-  <link rel="stylesheet" href="css/styles.css?v=20261004g">
-  <link rel="stylesheet" href="css/home-v2.css?v=20261004h">
+  <link rel="stylesheet" href="css/styles.css?v=20261101h">
+  <link rel="stylesheet" href="css/home-v2.css?v=20261101s">
 </head>
 <body data-page="home" data-title-ta="இந்து மாமன்றம் ரூகலாண்ட்" data-title-en="Hindu Mamanram Rogaland">
   <header id="site-header"></header>
   <main id="main">
-    <div class="wrap hero home-hero">
-      <div>
-        <p class="eyebrow" data-i18n="hero.eyebrow">நோர்வே · ரூகலாந்து · 1986 முதல்</p>
-        <h1>இந்து மாமன்றம்<br>ரூகலாண்ட்</h1>
-        <p class="lede" data-i18n="hero.lead">நோர்வே நாட்டின் மிகப் பழைய இந்து மத பீடங்களில் ஒன்று. இஸ்ரவங்கரில் ஆரம்பிக்கப்பட்டு, இன்று சண்ட்னஸில் மாதந்தோறும் பூஜை வழிபாடு நடைபெறுகிறது.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="worship.html"><span data-i18n="hero.worship">பூஜை வழிபாடு</span><span class="chev" aria-hidden="true">›</span></a>
-          <a class="btn btn-ghost" href="#membership"><span data-i18n="hero.member">அங்கத்தவர் ஆகுங்கள்</span></a>
+    <section class="home-hero" aria-labelledby="home-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="hero.eyebrow">நோர்வே · 1986 முதல்</p>
+          <h1 id="home-title"><span class="hero-name" data-i18n="hero.title1">இந்து மாமன்றம்</span><span data-i18n="hero.title2">நோர்வே</span></h1>
+          <p class="lede" data-i18n="hero.lead">நோர்வே நாட்டின் மிகப் பழைய இந்து மத பீடங்களில் ஒன்று. இஸ்ரவங்கரில் ஆரம்பித்து இந்து மத, சமூக, ஆன்மிக சேவைகளை நடத்தி வரும் அமைப்பு.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="worship.html"><span data-i18n="hero.worship">பூஜை வழிபாடு</span><span aria-hidden="true"> ›</span></a>
+            <a class="btn btn-ghost" href="#membership"><span data-i18n="hero.member">அங்கத்தவர் ஆகுங்கள்</span></a>
+          </div>
+        </div>
+        <figure class="seal-card">
+          <img class="seal-img" src="assets/hm-seal.jpg" alt="இந்து மாமன்றம்">
+          <figcaption>
+            <strong>இந்து மாமன்றம்</strong>
+            <span class="seal-latin">HINDU MAMANRAM</span>
+            <span class="seal-est">EST. 1986 – NORWAY</span>
+          </figcaption>
+        </figure>
+        <div class="hero-deity" aria-hidden="true">
+          <img src="assets/ganesha-golden-watermark.png?v=20261101r" alt="">
         </div>
       </div>
-      <figure class="seal-card">
-        <span class="seal-lamp" aria-hidden="true"></span>
-        <span class="seal-lamp seal-lamp-right" aria-hidden="true"></span>
-        <img class="seal-img" src="assets/hm-seal.jpg" alt="இந்து மாமன்றம் ரூகலாண்ட்">
-        <figcaption>
-          <strong data-i18n="seal.name">இந்து மாமன்றம் ரூகலாண்ட்</strong>
-          <span>EST. 1986 · NORWAY</span>
-        </figcaption>
-      </figure>
+    </section>
+    <div class="wrap wave-band" aria-hidden="true">
+      <img src="assets/hm-gold-wave.svg?v=20261101n" alt="" width="1200" height="72">
     </div>
 
     <div class="wrap">
@@ -114,27 +121,92 @@
       </div>
     </section>
 
-    <section class="section" id="membership">
-      <div class="wrap vipps">
-        <div>
-          <p class="kicker" data-i18n="home.card3.title">அங்கத்துவம்</p>
-          <h2 data-i18n="member.title">அங்கத்தவர் ஆகுங்கள்</h2>
-          <p data-i18n="member.text">நீங்களும் அங்கத்தவராகப் பதிவு செய்துகொள்ள விரும்பின் அதற்குரிய விண்ணப்பப் படிவத்தைக் கீழுள்ள இணைப்பின் வழியாகத் தரவிறக்கம் செய்துகொள்ளுங்கள்.</p>
-          <div class="actions">
-            <a class="btn btn-primary" id="member-form-link" href="https://drive.google.com/file/d/1r3KylsjU2gi9ltvv-0XzuL-FSpJ1m9DA/view?usp=sharing" target="_blank" rel="noopener" data-i18n="member.form">அங்கத்தவர் விண்ணப்ப படிவம்</a>
-          </div>
-        </div>
-        <div class="vipps-pay">
-          <p data-i18n="member.pay">பணக்கொடுப்பனவுகளின்போது எமது Vipps இலக்கத்தைப் பயன்படுத்துங்கள்.</p>
-          <span class="vipps-logo" aria-hidden="true">vipps</span>
-          <a class="vipps-num" href="tel:+4746677855">+47 466 77 855</a>
-        </div>
+    <link rel="stylesheet" href="css/home-v3-sections.css?v=202611020836">
+<section class="section hm-member" id="membership">
+  <div class="wrap">
+    <div class="hm-member-card">
+      <div class="hm-member-photo" aria-hidden="true"></div>
+      <div class="hm-member-body">
+        <p class="hm-member-kicker" data-i18n="home.card3.title">அங்கத்துவம்</p>
+        <h2 class="hm-member-title" data-i18n="member.title">அங்கத்தவர் ஆகுங்கள்</h2>
+        <p class="hm-member-text" data-i18n="member.text">நீங்களும் அங்கத்தவராகப் பதிவு செய்துகொள்ள விரும்பின் அதற்குரிய விண்ணப்பப் படிவத்தைக் கீழுள்ள இணைப்பின் வழியாகத் தரவிறக்கம் செய்துகொள்ளுங்கள்.</p>
+        <a class="hm-member-btn" id="member-form-link" href="https://drive.google.com/file/d/1r3KylsjU2gi9ltvv-0XzuL-FSpJ1m9DA/view?usp=sharing" target="_blank" rel="noopener">
+          <span data-i18n="member.form">அங்கத்தவர் விண்ணப்ப படிவம்</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
-    </section>
+      <div class="hm-member-pay">
+        <p class="hm-pay-label">
+          <span data-lang="ta">பணக்கொடைகளுக்கு</span><span data-lang="en">For payments</span>
+          <b><span data-lang="ta">Vipps எண்</span><span data-lang="en">Vipps number</span></b>
+        </p>
+        <span class="hm-vipps-logo" aria-hidden="true">vipps</span>
+        <a class="hm-vipps-num" href="tel:+4746677855">+47 466 77 855</a>
+      </div>
+    </div>
+  </div>
+</section>
   </main>
-  <footer id="site-footer"></footer>
+  <link rel="stylesheet" href="css/home-v3-sections.css?v=202611020836">
+<footer class="hm-footer">
+  <div class="wrap hm-foot-grid">
+    <div class="hm-foot-brand">
+      <span class="hm-foot-logo" aria-hidden="true"></span>
+      <div>
+        <strong><span data-i18n="hero.title1">இந்து மாமன்றம்</span> <span data-i18n="hero.title2">நோர்வே</span></strong>
+        <small>EST. 1986 &bull; NORWAY</small>
+      </div>
+    </div>
+
+    <nav class="hm-foot-col" aria-label="Quick links">
+      <h3><span data-lang="ta">விரைவு இணைப்புகள்</span><span data-lang="en">Quick links</span></h3>
+      <ul>
+        <li><a href="worship.html" data-i18n="home.card1.title">இறைவழிபாடு</a></li>
+        <li><a href="wedding.html"><span data-lang="ta">திருமணம்</span><span data-lang="en">Wedding</span></a></li>
+        <li><a href="wedding.html"><span data-lang="ta">அந்தியம்</span><span data-lang="en">Funeral rites</span></a></li>
+        <li><a href="index.html#membership" data-i18n="home.card3.title">அங்கத்துவம்</a></li>
+      </ul>
+    </nav>
+
+    <div class="hm-foot-col">
+      <h3><span data-lang="ta">இடம்</span><span data-lang="en">Location</span></h3>
+      <p class="hm-foot-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.2"/></svg>
+        <span>Varatun Gård<br>Varatun hagen<br>Sandnes<br>Norway</span>
+      </p>
+    </div>
+
+    <div class="hm-foot-col">
+      <h3><span data-lang="ta">தொடர்பு</span><span data-lang="en">Contact</span></h3>
+      <ul class="hm-foot-contact">
+        <li class="hm-foot-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          <a href="mailto:hindu@mamanram.no">hindu@mamanram.no</a>
+        </li>
+        <li class="hm-foot-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+          <a href="tel:+4746677855">+47 466 77 855</a>
+        </li>
+        <li class="hm-foot-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c1.3-3.4 3.8-5 7-5s5.7 1.6 7 5"/></svg>
+          <a href="admin.html"><span data-lang="ta">நிர்வாகம்</span><span data-lang="en">Administration</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wrap hm-foot-bottom">
+    <p>
+      <span data-lang="ta">பதிப்புரிமை © 2026 இந்து மாமன்றம் நோர்வே. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டது.</span>
+      <span data-lang="en">Copyright © 2026 Hindu Mamanram Norway. All rights reserved.</span>
+    </p>
+    <p>Developed by <a href="https://www.devndespro.com" target="_blank" rel="noopener">www.devndespro.com</a></p>
+  </div>
+  <div class="hm-foot-border" aria-hidden="true"></div>
+</footer>
+<div id="site-footer" hidden></div>
   <script src="js/pooja-data.js"></script>
   <script src="js/store.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=20261101a"></script>
 </body>
 </html>
