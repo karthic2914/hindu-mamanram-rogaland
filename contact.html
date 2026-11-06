@@ -9,32 +9,62 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hind+Madurai:wght@400;500;600&family=Tiro+Tamil&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .contact-page{background:#f8f5f0;padding:46px 0 80px}
+    .contact-shell{max-width:1100px;margin:0 auto}
+    .contact-intro{max-width:780px;margin-bottom:36px}
+    .contact-intro .eyebrow{color:#8b576c;font-size:.86rem;letter-spacing:.04em;margin:0 0 10px}
+    .contact-intro h1{color:#54283e;font-size:clamp(2.2rem,4.2vw,3.3rem);line-height:1.3;margin:0 0 15px}
+    .contact-intro .lede{color:#62585b;font-size:1.05rem;line-height:1.8;margin:0}
+    .contact-layout{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:26px;align-items:start}
+    .contact-details,.contact-message{background:#fff;border:1px solid #e6ddd8;border-radius:16px;padding:30px;min-width:0}
+    .contact-details h2,.contact-message h2{color:#54283e;font-size:1.45rem;margin:0 0 18px}
+    .contact-details address{font-style:normal;color:#534b4c;line-height:1.9;margin-bottom:22px}
+    .contact-method{padding:17px 0;border-top:1px solid #eee5e0}
+    .contact-method-label{font-size:.8rem;letter-spacing:.04em;color:#806d72;margin:0 0 5px}
+    .contact-method a{color:#742a4b;overflow-wrap:anywhere;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+    .contact-note{margin-top:22px;padding:20px 22px;background:#f0e9e5;border-radius:12px;color:#62585b;line-height:1.85;font-size:.96rem}
+    .contact-form{display:grid!important;grid-template-columns:1fr!important;gap:0!important;align-items:stretch!important;margin:0!important;width:100%!important}
+    .contact-form>p:first-child{color:#62585b;line-height:1.75;margin:0 0 22px}
+    .contact-form label{display:block!important;margin:0 0 7px!important;font-weight:600;color:#4d3740}
+    .contact-form input,.contact-form textarea{display:block!important;width:100%!important;min-width:0!important;max-width:100%!important;box-sizing:border-box!important;margin:0 0 19px!important;padding:12px 14px!important;border:1px solid #cfc4c4!important;border-radius:8px!important;background:#fff!important;color:#352d31!important;font:inherit!important;font-size:1rem!important;line-height:1.5!important}
+    .contact-form textarea{min-height:135px!important;resize:vertical!important}
+    .contact-form input:focus-visible,.contact-form textarea:focus-visible{outline:2px solid #8b4663!important;outline-offset:2px}
+    .contact-form button{justify-self:start;min-height:44px;padding:11px 26px;cursor:pointer}
+    .contact-form .form-ok{margin:16px 0 0;color:#345e45;line-height:1.6}
+    .contact-form .req{color:#a52e4c}
+    @media(max-width:800px){.contact-page{padding:30px 0 55px}.contact-layout{grid-template-columns:1fr;gap:18px}.contact-details,.contact-message{padding:23px}.contact-intro{margin-bottom:26px}}
+    @media(max-width:440px){.contact-details,.contact-message{padding:19px}.contact-form button{width:100%;justify-self:stretch}}
+  </style>
 </head>
 <body data-page="contact" data-title-ta="தொடர்பு — இந்து மாமன்றம் ரூகலாண்ட்" data-title-en="Contact — Hindu Mamanram Rogaland">
   <header id="site-header"></header>
-  <main id="main">
-    <div class="wrap page-hero">
-      <p class="eyebrow" data-i18n="contact.eyebrow">இந்து மாமன்றம் ரூகலாண்ட்</p>
-      <h1 data-i18n="contact.title">தொடர்பு</h1>
-      <p class="lede" data-i18n="contact.lead">எங்களுக்கு எழுதுங்கள், அல்லது கீழுள்ள படிவத்தைப் பயன்படுத்துங்கள். கூடிய விரைவில் நாங்கள் உங்களை அழைப்போம்.</p>
-    </div>
-    <div class="wrap page-body">
-      <div class="grid-2">
-        <div>
-          <article class="card">
-            <h3 data-i18n="contact.address">எமது முகவரி</h3>
-            <p>Hindu Mamanram Rogaland<br>Postboks 1005 Lura<br>4391 Sandnes<br>Norway</p>
-            <p><a href="mailto:hindu@mamanram.no">hindu@mamanram.no</a></p>
-            <p class="vipps-pay">
-              <span class="vipps-logo" aria-hidden="true">vipps</span>
-              <a class="vipps-num" href="tel:+4746677855">+47 466 77 855</a>
-            </p>
-          </article>
-          <p data-i18n="contact.note">பூஜை வழிபாடுகள் மற்றும் இதர நிகழ்வுகள் பற்றிய அறிவித்தல்களை உங்கள் கைத்தொலைபேசியில் குறுந்தகவல் மூலமாக அல்லது மின்னஞ்சல் வழியாக அறிந்துகொள்வதற்கும், அவ்வப்போது வேறு முக்கிய தகவல்களை நாங்கள் பகிர்ந்துகொள்வதற்கும், உங்கள் கைத்தொலைபேசி இலக்கம் மற்றும் மின்னஞ்சல் முகவரியைப் பதிவுசெய்துகொள்ளும்படி வேண்டுகிறோம்.</p>
-        </div>
-        <div>
+  <main id="main" class="contact-page">
+    <div class="wrap contact-shell">
+      <header class="contact-intro">
+        <p class="eyebrow" data-i18n="contact.eyebrow">இந்து மாமன்றம் ரூகலாண்ட்</p>
+        <h1 data-i18n="contact.title">தொடர்பு</h1>
+        <p class="lede" data-i18n="contact.lead">எங்களுக்கு எழுதுங்கள், அல்லது கீழுள்ள படிவத்தைப் பயன்படுத்துங்கள். கூடிய விரைவில் நாங்கள் உங்களை அழைப்போம்.</p>
+      </header>
+      <div class="contact-layout">
+        <section aria-labelledby="contact-address-title">
+          <div class="contact-details">
+            <h2 id="contact-address-title" data-i18n="contact.address">எமது முகவரி</h2>
+            <address>Hindu Mamanram Rogaland<br>Postboks 1005 Lura<br>4391 Sandnes<br>Norway</address>
+            <div class="contact-method">
+              <p class="contact-method-label">Email</p>
+              <a href="mailto:hindu@mamanram.no">hindu@mamanram.no</a>
+            </div>
+            <div class="contact-method">
+              <p class="contact-method-label">Vipps / Phone</p>
+              <a href="tel:+4746677855">+47 466 77 855</a>
+            </div>
+          </div>
+          <p class="contact-note" data-i18n="contact.note">பூஜை வழிபாடுகள் மற்றும் இதர நிகழ்வுகள் பற்றிய அறிவித்தல்களை உங்கள் கைத்தொலைபேசியில் குறுந்தகவல் மூலமாக அல்லது மின்னஞ்சல் வழியாக அறிந்துகொள்வதற்கும், அவ்வப்போது வேறு முக்கிய தகவல்களை நாங்கள் பகிர்ந்துகொள்வதற்கும், உங்கள் கைத்தொலைபேசி இலக்கம் மற்றும் மின்னஞ்சல் முகவரியைப் பதிவுசெய்துகொள்ளும்படி வேண்டுகிறோம்.</p>
+        </section>
+        <section class="contact-message" aria-labelledby="contact-message-title">
+          <h2 id="contact-message-title" data-i18n="contact.form">தொடர்பு கொள்வதற்கு கீழ்காணும் படிவத்தையும் பயன்படுத்துங்கள்.</h2>
           <form class="contact-form" id="contact-form">
-            <p data-i18n="contact.form">தொடர்பு கொள்வதற்கு கீழ்காணும் படிவத்தையும் பயன்படுத்துங்கள்.</p>
             <label for="c-name"><span data-i18n="contact.name">பெயர்</span> <span class="req">*</span></label>
             <input id="c-name" name="entry.1771416670" required autocomplete="name">
             <label for="c-phone"><span data-i18n="contact.phone">தொலைபேசி</span> <span class="req">*</span></label>
@@ -46,7 +76,7 @@
             <button class="btn btn-primary" type="submit"><span data-i18n="contact.send">அனுப்பு</span></button>
             <p class="form-ok" id="form-ok" hidden data-i18n="contact.sent">உங்கள் செய்தி அனுப்பப்பட்டது. கூடிய விரைவில் நாங்கள் உங்களை அழைப்போம்.</p>
           </form>
-        </div>
+        </section>
       </div>
     </div>
   </main>
