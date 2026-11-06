@@ -1042,3 +1042,51 @@ body[data-page="home"] .card { min-height: 210px; }
     width: calc(100% - 72px);
   }
 }
+
+/* Reference screenshot: three-line title, central emblem, visible Ganesha.
+   Deliberately supersedes the earlier wide-title desktop experiments. */
+@media (min-width: 861px) {
+  body[data-page="home"] .home-hero .hero-grid {
+    width: min(calc(100% - 100px), 1400px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(12px, 2vw, 32px);
+    padding: 6px 0 16px;
+  }
+  body[data-page="home"] .home-hero .hero-copy {
+    max-width: 560px;
+  }
+  body[data-page="home"] .home-hero h1 {
+    font-size: clamp(43px, 3.7vw, 60px);
+    line-height: 1.12;
+    letter-spacing: -.025em;
+  }
+  body[data-page="home"] .home-hero .hero-name {
+    display: block;
+    max-width: 5.3em;
+  }
+  body[data-page="home"] .home-hero .lede {
+    max-width: 35em;
+    font-size: clamp(14px, 1.05vw, 17px);
+    line-height: 1.58;
+  }
+  body[data-page="home"] .home-hero .seal-card {
+    justify-self: start;
+    margin-left: clamp(12px, 3vw, 48px);
+    width: clamp(260px, 23vw, 340px);
+  }
+  body[data-page="home"] .home-hero .hero-deity {
+    right: calc((min(1400px, 100vw - 100px) - 100vw) / 2);
+    width: min(47vw, 650px);
+    opacity: .95;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 30%, #000 85%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 30%, #000 85%, transparent 100%);
+  }
+  body[data-page="home"] .home-hero .hero-deity img {
+    object-fit: contain;
+    object-position: right center;
+  }
+}
+@media (min-width: 861px) and (max-width: 1100px) {
+  body[data-page="home"] .home-hero .hero-name { max-width: 5.6em; }
+  body[data-page="home"] .home-hero .seal-card { margin-left: 0; }
+}
