@@ -1335,3 +1335,20 @@ body[data-page="home"] .card { min-height: 210px; }
     transform-origin: center bottom;
   }
 }
+
+/* Full-bleed wave: the previous 1440px max-width caused the gold line
+   to start ~55px inside the viewport instead of at its left edge. */
+@media (min-width: 1101px) {
+  body[data-page="home"] .wave-band.wrap {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  body[data-page="home"] .wave-band img {
+    width: 100%;
+    height: auto;
+  }
+}
