@@ -50,3 +50,13 @@
 .wedding-page .wedding-banner { border-bottom:5px solid #d7a044; }
 @media(max-width:850px) { .wedding-page .wedding-intro { grid-template-columns:1fr; padding-top:34px; padding-bottom:20px; } .wedding-page .wedding-banner-copy { padding-right:0; } .wedding-page .wedding-banner-art { min-height:280px; border-radius:14px; background-size:100% 100%,200% 100%; } }
 @media(max-width:520px) { .wedding-page .wedding-intro { padding-top:26px; padding-bottom:18px; } .wedding-page .wedding-banner-art { min-height:205px; } .wedding-page .wedding-intro h1 { font-size:clamp(38px,10vw,54px); } }
+
+/* Wedding banner v4: real artwork crop, accessible editable text overlay. */
+.wedding-page .wedding-banner { background:linear-gradient(90deg,#fff9ef 0%,#fff6e9 49%,#f8e7cd 100%); border-bottom:0; }
+.wedding-page .wedding-banner::after { content:""; position:absolute; bottom:0; left:0; right:0; height:10px; background:linear-gradient(90deg,#82163e,#d99d39,#82163e); clip-path:polygon(0 45%,20% 100%,45% 25%,70% 75%,100% 0,100% 100%,0 100%); }
+.wedding-page .wedding-intro { max-width:1380px; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); min-height:420px; padding-top:36px; padding-bottom:36px; }
+.wedding-page .wedding-banner-copy { padding-right:32px; }
+.wedding-page .wedding-intro h1 { font-size:clamp(42px,4.5vw,72px); }
+.wedding-page .wedding-banner-art { min-height:350px; border-radius:0; background-image:linear-gradient(90deg,#fff6e9 0%,rgba(255,246,233,.15) 17%,transparent 35%),url("../assets/wedding-ceremony-banner.png"); background-size:100% 100%,cover; background-position:center,center; }
+@media(max-width:850px) { .wedding-page .wedding-intro { grid-template-columns:1fr; } .wedding-page .wedding-banner-art { min-height:260px; background-size:100% 100%,cover; background-position:center,center; } }
+@media(max-width:520px) { .wedding-page .wedding-banner-art { min-height:205px; } }
