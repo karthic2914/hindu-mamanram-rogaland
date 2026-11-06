@@ -60,3 +60,43 @@
 .wedding-page .wedding-banner-art { min-height:350px; border-radius:0; background-image:linear-gradient(90deg,#fff6e9 0%,rgba(255,246,233,.15) 17%,transparent 35%),url("../assets/wedding-ceremony-banner.png"); background-size:100% 100%,cover; background-position:center,center; }
 @media(max-width:850px) { .wedding-page .wedding-intro { grid-template-columns:1fr; } .wedding-page .wedding-banner-art { min-height:260px; background-size:100% 100%,cover; background-position:center,center; } }
 @media(max-width:520px) { .wedding-page .wedding-banner-art { min-height:205px; } }
+
+/* v5 — approved full artwork with exact curved maroon/gold frame.
+   Desktop uses the supplied banner as a complete image; small screens
+   use live Tamil text and a decorative crop for readability. */
+.wedding-page .wedding-banner-approved { position:relative; overflow:hidden; background:#fff5e8; border:0; }
+.wedding-page .wedding-banner-approved::before,
+.wedding-page .wedding-banner-approved::after { content:none; }
+.wedding-page .wedding-approved-image { display:block; width:100%; height:auto; max-width:none; }
+.wedding-page .wedding-banner-approved .wedding-accessible-copy {
+  position:absolute!important; width:1px!important; height:1px!important;
+  overflow:hidden!important; clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important; padding:0!important; margin:-1px!important;
+  border:0!important; min-height:0!important;
+}
+.wedding-page .wedding-content { padding-top:clamp(24px,3vw,48px); }
+.wedding-page .wedding-main-card p { line-height:1.85; }
+.wedding-page .wedding-grid { grid-template-columns:minmax(0,1.6fr) minmax(260px,.8fr); }
+@media (max-width:850px) {
+ .wedding-page .wedding-grid { grid-template-columns:1fr; }
+}
+@media (max-width:600px) {
+ .wedding-page .wedding-approved-image { display:none; }
+ .wedding-page .wedding-banner-approved { 
+   background:linear-gradient(180deg,rgba(255,248,238,.97) 0%,rgba(255,248,238,.96) 57%,rgba(255,248,238,.15) 100%),
+   url("../assets/wedding-banner-approved.png") right bottom / auto 100% no-repeat;
+   border-bottom:7px solid #8b103e; 
+ }
+ .wedding-page .wedding-banner-approved .wedding-accessible-copy {
+   position:relative!important; width:auto!important; height:auto!important;
+   overflow:visible!important; clip:auto!important; white-space:normal!important;
+   padding:32px 20px 150px!important; margin:0 auto!important; min-height:0!important;
+   display:block!important; 
+ }
+ .wedding-page .wedding-banner-copy { padding:0; }
+ .wedding-page .wedding-intro h1 { font-size:clamp(35px,10vw,52px); line-height:1.22; overflow-wrap:anywhere; }
+ .wedding-page .wedding-intro .lede { font-size:16px; line-height:1.75; }
+ .wedding-page .wedding-banner-art { display:none; }
+ .wedding-page .wedding-content { padding-top:22px; }
+ .wedding-page .wedding-main-card,.wedding-page .wedding-venue { padding:22px; }
+}
