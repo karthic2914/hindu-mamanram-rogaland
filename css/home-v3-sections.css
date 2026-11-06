@@ -227,18 +227,63 @@ html[lang^="en"] .hm-member [data-lang="ta"], html[lang^="en"] .hm-footer [data-
   }
 }
 
-/* ---- v3.2: compact height (mockup proportions) ---- */
-.hm-member-card { min-height: 0; }
-.hm-member-photo { min-height: 0; }
-.hm-member-body { padding: 16px 20px 18px 18px; }
+/* ---- Approved compact membership layout ----
+   Keep the full photo column filled, with the prayer artwork at a softer
+   75% scale rather than cropping it with background-size: cover. */
+.hm-member-card {
+  min-height: 0;
+  align-items: stretch;
+}
+.hm-member-photo {
+  min-height: 0;
+  background:
+    linear-gradient(90deg, rgba(255,250,242,.20), rgba(255,250,242,.65)),
+    url("../assets/membership-hands.jpg") center / auto 75% no-repeat,
+    radial-gradient(circle at 45% 45%, #fff3d6 0%, #f3cf8c 40%, #e2b878 100%);
+}
+.hm-member-body { padding: 16px 20px 18px 18px; align-self: center; min-width: 0; }
 .hm-member-kicker { font-size: .8rem; margin-bottom: 0; }
 .hm-member-title { font-size: clamp(1.3rem, 1.7vw, 1.6rem); margin: 0 0 4px; line-height: 1.2; }
 .hm-member-text { max-width: none; font-size: .88rem; line-height: 1.5; margin: 0 0 10px; }
 .hm-member-btn { padding: 7px 16px; font-size: .85rem; }
-
-.hm-member-pay { margin: 16px 0; padding: 2px 36px 2px 32px; }
+.hm-member-pay {
+  align-self: center;
+  margin: 12px 0;
+  padding: 2px 28px 2px 26px;
+}
 .hm-pay-label { margin: 0 0 6px; font-size: .8rem; line-height: 1.3; }
 .hm-pay-label b { font-size: .95rem; }
 .hm-vipps-logo { font-size: 1.15rem; padding: 2px 14px 4px; }
 .hm-vipps-num { margin-top: 6px; font-size: 1.4rem; }
 .section.hm-member { padding-bottom: 36px; }
+
+@media (max-width: 900px) {
+  .hm-member-card { grid-template-columns: 160px minmax(0, 1fr); }
+  .hm-member-pay {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 14px 20px 16px;
+    border-left: 0;
+    border-top: 1.5px solid var(--hm-gold-soft);
+  }
+}
+@media (max-width: 600px) {
+  .hm-member-card { grid-template-columns: minmax(0, 1fr); }
+  .hm-member-photo {
+    min-height: 132px;
+    background:
+      linear-gradient(180deg, rgba(255,250,242,.15), rgba(255,250,242,.5)),
+      url("../assets/membership-hands.jpg") center / auto 85% no-repeat,
+      radial-gradient(circle at 45% 45%, #fff3d6, #e2b878);
+  }
+  .hm-member-photo::after {
+    top: auto;
+    bottom: -60px;
+    left: -25%;
+    right: -25%;
+    width: auto;
+    height: 110px;
+  }
+  .hm-member-body { padding: 16px 18px 18px; }
+  .hm-member-pay { padding: 14px 18px 18px; }
+}
