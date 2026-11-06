@@ -1326,3 +1326,12 @@ body[data-page="home"] .card { min-height: 210px; }
     margin-bottom: 18px;
   }
 }
+
+/* Reference refinement: enlarge Vinayagar within the existing artwork zone,
+   without changing hero height, emblem or gold wave. */
+@media (min-width: 1101px) {
+  body[data-page="home"] .home-hero .hero-deity img {
+    transform: scale(1.18);
+    transform-origin: center bottom;
+  }
+}
