@@ -287,3 +287,34 @@ html[lang^="en"] .hm-member [data-lang="ta"], html[lang^="en"] .hm-footer [data-
   .hm-member-body { padding: 16px 18px 18px; }
   .hm-member-pay { padding: 14px 18px 18px; }
 }
+
+/* Footer: preserve the approved burgundy, ivory and gold treatment
+   while keeping contact details and copyright readable on small screens. */
+.hm-footer, .hm-footer * { box-sizing: border-box; }
+.hm-foot-grid > * { min-width: 0; }
+.hm-foot-col a, .hm-foot-line span { overflow-wrap: anywhere; }
+.hm-foot-bottom { align-items: center; }
+.hm-foot-bottom a { color: var(--hm-gold-soft); }
+@media (max-width: 900px) {
+  .hm-foot-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 28px;
+  }
+  .hm-foot-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 520px) {
+  .hm-footer { padding-top: 28px; }
+  .hm-foot-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    padding-bottom: 24px;
+  }
+  .hm-foot-brand { grid-column: auto; }
+  .hm-foot-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 14px 0 18px;
+  }
+  .hm-foot-logo { width: 56px; height: 56px; }
+}
