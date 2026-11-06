@@ -38,3 +38,15 @@
 .wedding-art-bottom { color:#8b4d37; font-size:16px; letter-spacing:.03em; }
 @media(max-width:850px) { .wedding-page .wedding-intro { grid-template-columns:1fr; min-height:0; padding-top:44px; padding-bottom:42px; } .wedding-banner-art { min-height:250px; } .wedding-art-frame { min-height:250px; width:280px; } .wedding-art-halo { width:290px; height:290px; } .wedding-rings { height:150px; } }
 @media(max-width:520px) { .wedding-page .wedding-intro { gap:14px; padding-top:30px; padding-bottom:30px; } .wedding-page .wedding-intro h1 { font-size:clamp(40px,11vw,58px); } .wedding-page .wedding-intro .lede { font-size:16px; line-height:1.8; } .wedding-banner-art { min-height:205px; } .wedding-art-frame { width:230px; min-height:205px; padding:10px; } .wedding-art-halo { width:235px; height:235px; } .wedding-rings { height:125px; } .wedding-page .wedding-content { padding-top:25px; } }
+
+/* Approved wedding photograph banner: keep Tamil content as HTML. */
+.wedding-page .wedding-banner { background:linear-gradient(100deg,#fff8ed 0%,#fff3e2 57%,#f5dfc2 100%); }
+.wedding-page .wedding-banner::before { opacity:.12; }
+.wedding-page .wedding-intro { max-width:1320px; grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr); gap:0; min-height:440px; padding-top:42px; padding-bottom:42px; }
+.wedding-page .wedding-banner-copy { padding-right:28px; }
+.wedding-page .wedding-intro h1 { font-size:clamp(44px,4.4vw,70px); }
+.wedding-page .wedding-intro .lede { max-width:660px; line-height:1.75; }
+.wedding-page .wedding-banner-art { align-self:stretch; min-height:350px; border-radius:0 16px 16px 0; background-image:linear-gradient(90deg,#fff6e9 0%,rgba(255,246,233,0) 16%),url("../assets/wedding-ceremony-banner.png"); background-repeat:no-repeat; background-size:100% 100%,200% 100%; background-position:center,right center; filter:saturate(1.02); }
+.wedding-page .wedding-banner { border-bottom:5px solid #d7a044; }
+@media(max-width:850px) { .wedding-page .wedding-intro { grid-template-columns:1fr; padding-top:34px; padding-bottom:20px; } .wedding-page .wedding-banner-copy { padding-right:0; } .wedding-page .wedding-banner-art { min-height:280px; border-radius:14px; background-size:100% 100%,200% 100%; } }
+@media(max-width:520px) { .wedding-page .wedding-intro { padding-top:26px; padding-bottom:18px; } .wedding-page .wedding-banner-art { min-height:205px; } .wedding-page .wedding-intro h1 { font-size:clamp(38px,10vw,54px); } }
