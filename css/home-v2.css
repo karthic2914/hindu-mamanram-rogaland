@@ -1303,3 +1303,26 @@ body[data-page="home"] .card { min-height: 210px; }
     filter: sepia(1);
   }
 }
+
+/* Compact approved hero rhythm: eliminate empty strip before the gold wave.
+   Keep the now-approved arch styling and its rightward alignment. */
+@media (min-width: 1101px) {
+  body[data-page="home"] .home-hero {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  body[data-page="home"] .home-hero .hero-grid {
+    height: clamp(360px, 25vw, 420px);
+    min-height: 0;
+  }
+  body[data-page="home"] .wave-band {
+    position: relative;
+    z-index: 3;
+    margin-top: -24px;
+    margin-bottom: 0;
+  }
+  body[data-page="home"] .stats {
+    margin-top: -8px;
+    margin-bottom: 18px;
+  }
+}
