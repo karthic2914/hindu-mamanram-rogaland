@@ -1,0 +1,23 @@
+/* Wedding page refresh: scoped to wedding.html only. */
+.wedding-page { background: radial-gradient(ellipse at 88% 5%,rgba(230,185,111,.15),transparent 42%), #f8f2e8; padding-bottom: 80px; }
+.wedding-page .wedding-intro { position:relative; padding-top: 76px; padding-bottom: 38px; max-width: 1180px; }
+.wedding-ornament { display:inline-flex; align-items:center; justify-content:center; width:48px; height:48px; border-radius:50%; background:#f6e7cd; color:#a87822; font-size:25px; margin-bottom:16px; }
+.wedding-page .wedding-intro .eyebrow { color:#a4752e; font-weight:700; letter-spacing:.025em; }
+.wedding-page .wedding-intro h1 { color:#651d3d; margin-top:8px; margin-bottom:20px; line-height:1.18; }
+.wedding-page .wedding-intro .lede { max-width:840px; font-size:clamp(17px,1.55vw,20px); line-height:1.9; color:#65483c; }
+.wedding-page .wedding-content { padding-top:10px; }
+.wedding-page .wedding-grid { display:grid; grid-template-columns:minmax(0,1.65fr) minmax(270px, .8fr); gap:24px; align-items:start; }
+.wedding-page .wedding-main-card,.wedding-page .wedding-venue { background:#fffdfa; border:1px solid rgba(139,95,54,.14); border-radius:22px; box-shadow:0 14px 40px rgba(74,36,32,.07); padding:clamp(24px,3vw,42px); min-width:0; }
+.wedding-card-heading { display:flex; align-items:center; gap:12px; font-size:20px; font-weight:700; color:#7e1c47; margin-bottom:22px; }
+.wedding-card-icon,.wedding-venue-icon { display:grid; place-items:center; width:44px; height:44px; flex-shrink:0; border-radius:50%; background:#f7e8cb; color:#ad7924; }
+.wedding-page .wedding-main-card p { margin:0 0 22px; color:#4e3730; line-height:1.95; font-size:17px; }
+.wedding-page .wedding-main-card p + p { padding-top:20px; border-top:1px solid rgba(139,95,54,.14); }
+.wedding-page .wedding-cta { display:inline-flex; margin-top:10px; max-width:100%; white-space:normal; text-align:center; justify-content:center; }
+.wedding-page .wedding-venue { background:linear-gradient(155deg,#fffdfa,#fbf0e1); }
+.wedding-venue-icon { width:54px; height:54px; font-size:32px; margin-bottom:18px; }
+.wedding-venue-label { color:#a27530; font-size:13px; letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin:0 0 4px; }
+.wedding-page .wedding-venue h3 { font-size:clamp(26px,2.5vw,34px); color:#651d3d; margin:0 0 14px; }
+.wedding-page .wedding-venue p { overflow-wrap:anywhere; line-height:1.8; margin:0 0 18px; }
+.wedding-page .wedding-venue a { color:#7e1c47; text-underline-offset:4px; }
+@media(max-width:850px) { .wedding-page .wedding-grid { grid-template-columns:1fr; } .wedding-page .wedding-intro { padding-top:46px; } }
+@media(max-width:520px) { .wedding-page { padding-bottom:45px; } .wedding-page .wedding-intro { padding-top:34px; padding-bottom:20px; } .wedding-page .wedding-main-card,.wedding-page .wedding-venue { padding:22px; border-radius:16px; } .wedding-page .wedding-main-card p { font-size:16px; } .wedding-page .wedding-cta { width:100%; } }
