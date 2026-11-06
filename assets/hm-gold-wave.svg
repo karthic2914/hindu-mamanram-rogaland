@@ -1,9 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="112" viewBox="0 0 1700 112" fill="none" role="img" aria-hidden="true">
-  <g fill="none" stroke="#dca448" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M-12 61 C88 25 180 55 280 69 S475 86 610 67 S765 54 812 63" stroke-width="5.5"/>
-    <path d="M887 63 C1030 44 1122 85 1298 70 S1535 33 1712 5" stroke-width="5.5"/>
-  </g>
-  <g transform="translate(850 65) scale(.77)" fill="#dca448">
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="112" viewBox="0 0 1700 112" fill="none" role="img" aria-label="Decorative gold wave with lotus">
+  <defs>
+    <linearGradient id="gold-wave" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E5B65C"/>
+      <stop offset=".55" stop-color="#DCA347"/>
+      <stop offset="1" stop-color="#E8BC6B"/>
+    </linearGradient>
+  </defs>
+  <!-- Two independently tapered ribbons reproduce the reference's flowing wave.
+       The upper/lower paths form filled shapes rather than a constant-width stroke. -->
+  <path fill="url(#gold-wave)" d="M-10 61
+    C100 20 195 59 310 75
+    C425 91 520 77 636 62
+    C722 51 774 55 815 65
+    C774 59 721 57 636 68
+    C520 84 423 99 308 82
+    C190 65 95 29 -10 70 Z"/>
+  <path fill="url(#gold-wave)" d="M885 65
+    C989 49 1073 76 1182 78
+    C1328 84 1442 54 1542 30
+    C1605 15 1656 7 1710 -2
+    L1710 8
+    C1656 16 1606 24 1544 38
+    C1441 63 1326 92 1180 84
+    C1071 81 987 55 885 69 Z"/>
+  <!-- Compact, symmetrical gold lotus; wave stops on either side of its petals. -->
+  <g transform="translate(850 65) scale(.78)" fill="url(#gold-wave)">
     <path d="M0 4 C-12 -9 -12 -28 0 -44 C12 -28 12 -9 0 4 Z"/>
     <path d="M-8 9 C-29 -1 -34 -20 -29 -35 C-14 -27 -6 -12 -8 9 Z"/>
     <path d="M8 9 C29 -1 34 -20 29 -35 C14 -27 6 -12 8 9 Z"/>
