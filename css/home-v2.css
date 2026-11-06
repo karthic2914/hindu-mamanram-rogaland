@@ -1285,3 +1285,21 @@ body[data-page="home"] .card { min-height: 210px; }
     letter-spacing: .18em;
   }
 }
+
+/* Approved reference alignment: shift the central arch slightly toward
+   Vinayagar; keep the faint temple watermark behind the title/arch gap. */
+@media (min-width: 1101px) {
+  body[data-page="home"] .home-hero .seal-card {
+    transform: translateX(clamp(18px, 2vw, 34px));
+  }
+  body[data-page="home"] .hero-grid::before {
+    left: 30%;
+    top: 17%;
+    width: clamp(190px, 16vw, 255px);
+    height: 65%;
+    background-position: center;
+    background-size: contain;
+    opacity: .075;
+    filter: sepia(1);
+  }
+}
