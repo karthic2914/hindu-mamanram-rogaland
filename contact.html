@@ -10,79 +10,80 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hind+Madurai:wght@400;500;600&family=Tiro+Tamil&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    .contact-page{background:#f8f5f0;padding:26px 0 80px}
-    .contact-shell{max-width:1100px;margin:0 auto}
-    .contact-intro{position:relative;isolation:isolate;overflow:hidden;max-width:none;min-height:230px;display:flex;flex-direction:column;justify-content:center;padding:38px 46px;margin-bottom:26px;border-radius:18px;background:linear-gradient(105deg,#f1e4d5 0%,#f7eee4 54%,#d8bba4 100%);border:1px solid #e9d9ca}
-    .contact-intro::after{content:"";position:absolute;z-index:-1;right:-30px;top:-80px;width:45%;height:380px;border:36px solid rgba(128,74,83,.09);border-radius:48% 48% 0 0;transform:rotate(-17deg);box-shadow:inset 0 0 0 26px rgba(255,255,255,.28),-70px 85px 0 -25px rgba(140,89,83,.07)}
-    .contact-intro .eyebrow{color:#8b576c;font-size:.86rem;letter-spacing:.04em;margin:0 0 10px}
-    .contact-intro h1{color:#54283e;font-size:clamp(2.2rem,4.2vw,3.3rem);line-height:1.3;margin:0 0 15px}
-    .contact-intro .lede{color:#62585b;font-size:1.05rem;line-height:1.8;margin:0;max-width:650px}
-    .contact-quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:26px}.contact-quick a{display:flex;gap:14px;align-items:center;padding:20px 24px;background:#fff;border:1px solid #e6ddd8;border-radius:14px;color:#742a4b;text-decoration:none;min-width:0}.contact-quick a:hover{border-color:#a7788a;background:#fffaf7}.contact-quick strong{display:block;color:#54283e;font-size:.9rem;margin-bottom:3px}.contact-quick span{overflow-wrap:anywhere}.contact-quick-icon{width:42px;height:42px;flex:none;display:grid;place-items:center;border-radius:50%;background:#f4e8e8;color:#742a4b;font-size:1.2rem}
-    .contact-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:26px;align-items:start}
-    .contact-details,.contact-message{background:#fff;border:1px solid #e6ddd8;border-radius:16px;padding:30px;min-width:0}
-    .contact-details h2,.contact-message h2{color:#54283e;font-size:1.45rem;margin:0 0 18px}
-    .contact-details address{font-style:normal;color:#534b4c;line-height:1.9;margin-bottom:22px}
-    .contact-method{padding:17px 0;border-top:1px solid #eee5e0}
-    .contact-method-label{font-size:.8rem;letter-spacing:.04em;color:#806d72;margin:0 0 5px}
-    .contact-method a{color:#742a4b;overflow-wrap:anywhere;font-weight:600;text-decoration:underline;text-underline-offset:3px}
-    .contact-note{margin-top:22px;padding:20px 22px;background:#f0e9e5;border-radius:12px;color:#62585b;line-height:1.85;font-size:.96rem}
-    .contact-form{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;column-gap:16px!important;gap:0!important;align-items:stretch!important;margin:0!important;width:100%!important}
-    .contact-form>p:first-child{color:#62585b;line-height:1.75;margin:0 0 22px}
-    .contact-form label{grid-column:1/-1;display:block!important;margin:0 0 7px!important;font-weight:600;color:#4d3740}
-    .contact-form input,.contact-form textarea{grid-column:1/-1;display:block!important;width:100%!important;min-width:0!important;max-width:100%!important;box-sizing:border-box!important;margin:0 0 19px!important;padding:12px 14px!important;border:1px solid #cfc4c4!important;border-radius:8px!important;background:#fff!important;color:#352d31!important;font:inherit!important;font-size:1rem!important;line-height:1.5!important}
-    .contact-form textarea{min-height:135px!important;resize:vertical!important}
-    .contact-form input:focus-visible,.contact-form textarea:focus-visible{outline:2px solid #8b4663!important;outline-offset:2px}
-    .contact-form button{justify-self:start;min-height:44px;padding:11px 26px;cursor:pointer}
-    .contact-form .form-ok{margin:16px 0 0;color:#345e45;line-height:1.6}
-    .contact-form .req{color:#a52e4c}
-    @media(max-width:800px){.contact-page{padding:22px 0 55px}.contact-intro{min-height:180px;padding:28px}.contact-quick{grid-template-columns:1fr;gap:12px}.contact-layout{grid-template-columns:1fr;gap:18px}.contact-details,.contact-message{padding:23px}.contact-intro{margin-bottom:26px}}
-    @media(max-width:440px){.contact-intro{padding:24px 20px}.contact-quick a{padding:16px}.contact-details,.contact-message{padding:19px}.contact-form button{width:100%;justify-self:stretch}}
+    .contact-page{background:#faf6f0;padding:0 0 75px}
+    .contact-shell{max-width:1120px;margin:0 auto}
+    .contact-hero{position:relative;min-height:410px;background:linear-gradient(90deg,#fff8eb 0%,#f9e8d2 58%,#edc89e 100%);overflow:hidden;display:flex;align-items:center;border-bottom:1px solid #e6cfb8}
+    .contact-hero::before{content:"";position:absolute;inset:0 0 0 47%;background-image:url('assets/contact-banner-art.png');background-size:cover;background-position:center right;background-repeat:no-repeat}
+    .contact-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#fff8eb 0%,rgba(255,248,235,.97) 34%,rgba(255,248,235,.66) 51%,transparent 75%);pointer-events:none}
+    .contact-hero-inner{position:relative;z-index:1;width:100%;padding:55px 0}
+    .contact-intro{max-width:650px}
+    .contact-intro .eyebrow{display:inline-block;background:#f2dfbd;border-radius:99px;padding:7px 14px;color:#8b5b20;font-size:.86rem;margin:0 0 13px}
+    .contact-intro h1{color:#54283e;font-size:clamp(2.8rem,5vw,4.6rem);line-height:1.2;margin:0 0 18px}
+    .contact-intro .lede{color:#564c4c;font-size:1.08rem;line-height:1.8;margin:0;max-width:610px}
+    .contact-content{padding-top:0}
+    .contact-quick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:#fff;border-bottom:1px solid #e8ded8;gap:0;margin-bottom:35px}
+    .contact-quick-item{display:flex;align-items:center;gap:14px;padding:22px 20px;min-width:0;color:#622b43;text-decoration:none}
+    .contact-quick-item+.contact-quick-item{border-left:1px solid #e8ded8}
+    .contact-quick-icon{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:50%;background:#f6e9e4;font-size:1.25rem}
+    .contact-quick-item strong{display:block;font-size:.92rem;color:#54283e;margin-bottom:5px}
+    .contact-quick-item span:last-child{overflow-wrap:anywhere;font-size:.9rem}
+    .contact-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:24px;align-items:start}
+    .contact-message,.contact-note-panel{background:#fff;border:1px solid #e8ddd5;border-radius:16px;padding:32px;min-width:0}
+    .contact-message h2,.contact-note-panel h2{color:#54283e;font-size:clamp(1.4rem,2.3vw,1.85rem);line-height:1.4;margin:0 0 10px}
+    .contact-note-panel{background:#f5ece6}
+    .contact-note-panel p{color:#62565a;line-height:1.85;margin:0}
+    .contact-form{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:0 18px!important;margin:18px 0 0!important;width:100%!important}
+    .contact-field{min-width:0}
+    .contact-field.wide{grid-column:1/-1}
+    .contact-field label{display:block!important;color:#513c45;font-weight:600;margin:0 0 7px!important}
+    .contact-field input,.contact-field textarea{display:block!important;box-sizing:border-box!important;width:100%!important;min-width:0!important;max-width:100%!important;border:1px solid #d7c9c8!important;background:#fff!important;border-radius:8px!important;padding:12px 13px!important;margin:0 0 19px!important;font:inherit!important;font-size:1rem!important;color:#352e32!important}
+    .contact-field textarea{min-height:145px!important;resize:vertical}
+    .contact-field input:focus-visible,.contact-field textarea:focus-visible{outline:2px solid #8b4663;outline-offset:2px}
+    .contact-form button{grid-column:1/-1;justify-self:start;min-height:46px;padding:11px 28px}
+    .contact-form .form-ok{grid-column:1/-1;margin-top:15px;color:#2d694c}
+    .contact-form .req{color:#a42d4a}
+    @media(max-width:850px){.contact-hero{min-height:330px}.contact-hero::before{inset:0 0 0 35%}.contact-layout{grid-template-columns:1fr}.contact-quick{grid-template-columns:1fr}.contact-quick-item+.contact-quick-item{border-left:0;border-top:1px solid #e8ded8}.contact-quick-item{padding:15px 20px}}
+    @media(max-width:560px){.contact-hero{min-height:300px}.contact-hero::before{inset:0 0 0 25%;opacity:.45}.contact-hero::after{background:linear-gradient(90deg,rgba(255,248,235,.98),rgba(255,248,235,.75))}.contact-hero-inner{padding:36px 0}.contact-message,.contact-note-panel{padding:22px}.contact-form{grid-template-columns:1fr!important}.contact-field{grid-column:1/-1}.contact-form button{width:100%}}
   </style>
 </head>
 <body data-page="contact" data-title-ta="தொடர்பு — இந்து மாமன்றம் ரூகலாண்ட்" data-title-en="Contact — Hindu Mamanram Rogaland">
   <header id="site-header"></header>
   <main id="main" class="contact-page">
-    <div class="wrap contact-shell">
-      <header class="contact-intro">
-        <p class="eyebrow" data-i18n="contact.eyebrow">இந்து மாமன்றம் ரூகலாண்ட்</p>
-        <h1 data-i18n="contact.title">தொடர்பு</h1>
-        <p class="lede" data-i18n="contact.lead">எங்களுக்கு எழுதுங்கள், அல்லது கீழுள்ள படிவத்தைப் பயன்படுத்துங்கள். கூடிய விரைவில் நாங்கள் உங்களை அழைப்போம்.</p>
-      </header>
-      <div class="contact-quick" aria-label="Quick contact">
-        <a href="mailto:hindu@mamanram.no"><span class="contact-quick-icon" aria-hidden="true">✉</span><span><strong>Email</strong>hindu@mamanram.no</span></a>
-        <a href="tel:+4746677855"><span class="contact-quick-icon" aria-hidden="true">☎</span><span><strong>Phone / Vipps</strong>+47 466 77 855</span></a>
+    <section class="contact-hero" aria-labelledby="contact-title">
+      <div class="wrap contact-hero-inner">
+        <div class="contact-intro">
+          <p class="eyebrow" data-i18n="contact.eyebrow">இந்து மாமன்றம் ரூகலாண்ட்</p>
+          <h1 id="contact-title" data-i18n="contact.title">தொடர்பு</h1>
+          <p class="lede" data-i18n="contact.lead">எங்களுக்கு எழுதுங்கள், அல்லது கீழுள்ள படிவத்தைப் பயன்படுத்துங்கள். கூடிய விரைவில் நாங்கள் உங்களை அழைப்போம்.</p>
+        </div>
       </div>
+    </section>
+    <div class="contact-quick">
+      <div class="wrap" style="display:contents">
+        <a class="contact-quick-item" href="mailto:hindu@mamanram.no"><span class="contact-quick-icon" aria-hidden="true">✉</span><span><strong>Email</strong>hindu@mamanram.no</span></a>
+        <a class="contact-quick-item" href="tel:+4746677855"><span class="contact-quick-icon" aria-hidden="true">☎</span><span><strong>Phone / Vipps</strong>+47 466 77 855</span></a>
+        <div class="contact-quick-item"><span class="contact-quick-icon" aria-hidden="true">⌖</span><span><strong data-i18n="contact.address">எமது முகவரி</strong>Postboks 1005 Lura, 4391 Sandnes, Norway</span></div>
+      </div>
+    </div>
+    <div class="wrap contact-shell contact-content">
       <div class="contact-layout">
-        <section aria-labelledby="contact-address-title">
-          <div class="contact-details">
-            <h2 id="contact-address-title" data-i18n="contact.address">எமது முகவரி</h2>
-            <address>Hindu Mamanram Rogaland<br>Postboks 1005 Lura<br>4391 Sandnes<br>Norway</address>
-            <div class="contact-method">
-              <p class="contact-method-label">Email</p>
-              <a href="mailto:hindu@mamanram.no">hindu@mamanram.no</a>
-            </div>
-            <div class="contact-method">
-              <p class="contact-method-label">Vipps / Phone</p>
-              <a href="tel:+4746677855">+47 466 77 855</a>
-            </div>
-          </div>
-          <p class="contact-note" data-i18n="contact.note">பூஜை வழிபாடுகள் மற்றும் இதர நிகழ்வுகள் பற்றிய அறிவித்தல்களை உங்கள் கைத்தொலைபேசியில் குறுந்தகவல் மூலமாக அல்லது மின்னஞ்சல் வழியாக அறிந்துகொள்வதற்கும், அவ்வப்போது வேறு முக்கிய தகவல்களை நாங்கள் பகிர்ந்துகொள்வதற்கும், உங்கள் கைத்தொலைபேசி இலக்கம் மற்றும் மின்னஞ்சல் முகவரியைப் பதிவுசெய்துகொள்ளும்படி வேண்டுகிறோம்.</p>
-        </section>
-        <section class="contact-message" aria-labelledby="contact-message-title">
-          <h2 id="contact-message-title" data-i18n="contact.form">தொடர்பு கொள்வதற்கு கீழ்காணும் படிவத்தையும் பயன்படுத்துங்கள்.</h2>
+        <section class="contact-message" aria-labelledby="contact-form-heading">
+          <h2 id="contact-form-heading" data-i18n="contact.form">தொடர்பு கொள்வதற்கு கீழ்காணும் படிவத்தையும் பயன்படுத்துங்கள்.</h2>
           <form class="contact-form" id="contact-form">
-            <label for="c-name"><span data-i18n="contact.name">பெயர்</span> <span class="req">*</span></label>
-            <input id="c-name" name="entry.1771416670" required autocomplete="name">
-            <label for="c-phone"><span data-i18n="contact.phone">தொலைபேசி</span> <span class="req">*</span></label>
-            <input id="c-phone" name="entry.1955140266" type="tel" required autocomplete="tel">
-            <label for="c-email"><span data-i18n="contact.email">மின்னஞ்சல்</span></label>
-            <input id="c-email" name="entry.661581145" type="email" autocomplete="email">
-            <label for="c-remarks"><span data-i18n="contact.remarks">குறிப்புகள்</span> <span class="req">*</span></label>
-            <textarea id="c-remarks" name="entry.252900192" required></textarea>
+            <div class="contact-field"><label for="c-name"><span data-i18n="contact.name">பெயர்</span> <span class="req">*</span></label><input id="c-name" name="entry.1771416670" required autocomplete="name"></div>
+            <div class="contact-field"><label for="c-phone"><span data-i18n="contact.phone">தொலைபேசி</span> <span class="req">*</span></label><input id="c-phone" name="entry.1955140266" type="tel" required autocomplete="tel"></div>
+            <div class="contact-field wide"><label for="c-email"><span data-i18n="contact.email">மின்னஞ்சல்</span></label><input id="c-email" name="entry.661581145" type="email" autocomplete="email"></div>
+            <div class="contact-field wide"><label for="c-remarks"><span data-i18n="contact.remarks">குறிப்புகள்</span> <span class="req">*</span></label><textarea id="c-remarks" name="entry.252900192" required></textarea></div>
             <button class="btn btn-primary" type="submit"><span data-i18n="contact.send">அனுப்பு</span></button>
             <p class="form-ok" id="form-ok" hidden data-i18n="contact.sent">உங்கள் செய்தி அனுப்பப்பட்டது. கூடிய விரைவில் நாங்கள் உங்களை அழைப்போம்.</p>
           </form>
         </section>
+        <aside class="contact-note-panel" aria-label="Additional contact information">
+          <h2 data-i18n="contact.address">எமது முகவரி</h2>
+          <p>Hindu Mamanram Rogaland<br>Postboks 1005 Lura<br>4391 Sandnes<br>Norway</p>
+          <hr style="border:0;border-top:1px solid #e1d1c9;margin:20px 0">
+          <p data-i18n="contact.note">பூஜை வழிபாடுகள் மற்றும் இதர நிகழ்வுகள் பற்றிய அறிவித்தல்களை உங்கள் கைத்தொலைபேசியில் குறுந்தகவல் மூலமாக அல்லது மின்னஞ்சல் வழியாக அறிந்துகொள்வதற்கும், அவ்வப்போது வேறு முக்கிய தகவல்களை நாங்கள் பகிர்ந்துகொள்வதற்கும், உங்கள் கைத்தொலைபேசி இலக்கம் மற்றும் மின்னஞ்சல் முகவரியைப் பதிவுசெய்துகொள்ளும்படி வேண்டுகிறோம்.</p>
+        </aside>
       </div>
     </div>
   </main>
