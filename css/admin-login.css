@@ -195,3 +195,14 @@ body:has(.temple-auth){margin:0;background:#fbf5ec}
 /* Give the Forgot password link breathing room below Sign In. */
 .temple-auth-recovery{margin-top:18px;margin-bottom:20px}
 @media(max-width:600px){.temple-auth-recovery{margin-top:14px;margin-bottom:18px}}
+
+/* Dashboard notifications live in the toolbar rather than above the app. */
+.hm-notifications{position:relative;z-index:30}
+.hm-notifications>summary{display:flex;align-items:center;gap:7px;cursor:pointer;list-style:none;border:1px solid #e5d7d4;border-radius:24px;background:#fff;padding:9px 13px;color:#652c46;font-size:13px;font-weight:600}
+.hm-notifications>summary::-webkit-details-marker{display:none}
+.hm-notification-count{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border-radius:20px;background:#9c304d;color:#fff;font-size:12px}
+.hm-notifications-panel{position:absolute;right:0;top:calc(100% + 10px);width:min(410px,calc(100vw - 32px));max-height:65vh;overflow:auto;border:1px solid #e5cba7;border-radius:14px;background:#fffaf3;box-shadow:0 14px 38px #35102022}
+.hm-notifications-panel .hm-reset-queue{margin:0;padding:18px;border:0;background:transparent}
+.hm-notifications-panel .hm-reset-row{display:block;overflow-wrap:anywhere}
+.hm-notifications-panel .hm-reset-row form{margin-top:10px}
+@media(max-width:600px){.hm-notifications>summary{font-size:0;gap:5px;padding:9px}.hm-notifications>summary span:first-child{font-size:18px}.hm-notifications-panel{right:-110px}}
