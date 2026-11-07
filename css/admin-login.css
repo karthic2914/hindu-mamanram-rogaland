@@ -1,0 +1,41 @@
+/* Login-only design. Dashboard styles remain in admin.css. */
+body:has(.temple-auth){margin:0;background:#fbf5ec}
+.temple-auth{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(430px,1fr);font-family:"Hind Madurai",system-ui,sans-serif;color:#4b1e31}
+.temple-auth *{box-sizing:border-box}
+.temple-auth-brand{position:relative;min-height:650px;overflow:hidden;background:linear-gradient(135deg,#502034,#722d45)}
+.temple-auth-image{position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(40,11,25,.14),rgba(58,14,31,.8) 80%),url('../assets/admin-login-temple.png');background-size:cover,auto 100%;background-position:center,left center;background-repeat:no-repeat;filter:saturate(.92)}
+.temple-auth-brand:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(45,11,25,.55),transparent 48%)}
+.temple-auth-brand-content{position:relative;z-index:1;height:100%;min-height:650px;padding:clamp(28px,4vw,70px);display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;color:#fff}
+.temple-auth-logo{display:inline-flex;gap:14px;align-items:center;text-decoration:none;color:#fff;font-family:"Cormorant Garamond","Tiro Tamil",serif;font-size:clamp(22px,2vw,30px);font-weight:600}
+.temple-auth-logo img{width:56px;height:56px;object-fit:cover;border-radius:50%;border:2px solid #d9a34d}
+.temple-auth-brand-copy{max-width:540px;text-shadow:0 2px 16px rgba(27,7,15,.45)}
+.temple-auth-eyebrow{font-size:12px;letter-spacing:.17em;font-weight:700;color:#f1c576}
+.temple-auth-brand-copy h2{font-family:"Cormorant Garamond","Tiro Tamil",serif;font-size:clamp(38px,4.2vw,66px);line-height:1.12;color:#fff;margin:14px 0 18px}
+.temple-auth-brand-copy>p:last-child{font-size:clamp(16px,1.5vw,20px);line-height:1.65;max-width:440px;color:#f8e9e6}
+.temple-auth-brand-footer{font-size:13px;letter-spacing:.04em;color:#f5e1dc}
+.temple-auth-form-side{min-width:0;position:relative;display:flex;flex-direction:column;background:radial-gradient(circle at 95% 3%,rgba(221,167,84,.14),transparent 34%),#fff9f1}
+.temple-auth-top{display:flex;align-items:center;justify-content:space-between;padding:24px clamp(24px,4vw,70px)}
+.temple-auth-home{font-size:14px;color:#743c51;text-decoration:none}
+.temple-auth-home:hover{text-decoration:underline}
+.temple-auth-form-wrap{width:min(100% - 48px,510px);margin:auto; padding:28px 0 64px}
+.temple-auth-ornament{text-align:center;color:#ce9c49;font-size:48px;line-height:1.2}
+.temple-auth-kicker{text-align:center;font-size:11px;letter-spacing:.19em;color:#a5783e;font-weight:700;margin:16px 0 8px}
+.temple-auth-form-wrap h1{text-align:center;color:#542039;font-family:"Cormorant Garamond","Tiro Tamil",serif;font-size:clamp(36px,4vw,54px);line-height:1.15;margin:0 0 10px}
+.temple-auth-subtitle{text-align:center;font-size:16px;color:#75616a;margin:0 0 32px}
+.temple-auth-form{display:grid;gap:20px}
+.temple-auth-field{display:grid;gap:8px;color:#482236;font-weight:600;font-size:14px}
+.temple-auth-field>input,.temple-auth-password{width:100%;height:56px;background:#fff;border:1px solid #dfcfc6;border-radius:12px;transition:border-color .15s,box-shadow .15s}
+.temple-auth-field>input{padding:0 16px;color:#35202a;font:inherit}
+.temple-auth-password{display:flex;align-items:center}
+.temple-auth-password input{width:100%;min-width:0;height:100%;border:0;background:transparent;padding:0 16px;color:#35202a;font:inherit;outline:0}
+.temple-auth-field>input:focus,.temple-auth-password:focus-within{outline:0;border-color:#9c6275;box-shadow:0 0 0 3px rgba(116,41,70,.13)}
+.temple-auth-reveal{flex:none;border:0;background:transparent;color:#6f4055;padding:12px;cursor:pointer;font:inherit;font-size:13px}
+.temple-auth-reveal:hover{text-decoration:underline}
+.temple-auth-submit{width:100%;min-height:56px;display:flex;align-items:center;justify-content:center;gap:16px;margin-top:7px;border:0;border-radius:12px;background:linear-gradient(120deg,#802f50,#591d36);color:#fff;font:600 17px "Hind Madurai",sans-serif;cursor:pointer;box-shadow:0 8px 20px rgba(84,32,57,.17)}
+.temple-auth-submit:hover{filter:brightness(1.1)}
+.temple-auth-submit:focus-visible,.temple-auth-reveal:focus-visible,.temple-auth-home:focus-visible{outline:3px solid #c89645;outline-offset:3px}
+.temple-auth-secure{text-align:center;color:#7c6971;font-size:13px;margin:24px 0 0}
+.temple-auth-form-wrap .banner{margin:0 0 22px}
+@media(max-width:1050px){.temple-auth{grid-template-columns:1fr}.temple-auth-brand,.temple-auth-brand-content{min-height:340px}.temple-auth-brand-content{padding:24px 5vw}.temple-auth-brand-copy h2{font-size:36px}.temple-auth-brand-copy>p:last-child{font-size:15px}.temple-auth-brand-footer{display:none}.temple-auth-form-wrap{margin:32px auto 60px;padding:0}}
+@media(max-width:600px){.temple-auth-brand,.temple-auth-brand-content{min-height:260px}.temple-auth-brand-content{padding:18px 22px}.temple-auth-logo{font-size:19px}.temple-auth-logo img{width:42px;height:42px}.temple-auth-brand-copy h2{font-size:29px;margin:7px 0}.temple-auth-brand-copy>p:last-child{display:none}.temple-auth-eyebrow{font-size:10px}.temple-auth-top{padding:16px 20px}.temple-auth-form-wrap{width:calc(100% - 40px);margin:12px auto 40px}.temple-auth-form-wrap h1{font-size:36px}.temple-auth-ornament{font-size:35px}.temple-auth-subtitle{font-size:14px;margin-bottom:25px}.temple-auth-field>input,.temple-auth-password,.temple-auth-submit{height:52px;min-height:52px}}
+@media(prefers-reduced-motion:reduce){.temple-auth *{transition:none!important}}
