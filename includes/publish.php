@@ -99,6 +99,15 @@ function hm_publish_request(array $post): array {
   if (isset($post["save_notice"])) {
     $title = hm_clean_line($post["title_ta"] ?? "", 140);
     $body = hm_clean_text($post["body_ta"] ?? "", 2000);
+    $language = (string) ($post["notice_language"] ?? "ta");
+    $englishTitle = hm_clean_line($post["title_en"] ?? "", 140);
+    $englishBody = hm_clean_text($post["body_en"] ?? "", 2000);
+    // The public website uses Tamil fields as its default fallback.
+    // For English-only notices, duplicate the supplied English text into that fallback.
+    if ($language === "en") {
+      $englishTitle = $title;
+      $englishBody = $body;
+    }
     $id = hm_clean_id($post["notice_id"] ?? "");
     if ($title === "" || $body === "") {
       $error = "need_notice";
@@ -106,9 +115,9 @@ function hm_publish_request(array $post): array {
       $notice = [
         "id" => $id !== "" ? $id : bin2hex(random_bytes(4)),
         "titleTa" => $title,
-        "titleEn" => hm_clean_line($post["title_en"] ?? "", 140),
+        "titleEn" => $englishTitle,
         "bodyTa" => $body,
-        "bodyEn" => hm_clean_text($post["body_en"] ?? "", 2000),
+        "bodyEn" => $englishBody,
         "date" => hm_clean_date($post["notice_date"] ?? "")
       ];
       $found = false;
