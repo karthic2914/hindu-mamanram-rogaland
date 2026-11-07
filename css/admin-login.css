@@ -63,3 +63,32 @@ body:has(.temple-auth){margin:0;background:#fbf5ec}
 .temple-auth-image{background-image:linear-gradient(90deg,rgba(40,11,25,.08),rgba(58,14,31,.7) 83%),url('../assets/admin-login-temple.png');background-size:cover;background-position:center}
 .temple-auth-form-side:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;background:radial-gradient(circle at 100% 0%,transparent 0 115px,rgba(201,151,70,.12) 116px 118px,transparent 119px),radial-gradient(circle at 0 100%,transparent 0 95px,rgba(201,151,70,.12) 96px 98px,transparent 99px)}
 .temple-auth-top,.temple-auth-form-wrap{position:relative;z-index:1}
+
+/* Approved temple portal composition: photographic left / curved gold edge / ivory right */
+@media (min-width:1051px){
+  .temple-auth{grid-template-columns:minmax(0,54%) minmax(0,46%)}
+  .temple-auth-brand{border-right:0;isolation:isolate}
+  .temple-auth-image{inset:0;background-image:linear-gradient(90deg,rgba(29,8,19,.03) 0%,rgba(39,8,24,.12) 45%,rgba(79,15,37,.78) 71%,#54172e 100%),url('../assets/admin-login-temple-photo.jpg');background-size:cover,auto 100%;background-position:center,left center;background-repeat:no-repeat}
+  .temple-auth-brand:before{content:"";position:absolute;z-index:4;top:-13%;right:-119px;width:160px;height:126%;background:#fff9f1;border-left:9px solid #d9a64b;border-radius:50% 0 0 50% / 50% 0 0 50%;pointer-events:none;box-shadow:-2px 0 0 rgba(128,65,31,.2)}
+  .temple-auth-brand:after{background:none}
+  .temple-auth-brand-content{align-items:stretch;justify-content:center;padding:3vh clamp(35px,5vw,82px)}
+  .temple-auth-logo{position:relative;display:flex;flex-direction:column;gap:8px;align-items:center;margin-left:auto;width:min(54%,440px);text-align:center;font-size:clamp(23px,2.4vw,37px);line-height:1.1;text-shadow:0 2px 15px #341122}
+  .temple-auth-logo img{width:clamp(65px,7vw,106px);height:clamp(65px,7vw,106px);border:3px solid #d8a44e}
+  .temple-auth-brand-copy{align-self:flex-end;text-align:center;width:min(54%,440px);margin:16px 0 0}
+  .temple-auth-eyebrow{display:none}
+  .temple-auth-brand-copy h2{font-size:clamp(25px,2.4vw,38px);color:#f2c766;line-height:1.18;margin:20px 0 18px}
+  .temple-auth-brand-copy h2:before,.temple-auth-brand-copy h2:after{content:"";display:block;height:1px;width:70%;margin:0 auto 16px;background:linear-gradient(90deg,transparent,#e9bb64,transparent)}
+  .temple-auth-brand-copy h2:after{margin:16px auto 0}
+  .temple-auth-brand-copy>p:last-child{margin:0 auto;font-size:clamp(14px,1.3vw,19px);line-height:1.6;color:#fff0e9}
+  .temple-auth-brand-footer{display:none}
+  .temple-auth-form-side:after{content:"";position:absolute;bottom:8px;left:3%;right:2%;height:78px;pointer-events:none;opacity:.55;background:linear-gradient(0deg,rgba(218,157,55,.17),transparent);border-bottom:3px double #dba44c}
+  .temple-auth-top{justify-content:flex-end}
+  .temple-auth-home{position:absolute;left:clamp(24px,3vw,52px);top:clamp(16px,2vh,25px)}
+  .temple-auth-form-wrap{transform:translateY(-1.5vh)}
+  .temple-auth-ornament{display:flex;align-items:center;justify-content:center;gap:18px}
+  .temple-auth-ornament:before,.temple-auth-ornament:after{content:"";width:85px;height:1px;background:#c99645}
+}
+.temple-auth-brand{background-color:#54172e}
+.temple-auth-image{background-image:linear-gradient(90deg,rgba(29,8,19,.04),rgba(68,13,34,.76)),url('../assets/admin-login-temple-photo.jpg');background-size:cover,auto 100%;background-position:center,left center}
+@media(max-width:1050px){.temple-auth-image{background-size:cover;background-position:center 45%}.temple-auth-brand-copy{max-width:500px}.temple-auth-brand-content{background:linear-gradient(90deg,rgba(56,13,31,.4),rgba(56,13,31,.74))}}
+@media(max-width:600px){.temple-auth-brand-copy h2{font-size:27px}}
