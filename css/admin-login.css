@@ -218,3 +218,6 @@ body:has(.temple-auth){margin:0;background:#fbf5ec}
 /* Language selection alone controls bilingual notice fields. */
 .hm-notice-translation[hidden]{display:none!important}
 .hm-notice-translation-heading{margin:4px 0 10px;color:#782c4a;font-weight:600}
+
+/* Notice editor character counts. */
+.hm-notice-counter{display:block;margin-top:5px;text-align:right;font-size:12px;font-weight:400;color:#816a72;font-variant-numeric:tabular-nums}
