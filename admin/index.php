@@ -1,5 +1,6 @@
 <?php
 require dirname(__DIR__) . "/includes/publish.php";
+require dirname(__DIR__) . "/includes/recovery.php";
 hm_boot();
 
 function h($value) {
@@ -33,6 +34,9 @@ function role_choices(array $selected): void {
 }
 
 const UI = [
+  "recovery_requested" => ["கணக்கு இருந்தால், கோரிக்கை பதிவு செய்யப்படும்.", "If the email is registered and verified, the request will be recorded."],
+  "recovery_sent" => ["மீட்டமைப்பு இணைப்பு அனுப்பப்பட்டது.", "Password reset link sent."],
+  "recovery_failed" => ["அஞ்சல் அனுப்ப முடியவில்லை.", "Could not send email. Check mail configuration."],
   "csrf" => ["பக்கம் பழையது. மீண்டும் முயற்சிக்கவும்.", "This page is out of date. Try again."],
   "hash_exists" => ["கடவுச்சொல் ஏற்கெனவே உள்ளது.", "A password already exists."],
   "too_short" => ["கடவுச்சொல் குறைந்தது 8 எழுத்துகள் வேண்டும்.", "The password must be at least 8 characters."],
@@ -97,6 +101,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $error = "csrf";
   } elseif (isset($_POST["setup"])) {
     $error = "setup_closed";
+  } elseif (isset($_POST["recovery_request"])) {
+    $email = trim((string)($_POST["recovery_email"] ?? ""));
+    $bucket = "recovery:" . hash("sha256", strtolower($email) . "|" . ($_SERVER["REMOTE_ADDR"] ?? ""));
+    if (hm_attempt_count($bucket) < 4) {
+      hm_attempt_mark($bucket, false);
+      try { hm_recovery_request($email); } catch (Throwable $ignored) {}
+    }
+    $message = "recovery_requested";
   } elseif (isset($_POST["login"])) {
     $error = hm_attempt_login((string) ($_POST["username"] ?? ""), (string) ($_POST["password"] ?? ""));
   } elseif (!logged_in()) {
@@ -113,6 +125,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     );
     if ($changed === "") $message = "password_ok";
     else $error = $changed;
+  } elseif (isset($_POST["recovery_approve"]) || isset($_POST["recovery_reject"])) {
+    if (!hm_can_manage_users(hm_current_user())) $error = "forbidden";
+    else {
+      try {
+        $id = (string)($_POST["request_id"] ?? "");
+        if (isset($_POST["recovery_reject"])) { hm_recovery_reject($id); $message = "reset_ok"; }
+        elseif (hm_recovery_issue($id, (string)getenv("HM_RECOVERY_BASE_URL"))) $message = "recovery_sent";
+        else $error = "recovery_failed";
+      } catch (Throwable $e) { $error = "unavailable"; }
+    }
   } elseif (hm_account_post($_POST)) {
     $managed = hm_account_request($_POST);
     $message = $managed["message"];
@@ -213,6 +235,12 @@ header("X-Robots-Tag: noindex");
           <details class="temple-auth-recovery">
             <summary><span data-ta="கடவுச்சொல் மறந்துவிட்டதா?" data-en="Forgot password?">கடவுச்சொல் மறந்துவிட்டதா?</span></summary>
             <div class="temple-auth-recovery-help">
+              <form method="post" class="temple-auth-recovery-request">
+                <input type="hidden" name="csrf" value="<?= $token ?>">
+                <label for="recovery-email" data-ta="பதிவு செய்யப்பட்ட மின்னஞ்சல்" data-en="Registered email address">பதிவு செய்யப்பட்ட மின்னஞ்சல்</label>
+                <input id="recovery-email" type="email" name="recovery_email" autocomplete="email" placeholder="name@example.com" required maxlength="254">
+                <button type="submit" name="recovery_request" value="1" data-ta="கோரிக்கை அனுப்பு" data-en="Send request">கோரிக்கை அனுப்பு</button>
+              </form>
               <p data-ta="கடவுச்சொல்லை மாற்ற, அங்கீகரிக்கப்பட்ட முதன்மை நிர்வாகியைத் தொடர்புகொள்ளுங்கள். பாதுகாப்பிற்காக, இந்தப் பக்கத்தில் நேரடியாக கடவுச்சொல்லை மீட்டமைக்க முடியாது." data-en="Contact an authorized Super Admin to reset your password. For security, passwords cannot be reset directly from this page.">Contact an authorized Super Admin to reset your password. For security, passwords cannot be reset directly from this page.</p>
               <p data-ta="நீங்களே ஒரே நிர்வாகியாக இருந்தால், பாதுகாப்பான உள்ளூர் நிர்வாக மீட்பு நடைமுறையைப் பயன்படுத்துங்கள்." data-en="If you are the only administrator, use the secure local administrator recovery procedure.">If you are the only administrator, use the secure local administrator recovery procedure.</p>
             </div>
