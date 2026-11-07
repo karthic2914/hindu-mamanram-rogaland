@@ -90,11 +90,42 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
  }
 }
 $ready=mail_settings_ready();
-?><!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Temple Email | Hindu Mamanram</title>
+?><!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Temple Email | Hindu Mamanram</title>
+<link rel="stylesheet" href="../css/admin.css">
 <style>
-:root{font-family:system-ui,-apple-system,sans-serif;color:#332c26;background:#f7f3ed}*{box-sizing:border-box}body{margin:0}main{max-width:850px;margin:35px auto;padding:0 18px}.card{background:white;border:1px solid #e5d9ca;border-radius:14px;padding:25px;box-shadow:0 5px 20px #372d2110}h1{margin:8px 0}p{line-height:1.5}.muted{color:#70655c}label{display:block;font-weight:600;margin:18px 0 7px}input,textarea,select{width:100%;padding:12px;border:1px solid #bfb4a9;border-radius:8px;font:inherit}textarea{min-height:280px;resize:vertical}button{background:#704b31;color:white;border:0;border-radius:8px;padding:12px 22px;font:inherit;cursor:pointer}button:disabled{opacity:.55;cursor:not-allowed}.alert{padding:12px;border-radius:8px;background:#fff0df}.ok{background:#e8f5e9}.bar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.check{display:flex;align-items:flex-start;gap:10px}.check input{width:auto;margin-top:5px}a{color:#704b31}
-</style></head><body><main><div class="bar"><a href="./">← Back to Admin Dashboard</a><span>Signed in: <?=eh($user['username']?:'Administrator')?></span></div>
-<div class="card"><h1>Temple Email</h1><p class="muted">Compose a message using the temple email address. Only Super Admins and Email Managers can use this page.</p>
+.email-panel{max-width:1100px;margin:20px auto}.email-panel .panel-body{padding:28px}
+.email-panel .muted{color:#70655c}.email-panel .alert{padding:12px 16px;border-radius:10px;background:#fff0df;margin:14px 0}.email-panel .alert.ok{background:#e8f5e9}
+.email-panel label{display:block;font-weight:600;margin:18px 0 7px}
+.email-panel input:not([type=checkbox]),.email-panel textarea,.email-panel select{display:block;width:100%;padding:12px;border:1px solid #bfb4a9;border-radius:8px;font:inherit;background:white}
+.email-panel textarea{min-height:220px;resize:vertical}.email-panel textarea#recipients{min-height:75px}
+.email-panel button{background:#6e2c46;color:white;border:0;border-radius:8px;padding:12px 22px;font:inherit;cursor:pointer}
+.email-panel button:disabled{opacity:.55;cursor:not-allowed}.email-panel .bar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.email-panel .check{display:flex;align-items:flex-start;gap:10px}.email-panel .check input{width:auto;margin-top:5px}
+.email-panel .email-heading{margin:0 0 8px}
+@media(max-width:800px){.email-panel .panel-body{padding:20px 16px}}
+</style></head>
+<body><div class="shell is-desk"><div class="desk-app">
+<button type="button" class="sidebar-backdrop" data-close-menu aria-label="Close menu"></button>
+<aside id="desk-sidebar" class="sidebar">
+<a class="brand" href="../index.html"><img src="../assets/hm-seal.jpg" alt=""><span>Hindu Mamanram</span></a>
+<nav class="side-nav" aria-label="Admin sections">
+<p class="side-label">Overview</p><ul><li><a class="side-link" href="./#dashboard">Dashboard</a></li></ul>
+<?php if (hm_can_publish()): ?>
+<p class="side-label">Publishing</p><ul><li><a class="side-link" href="./#notices">Notices</a></li><li><a class="side-link" href="./#dates">Pooja Management</a></li></ul>
+<?php endif; ?>
+<p class="side-label">Communication</p><ul><li><a class="side-link" href="email.php" aria-current="page">Temple Email</a></li></ul>
+<p class="side-label">Account</p><ul>
+<?php if (hm_can_manage_users($user)): ?><li><a class="side-link" href="./#users">Users</a></li><?php endif; ?>
+<li><a class="side-link" href="./#account">Settings</a></li>
+</ul></nav>
+<div class="side-user"><strong class="side-name"><?=eh($user['username']??'Administrator')?></strong><span class="badge"><?=hm_has_role($user,'super_admin')?'Super Admin':'Email Manager'?></span></div>
+</aside>
+<div class="desk-main">
+<div class="desk-top"><button type="button" class="menu-btn" data-menu aria-expanded="false" aria-controls="desk-sidebar">☰ Menu</button><a class="btn btn-ghost" href="./#dashboard">Back to Dashboard</a></div>
+<main class="panel email-panel"><div class="panel-body">
+<p class="kicker">COMMUNICATION</p><h1 class="email-heading">Temple Email</h1>
+<p class="muted">Compose a message using the temple email address. Only Super Admins and Email Managers can use this page.</p>
 <?php if(!$ready):?><p class="alert" role="status">Development mode: Sending is disabled until secure SMTP configuration is added on the hosting server.</p><?php endif;?>
 <?php if($error):?><p class="alert" role="alert"><?=eh($error)?></p><?php endif;?>
 <?php if($success):?><p class="alert ok" role="status"><?=eh($success)?></p><?php endif;?>
@@ -107,10 +138,19 @@ $ready=mail_settings_ready();
 <label for="body">Message</label><textarea id="body" name="body" maxlength="20000" required><?=eh($body)?></textarea>
 <label class="check"><input type="checkbox" name="confirm_recipients" value="1" required><span>I have reviewed the recipients and the message, and I am authorized to contact them.</span></label>
 <div class="bar"><button type="button" id="preview">Preview message</button><button type="submit" name="send_email" value="1" <?=$ready?'':'disabled'?>>Send Email</button></div>
-</form></div></main>
+</form>
+</div></main></div></div></div>
 <script>
 const templates=<?=json_encode(array_map(fn($v)=>['subject'=>$v[1],'body'=>$v[2]],$templates),JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS|JSON_HEX_QUOT)?>;
 document.getElementById('type').addEventListener('change',e=>{let t=templates[e.target.value];document.getElementById('subject').value=t.subject;document.getElementById('body').value=t.body;});
 document.getElementById('preview').addEventListener('click',()=>alert('Subject: '+document.getElementById('subject').value+'\n\n'+document.getElementById('body').value));
 document.getElementById('composer').addEventListener('submit',e=>{if(!confirm('Send this email to the reviewed recipients?'))e.preventDefault();});
+</script>
+<script>
+document.documentElement.classList.add('js-menu');
+const menuButton=document.querySelector('[data-menu]');
+const closeMenu=()=>{document.documentElement.classList.remove('is-menu');menuButton?.setAttribute('aria-expanded','false')};
+menuButton?.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')!=='true';document.documentElement.classList.toggle('is-menu',open);menuButton.setAttribute('aria-expanded',String(open))});
+document.querySelectorAll('[data-close-menu],#desk-sidebar a').forEach(el=>el.addEventListener('click',closeMenu));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
 </script></body></html>
