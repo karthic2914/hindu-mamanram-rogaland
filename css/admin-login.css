@@ -206,3 +206,11 @@ body:has(.temple-auth){margin:0;background:#fbf5ec}
 .hm-notifications-panel .hm-reset-row{display:block;overflow-wrap:anywhere}
 .hm-notifications-panel .hm-reset-row form{margin-top:10px}
 @media(max-width:600px){.hm-notifications>summary{font-size:0;gap:5px;padding:9px}.hm-notifications>summary span:first-child{font-size:18px}.hm-notifications-panel{right:-110px}}
+
+/* Compact notice composer: secondary translation stays out of the way. */
+.hm-notice-create{gap:16px}
+.hm-notice-create .hm-notice-translation{display:block;width:100%;min-width:0}
+.hm-notice-create .hm-notice-translation[hidden]{display:none}
+.hm-notice-translation>summary{cursor:pointer;color:#782c4a;font-weight:600;padding:10px 0}
+.hm-notice-translation-fields{display:grid;gap:14px;padding:14px 0}
+.hm-notice-create select{width:100%;min-height:44px;border:1px solid #e3d8d5;border-radius:10px;background:#fff;padding:10px;color:#542039}
