@@ -424,13 +424,13 @@ header("X-Robots-Tag: noindex");
                   </label>
                   <label class="field wide"><span data-ta="தலைப்பு" data-en="Title">தலைப்பு</span><input name="title_ta" required maxlength="140"></label>
                   <label class="field wide"><span data-ta="செய்தி" data-en="Message">செய்தி</span><textarea name="body_ta" required maxlength="2000" rows="4"></textarea></label>
-                  <details class="hm-notice-translation field wide" id="notice-translation">
-                    <summary data-ta="மொழிபெயர்ப்பைச் சேர் (விருப்பம்)" data-en="Add translation (optional)">மொழிபெயர்ப்பைச் சேர் (விருப்பம்)</summary>
+                  <div class="hm-notice-translation field wide" id="notice-translation" hidden>
+                    <p class="hm-notice-translation-heading" data-ta="ஆங்கிலப் பதிப்பு" data-en="English version">ஆங்கிலப் பதிப்பு</p>
                     <div class="hm-notice-translation-fields">
                       <label class="field"><span data-ta="ஆங்கிலத் தலைப்பு" data-en="English title">ஆங்கிலத் தலைப்பு</span><input name="title_en" maxlength="140"></label>
                       <label class="field"><span data-ta="ஆங்கிலச் செய்தி" data-en="English message">ஆங்கிலச் செய்தி</span><textarea name="body_en" maxlength="2000" rows="3"></textarea></label>
                     </div>
-                  </details>
+                  </div>
                   <label class="field wide"><span data-ta="நாள்" data-en="Date">நாள்</span><input type="date" name="notice_date"></label>
                 </div>
                 <script>
@@ -440,9 +440,7 @@ header("X-Robots-Tag: noindex");
                     if (!select || !translation) return;
                     function update() {
                       const both = select.value === "both";
-                      translation.hidden = select.value === "en";
-                      if (both) translation.open = true;
-                      else translation.open = false;
+                      translation.hidden = !both;
                       const title = translation.querySelector('[name="title_en"]');
                       const body = translation.querySelector('[name="body_en"]');
                       if (title) title.required = both;
