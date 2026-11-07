@@ -363,6 +363,7 @@ header("X-Robots-Tag: noindex");
             <button type="button" class="is-on" data-set-lang="ta" aria-pressed="true">த</button>
             <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
           </div>
+          <a class="btn btn-ghost" href="../index.html" target="_blank" rel="noopener noreferrer" data-ta="இணையதளம் பார்க்க" data-en="Go to Website">இணையதளம் பார்க்க</a>
           <form method="post">
             <input type="hidden" name="csrf" value="<?= $token ?>">
             <button class="btn btn-ghost" name="logout" value="1" type="submit"><span data-ta="வெளியேறு" data-en="Sign out">வெளியேறு</span></button>
