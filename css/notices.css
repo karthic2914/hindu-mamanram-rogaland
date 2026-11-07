@@ -1,0 +1,12 @@
+/* Committee announcements: readable, contained and consistent with the homepage. */
+#live-notices.section{padding:48px 0 56px;margin:0;background:linear-gradient(180deg,#fff9f0 0%,#f8f0e5 100%);border-top:1px solid rgba(110,44,70,.1);border-bottom:1px solid rgba(110,44,70,.1)}
+#live-notices[hidden]{display:none!important}
+#live-notices>.wrap{max-width:1180px;margin-inline:auto}
+#live-notices .kicker{margin:0 0 8px;color:#a46c23;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+#live-notices h2{font-family:var(--latin,Georgia,serif);font-size:clamp(30px,3vw,43px);line-height:1.15;color:#63213d;margin:0 0 24px}
+#live-notices .notice-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px;align-items:stretch}
+#live-notices .notice-card{position:relative;min-width:0;padding:25px 28px 27px;border:1px solid #e8d6c9;border-left:4px solid #bd9146;border-radius:16px;background:#fffdf9;box-shadow:0 12px 28px rgba(74,35,43,.07);overflow-wrap:anywhere}
+#live-notices .notice-card h3{margin:0 0 10px;color:#692843;font-family:var(--latin,Georgia,serif);font-size:clamp(24px,2.3vw,30px);font-weight:600;line-height:1.25}
+#live-notices .notice-card time{display:inline-flex;align-items:center;padding:5px 10px;border-radius:30px;background:#f8eee1;color:#79543c;font-size:13px;font-weight:600;letter-spacing:.02em}
+#live-notices .notice-card p{margin:16px 0 0;color:#51423e;font-size:16px;line-height:1.75;white-space:pre-line}
+@media(max-width:700px){#live-notices.section{padding:36px 0 40px}#live-notices .notice-card{padding:20px 21px}#live-notices h2{margin-bottom:18px}}
