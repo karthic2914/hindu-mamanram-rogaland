@@ -169,7 +169,8 @@ header("X-Robots-Tag: noindex");
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hind+Madurai:wght@400;500;600&family=Tiro+Tamil&display=swap">
   <link rel="stylesheet" href="../css/admin.css?v=20261107-login">
-  <link rel="stylesheet" href="../css/admin-login.css?v=20261107a">\n  <script>document.documentElement.classList.add("js-menu");</script>
+  <link rel="stylesheet" href="../css/admin-login.css?v=20261107c">
+  <script>document.documentElement.classList.add("js-menu");</script>
 </head>
 <body>
 <?php if ($screen === "login"): ?>
@@ -195,7 +196,7 @@ header("X-Robots-Tag: noindex");
         </div>
       </div>
       <div class="temple-auth-form-wrap">
-        <div class="temple-auth-ornament" aria-hidden="true">ॐ</div>
+        <div class="temple-auth-ornament" aria-hidden="true"><span>ॐ</span></div>
         <p class="temple-auth-kicker" data-ta="பாதுகாப்பான நிர்வாக நுழைவு" data-en="SECURE ADMIN ACCESS">பாதுகாப்பான நிர்வாக நுழைவு</p>
         <h1 data-ta="மீண்டும் வரவேற்கிறோம்" data-en="Welcome back">மீண்டும் வரவேற்கிறோம்</h1>
         <p class="temple-auth-subtitle" data-ta="உங்கள் நிர்வாகக் கணக்கில் உள்நுழையுங்கள்." data-en="Sign in to your management account.">உங்கள் நிர்வாகக் கணக்கில் உள்நுழையுங்கள்.</p>
@@ -211,7 +212,7 @@ header("X-Robots-Tag: noindex");
           <label class="temple-auth-field"><span data-ta="கடவுச்சொல்" data-en="Password">கடவுச்சொல்</span><span class="temple-auth-password"><input id="temple-login-password" type="password" name="password" required autocomplete="current-password"><button class="temple-auth-reveal" type="button" aria-controls="temple-login-password" aria-pressed="false" data-show-password><span data-ta="காட்டு" data-en="Show">காட்டு</span></button></span></label>
           <button class="temple-auth-submit" name="login" value="1" type="submit"><span data-ta="பாதுகாப்பாக உள்நுழைக" data-en="Sign in securely">பாதுகாப்பாக உள்நுழைக</span><span aria-hidden="true">→</span></button>
         </form>
-        <p class="temple-auth-secure">♧ <span data-ta="அங்கீகரிக்கப்பட்ட நிர்வாக உறுப்பினர்களுக்கு மட்டும்" data-en="Authorized committee members only">அங்கீகரிக்கப்பட்ட நிர்வாக உறுப்பினர்களுக்கு மட்டும்</span></p>
+        <p class="temple-auth-secure">🔒 <span data-ta="அங்கீகரிக்கப்பட்ட நிர்வாக உறுப்பினர்களுக்கு மட்டும்" data-en="Authorized committee members only">அங்கீகரிக்கப்பட்ட நிர்வாக உறுப்பினர்களுக்கு மட்டும்</span></p>
       </div>
     </section>
   </main>
