@@ -151,3 +151,12 @@ body:has(.temple-auth){margin:0;background:#fbf5ec}
 
 /* Final divider: a continuous SVG Bezier curve, not an elliptical border */
 @media(min-width:1051px){.temple-auth-brand:before{top:0;right:-115px;width:235px;height:100%;border:0;border-radius:0;box-shadow:none;clip-path:none;background:transparent url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20235%20900%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M153%200%20C102%20195%20178%20465%2022%20900%20L235%20900%20L235%200%20Z%22%20fill%3D%22%23fff8ee%22%20stroke%3D%22%23d7a34d%22%20stroke-width%3D%228%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E") center/100% 100% no-repeat}}
+
+/* Divider belongs to the form panel, not the clipped photo panel. */
+@media(min-width:1051px){
+ .temple-auth-brand:before{display:none!important}
+ .temple-auth-form-side{z-index:3;isolation:visible}
+ .temple-auth-form-side:before{content:"";display:block;position:absolute;z-index:1;top:0;bottom:0;left:-150px;right:auto;width:180px;height:100%;border:0;border-radius:0;opacity:1;pointer-events:none;background:transparent url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20180%20900%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M150%200%20C125%20160%20162%20340%20150%20470%20C142%20630%2078%20805%2024%20900%20L180%20900%20L180%200%20Z%22%20fill%3D%22%23fff8ee%22%20stroke%3D%22%23d7a34d%22%20stroke-width%3D%228%22%2F%3E%3C%2Fsvg%3E") center/100% 100% no-repeat}
+ .temple-auth-form-side:after{z-index:0}
+ .temple-auth-top,.temple-auth-form-wrap{z-index:2}
+}
