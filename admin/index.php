@@ -295,6 +295,10 @@ header("X-Robots-Tag: noindex");
             <li><a class="side-link" href="#dates"><?php icon("pooja"); ?><span data-ta="பூஜை மேலாண்மை" data-en="Pooja Management">பூஜை மேலாண்மை</span></a></li>
           </ul>
           <?php endif; ?>
+          <?php if ($manager !== null && hm_has_role($manager, "email_manager")): ?>
+          <p class="side-label" data-ta="மின்னஞ்சல்" data-en="Communication">மின்னஞ்சல்</p>
+          <ul><li><a class="side-link" href="email.php"><?php icon("notice"); ?><span data-ta="ஆலய மின்னஞ்சல்" data-en="Temple Email">ஆலய மின்னஞ்சல்</span></a></li></ul>
+          <?php endif; ?>
           <p class="side-label" data-ta="கணக்கு" data-en="Account">கணக்கு</p>
           <ul>
             <?php if ($manager !== null && hm_can_manage_users($manager)): ?>
