@@ -168,41 +168,72 @@ header("X-Robots-Tag: noindex");
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hind+Madurai:wght@400;500;600&family=Tiro+Tamil&display=swap">
-  <link rel="stylesheet" href="../css/admin.css?v=20261027d">
-  <script>document.documentElement.classList.add("js-menu");</script>
+  <link rel="stylesheet" href="../css/admin.css?v=20261107-login">
+  <link rel="stylesheet" href="../css/admin-login.css?v=20261107a">\n  <script>document.documentElement.classList.add("js-menu");</script>
 </head>
 <body>
 <?php if ($screen === "login"): ?>
-  <header class="admin-bar">
-    <a class="brand" href="../index.html">
-      <img src="../assets/hm-seal.jpg" alt="">
-      <span data-ta="இந்து மாமன்றம்" data-en="Hindu Mamanram">இந்து மாமன்றம்</span>
-    </a>
-    <div class="lang" role="group" data-label-ta="மொழி" data-label-en="Language" aria-label="மொழி">
-      <button type="button" class="is-on" data-set-lang="ta" aria-pressed="true">த</button>
-      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-    </div>
-  </header>
-  <main class="shell is-auth">
-    <?php if ($message !== ""): $pair = pair($message); ?>
-      <p class="banner" role="status" data-ta="<?= h($pair[0]) ?>" data-en="<?= h($pair[1]) ?>"><?= h($pair[0]) ?></p>
-    <?php endif; ?>
-    <?php if ($error !== ""): $pair = pair($error); ?>
-      <p class="banner bad" role="alert" data-ta="<?= h($pair[0]) ?>" data-en="<?= h($pair[1]) ?>"><?= h($pair[0]) ?></p>
-    <?php endif; ?>
-      <section class="card">
-        <div class="arch" aria-hidden="true"></div>
-        <form class="card-body" method="post">
+  <main class="temple-auth">
+    <section class="temple-auth-brand" aria-label="Hindu Mamanram Temple Management">
+      <div class="temple-auth-image" aria-hidden="true"></div>
+      <div class="temple-auth-brand-content">
+        <a class="temple-auth-logo" href="../index.html"><img src="../assets/hm-seal.jpg" alt=""><span data-ta="இந்து மாமன்றம்" data-en="Hindu Mamanram">இந்து மாமன்றம்</span></a>
+        <div class="temple-auth-brand-copy">
+          <p class="temple-auth-eyebrow" data-ta="ஆலய நிர்வாகம்" data-en="TEMPLE ADMINISTRATION">ஆலய நிர்வாகம்</p>
+          <h2 data-ta="ஆலய நிர்வாகத் தளம்" data-en="Temple Management Portal">ஆலய நிர்வாகத் தளம்</h2>
+          <p data-ta="பூஜைகள், அறிவிப்புகள் மற்றும் சமூக நிகழ்வுகளை ஒரே இடத்தில் நிர்வகிக்கவும்." data-en="Manage poojas, announcements and community activities in one place.">பூஜைகள், அறிவிப்புகள் மற்றும் சமூக நிகழ்வுகளை ஒரே இடத்தில் நிர்வகிக்கவும்.</p>
+        </div>
+        <span class="temple-auth-brand-footer">Hindu Mamanram · Rogaland</span>
+      </div>
+    </section>
+    <section class="temple-auth-form-side">
+      <div class="temple-auth-top">
+        <a class="temple-auth-home" href="../index.html" data-ta="← இணையதளம்" data-en="← Back to website">← இணையதளம்</a>
+        <div class="lang" role="group" data-label-ta="மொழி" data-label-en="Language" aria-label="மொழி">
+          <button type="button" class="is-on" data-set-lang="ta" aria-pressed="true">த</button>
+          <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+      <div class="temple-auth-form-wrap">
+        <div class="temple-auth-ornament" aria-hidden="true">ॐ</div>
+        <p class="temple-auth-kicker" data-ta="பாதுகாப்பான நிர்வாக நுழைவு" data-en="SECURE ADMIN ACCESS">பாதுகாப்பான நிர்வாக நுழைவு</p>
+        <h1 data-ta="மீண்டும் வரவேற்கிறோம்" data-en="Welcome back">மீண்டும் வரவேற்கிறோம்</h1>
+        <p class="temple-auth-subtitle" data-ta="உங்கள் நிர்வாகக் கணக்கில் உள்நுழையுங்கள்." data-en="Sign in to your management account.">உங்கள் நிர்வாகக் கணக்கில் உள்நுழையுங்கள்.</p>
+        <?php if ($message !== ""): $pair = pair($message); ?>
+          <p class="banner" role="status" data-ta="<?= h($pair[0]) ?>" data-en="<?= h($pair[1]) ?>"><?= h($pair[0]) ?></p>
+        <?php endif; ?>
+        <?php if ($error !== ""): $pair = pair($error); ?>
+          <p class="banner bad" role="alert" data-ta="<?= h($pair[0]) ?>" data-en="<?= h($pair[1]) ?>"><?= h($pair[0]) ?></p>
+        <?php endif; ?>
+        <form class="temple-auth-form" method="post">
           <input type="hidden" name="csrf" value="<?= $token ?>">
-          <p class="kicker" data-ta="நிர்வாகம்" data-en="Administration">நிர்வாகம்</p>
-          <h1 data-ta="நுழைவு" data-en="Sign in">நுழைவு</h1>
-          <p class="lede" data-ta="உங்கள் பயனர் பெயரையும் கடவுச்சொல்லையும் உள்ளிடுங்கள். பழைய பொதுக் கடவுச்சொல் இருந்தால், பயனர் பெயரைக் காலியாக விடுங்கள்." data-en="Enter your username and password. If you still use the original shared password, leave the username blank.">உங்கள் பயனர் பெயரையும் கடவுச்சொல்லையும் உள்ளிடுங்கள். பழைய பொதுக் கடவுச்சொல் இருந்தால், பயனர் பெயரைக் காலியாக விடுங்கள்.</p>
-          <label class="field"><span data-ta="பயனர் பெயர்" data-en="Username">பயனர் பெயர்</span><input name="username" autocomplete="username" maxlength="32" spellcheck="false"></label>
-          <label class="field"><span data-ta="கடவுச்சொல்" data-en="Password">கடவுச்சொல்</span><input type="password" name="password" required autocomplete="current-password"></label>
-          <button class="btn btn-primary" name="login" value="1" type="submit"><span data-ta="நுழை" data-en="Sign in">நுழை</span></button>
+          <label class="temple-auth-field"><span data-ta="பயனர் பெயர்" data-en="Username">பயனர் பெயர்</span><input name="username" autocomplete="username" maxlength="32" spellcheck="false" required></label>
+          <label class="temple-auth-field"><span data-ta="கடவுச்சொல்" data-en="Password">கடவுச்சொல்</span><span class="temple-auth-password"><input id="temple-login-password" type="password" name="password" required autocomplete="current-password"><button class="temple-auth-reveal" type="button" aria-controls="temple-login-password" aria-pressed="false" data-show-password><span data-ta="காட்டு" data-en="Show">காட்டு</span></button></span></label>
+          <button class="temple-auth-submit" name="login" value="1" type="submit"><span data-ta="பாதுகாப்பாக உள்நுழைக" data-en="Sign in securely">பாதுகாப்பாக உள்நுழைக</span><span aria-hidden="true">→</span></button>
         </form>
-      </section>
+        <p class="temple-auth-secure">♧ <span data-ta="அங்கீகரிக்கப்பட்ட நிர்வாக உறுப்பினர்களுக்கு மட்டும்" data-en="Authorized committee members only">அங்கீகரிக்கப்பட்ட நிர்வாக உறுப்பினர்களுக்கு மட்டும்</span></p>
+      </div>
+    </section>
   </main>
+  <script>
+    (function () {
+      var toggle = document.querySelector("[data-show-password]");
+      var field = document.getElementById("temple-login-password");
+      if (!toggle || !field) return;
+      toggle.addEventListener("click", function () {
+        var showing = field.type === "password";
+        field.type = showing ? "text" : "password";
+        toggle.setAttribute("aria-pressed", showing ? "true" : "false");
+        var label = toggle.querySelector("span");
+        if (label) {
+          label.setAttribute("data-ta", showing ? "மறை" : "காட்டு");
+          label.setAttribute("data-en", showing ? "Hide" : "Show");
+          var english = document.documentElement.lang === "en";
+          label.textContent = english ? label.getAttribute("data-en") : label.getAttribute("data-ta");
+        }
+      });
+    })();
+  </script>
 <?php else: ?>
   <main class="shell is-desk">
     <div class="desk-app">
