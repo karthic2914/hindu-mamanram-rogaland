@@ -327,7 +327,7 @@ header("X-Robots-Tag: noindex");
           <?php if (hm_can_manage_users(hm_current_user())): ?>
           <?php $pendingRecovery = array_values(array_filter(hm_recovery_requests(), fn($r) => ($r["status"] ?? "") === "pending")); ?>
           <details class="hm-notifications">
-            <summary aria-label="Password reset notifications" title="Password reset notifications"><span aria-hidden="true">♧</span><span data-ta="அறிவிப்புகள்" data-en="Notifications">அறிவிப்புகள்</span><?php if (count($pendingRecovery)): ?><strong class="hm-notification-count"><?= count($pendingRecovery) ?></strong><?php endif; ?></summary>
+            <summary aria-label="Password reset notifications" title="Password reset notifications"><span aria-hidden="true">🔔</span><span data-ta="அறிவிப்புகள்" data-en="Notifications">அறிவிப்புகள்</span><?php if (count($pendingRecovery)): ?><strong class="hm-notification-count"><?= count($pendingRecovery) ?></strong><?php endif; ?></summary>
             <div class="hm-notifications-panel">
     <section class="hm-reset-queue" aria-label="Password reset requests">
       <h2 data-ta="கடவுச்சொல் மீட்டமைப்பு கோரிக்கைகள்" data-en="Password reset requests">கடவுச்சொல் மீட்டமைப்பு கோரிக்கைகள்</h2>
