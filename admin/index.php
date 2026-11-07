@@ -169,7 +169,7 @@ header("X-Robots-Tag: noindex");
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hind+Madurai:wght@400;500;600&family=Tiro+Tamil&display=swap">
   <link rel="stylesheet" href="../css/admin.css?v=20261107-login">
-  <link rel="stylesheet" href="../css/admin-login.css?v=20261107c">
+  <link rel="stylesheet" href="../css/admin-login.css?v=20261107d">
   <script>document.documentElement.classList.add("js-menu");</script>
 </head>
 <body>
@@ -208,9 +208,9 @@ header("X-Robots-Tag: noindex");
         <?php endif; ?>
         <form class="temple-auth-form" method="post">
           <input type="hidden" name="csrf" value="<?= $token ?>">
-          <label class="temple-auth-field"><span data-ta="பயனர் பெயர்" data-en="Username">பயனர் பெயர்</span><input name="username" autocomplete="username" maxlength="32" spellcheck="false" required></label>
-          <label class="temple-auth-field"><span data-ta="கடவுச்சொல்" data-en="Password">கடவுச்சொல்</span><span class="temple-auth-password"><input id="temple-login-password" type="password" name="password" required autocomplete="current-password"><button class="temple-auth-reveal" type="button" aria-controls="temple-login-password" aria-pressed="false" data-show-password><span data-ta="காட்டு" data-en="Show">காட்டு</span></button></span></label>
-          <button class="temple-auth-submit" name="login" value="1" type="submit"><span data-ta="பாதுகாப்பாக உள்நுழைக" data-en="Sign in securely">பாதுகாப்பாக உள்நுழைக</span><span aria-hidden="true">→</span></button>
+          <label class="temple-auth-field temple-auth-user"><span data-ta="பயனர் பெயர்" data-en="Username">பயனர் பெயர்</span><input name="username" autocomplete="username" maxlength="32" spellcheck="false" placeholder="Username" data-placeholder-ta="பயனர் பெயர்" data-placeholder-en="Username" required></label>
+          <label class="temple-auth-field temple-auth-pass"><span data-ta="கடவுச்சொல்" data-en="Password">கடவுச்சொல்</span><span class="temple-auth-password"><input id="temple-login-password" type="password" name="password" required autocomplete="current-password" placeholder="Password" data-placeholder-ta="கடவுச்சொல்" data-placeholder-en="Password"><button class="temple-auth-reveal" type="button" aria-controls="temple-login-password" aria-pressed="false" data-show-password><span data-ta="காட்டு" data-en="Show">காட்டு</span></button></span></label>
+          <button class="temple-auth-submit" name="login" value="1" type="submit"><span data-ta="உள்நுழைக" data-en="Sign In">உள்நுழைக</span><span aria-hidden="true">→</span></button>
         </form>
         <p class="temple-auth-secure">🔒 <span data-ta="அங்கீகரிக்கப்பட்ட நிர்வாக உறுப்பினர்களுக்கு மட்டும்" data-en="Authorized committee members only">அங்கீகரிக்கப்பட்ட நிர்வாக உறுப்பினர்களுக்கு மட்டும்</span></p>
       </div>
