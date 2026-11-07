@@ -9,24 +9,61 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hind+Madurai:wght@400;500;600&family=Tiro+Tamil&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .funeral-page{background:#f8f6f2;padding:48px 0 84px}
+    .funeral-shell{max-width:1000px;margin:0 auto}
+    .funeral-intro{padding:12px 0 32px;max-width:100%}
+    .funeral-intro .eyebrow{font-size:.85rem;letter-spacing:.055em;color:#89566a;margin:0 0 12px}
+    .funeral-intro h1{font-size:clamp(2.1rem,4vw,3.25rem);line-height:1.25;color:#4d283a;margin:0 0 18px}
+    .funeral-intro h1:after{content:"";display:block;background:#8c6473;width:56px;height:2px;margin-top:18px}
+    .funeral-intro .lede{font-size:1.05rem;line-height:1.9;color:#5f5759;max-width:100%;margin:0;text-align:justify;text-justify:inter-word}
+    .funeral-editorial{border-top:1px solid #ddd3cb}
+    .funeral-section{display:grid;grid-template-columns:minmax(220px,0.8fr) minmax(0,1.6fr);gap:44px;padding:34px 0;border-bottom:1px solid #ddd3cb;align-items:start}
+    .funeral-number{font-family:Georgia,serif;font-size:1.3rem;line-height:1.2;color:#9b7683;margin-bottom:12px}
+    .funeral-section h2{font-size:1.4rem;line-height:1.45;color:#542b3e;margin:0}
+    .funeral-section p{font-size:1rem;line-height:1.9;color:#62585b;margin:0 0 16px;max-width:none;text-align:justify;text-justify:inter-word;overflow-wrap:break-word;hyphens:auto}
+    .funeral-section p:last-child{margin-bottom:0}
+    .funeral-section .funeral-link{display:inline-flex;gap:8px;align-items:center;color:#7d2e50;text-decoration:underline;text-underline-offset:4px;font-weight:600;margin-top:5px}
+    .funeral-section .funeral-link:hover{text-decoration-thickness:2px}
+    @media(max-width:680px){.funeral-page{padding:28px 0 54px}.funeral-intro{padding-bottom:25px}.funeral-section{grid-template-columns:1fr;gap:14px;padding:27px 0}.funeral-number{font-size:1.15rem;margin-bottom:8px}.funeral-section h2{font-size:1.24rem}.funeral-section p{line-height:1.85}}
+    .funeral-section-heading{min-width:0}.funeral-section-content{min-width:0}.funeral-section-content p:last-of-type{margin-bottom:12px}.funeral-section:focus-within{border-bottom-color:#a77d8c}
+  </style>
 </head>
 <body data-page="funeral" data-title-ta="அந்தியகாலசேவை — இந்து மாமன்றம் ரூகலாண்ட்" data-title-en="Funeral service — Hindu Mamanram Rogaland">
   <header id="site-header"></header>
-  <main id="main">
-    <div class="wrap page-hero">
-      <p class="eyebrow" data-i18n="funeral.eyebrow">எமது சேவை</p>
-      <h1 data-i18n="funeral.title">அந்தியகாலசேவை</h1>
-      <p class="lede" data-i18n="funeral.lead">நோர்வே நாட்டின் சட்ட திட்டங்களுக்கு ஏற்ப நடைமுறைக்குச் சாத்தியமானதாகவும் இந்து சமயக் கோட்பாடுகளுக்கு அமைவாகவும் அந்தியகாலக் கிரிகைகள் ஏற்பாடு செய்யப்படுகின்றன.</p>
-    </div>
-    <div class="wrap page-body prose">
-      <div class="card">
-        <p data-i18n="funeral.p1">அந்தியகாலக் கிரிகைகளை ஏற்பாடு செய்து கொடுப்பதற்கு உள்ளூர் அனுசரணையாளர் நிறுவனங்களுடன் இந்து மாமன்றம் தொடர்புகளை ஏற்படுத்தி அதற்கான புரிந்துணர்வு ஒப்பந்தங்களையும் செய்துகொண்டுள்ளது. இறந்தவரின் அல்லது அவரின் உறவினரின் விருப்பத்தின்படி அந்தியக்கிரிகைகளை நிகழ்த்திக் கொடுக்கவோ அல்லது இறந்தவரின் உடலை உலகின் எந்தப் பாகத்திற்கும் அனுப்பி வைக்கவோ வசதிகள் உண்டு.</p>
-        <p data-i18n="funeral.p2">இச் சேவையில் நீண்டகால அனுபவமுள்ள ஓபெட் (Obed a.s) நிறுவனத்தினர் எம்மால் தெரிவுசெய்யப்பட்டு அவர்களிடம் இவ்வரிய பணி ஒப்படைக்கப்பட்டுள்ளது. சிறந்த தொழில்நுட்பத்தையும் இடவசதிகளையும் இந்நிறுவனம் பெற்றுள்ளதுடன் எமது பிரதேசத்தில் வேற்றுக் கலாச்சார முறைகளைப் பின்பற்றும் மக்களின் தேவைகளைப் புரிந்துகொண்டு சேவையாற்றும் ஒரு முன்னணி நிறுவனமாகவும் ஓபெட் விளங்குகிறது.</p>
-        <a class="btn btn-primary" href="http://obed.no" target="_blank" rel="noopener" data-i18n="funeral.obed">ஓபெட் நிறுவனத்தின் இணையத்தளம்</a>
-      </div>
-      <div class="venue" style="margin-top:18px">
-        <h3>Jåttå</h3>
-        <p data-i18n="funeral.p3">இந்து மாமன்றத்தின் அயராத முயற்சியால் எமது அங்கத்தவர்களுக்கென அரச அனுசரணையுடன் தனியான ஒரு மயானப்பிரிவு இஸ்தாவங்கர் பிரதேசத்திலுள்ள Jåttå நகர் பகுதியில் நிர்மாணிக்கப்பட்டு 2012 ஆண்டிலிருந்து பாவனைக்கு வழங்கப்பட்டுள்ளது.</p>
+  <main id="main" class="funeral-page">
+    <div class="wrap funeral-shell">
+      <header class="funeral-intro">
+        <p class="eyebrow" data-i18n="funeral.eyebrow">எமது சேவை</p>
+        <h1 data-i18n="funeral.title">அந்தியகாலசேவை</h1>
+        <p class="lede" data-i18n="funeral.lead">நோர்வே நாட்டின் சட்ட திட்டங்களுக்கு ஏற்ப நடைமுறைக்குச் சாத்தியமானதாகவும் இந்து சமயக் கோட்பாடுகளுக்கு அமைவாகவும் அந்தியகாலக் கிரிகைகள் ஏற்பாடு செய்யப்படுகின்றன.</p>
+      </header>
+      <div class="funeral-editorial">
+        <section class="funeral-section" aria-labelledby="funeral-arrangements">
+          <div class="funeral-section-heading"><div class="funeral-number" aria-hidden="true">01</div>
+            <h2 id="funeral-arrangements" data-i18n="funeral.section.arrangements">சேவை ஏற்பாடுகள்</h2>
+          </div>
+          <div class="funeral-section-content">
+            <p data-i18n="funeral.p1">அந்தியகாலக் கிரிகைகளை ஏற்பாடு செய்து கொடுப்பதற்கு உள்ளூர் அனுசரணையாளர் நிறுவனங்களுடன் இந்து மாமன்றம் தொடர்புகளை ஏற்படுத்தி அதற்கான புரிந்துணர்வு ஒப்பந்தங்களையும் செய்துகொண்டுள்ளது. இறந்தவரின் அல்லது அவரின் உறவினரின் விருப்பத்தின்படி அந்தியக்கிரிகைகளை நிகழ்த்திக் கொடுக்கவோ அல்லது இறந்தவரின் உடலை உலகின் எந்தப் பாகத்திற்கும் அனுப்பி வைக்கவோ வசதிகள் உண்டு.</p>
+          </div>
+        </section>
+        <section class="funeral-section" aria-labelledby="funeral-obed">
+          <div class="funeral-section-heading"><div class="funeral-number" aria-hidden="true">02</div>
+            <h2 id="funeral-obed">Obed a.s</h2>
+          </div>
+          <div class="funeral-section-content">
+            <p data-i18n="funeral.p2">இச் சேவையில் நீண்டகால அனுபவமுள்ள ஓபெட் (Obed a.s) நிறுவனத்தினர் எம்மால் தெரிவுசெய்யப்பட்டு அவர்களிடம் இவ்வரிய பணி ஒப்படைக்கப்பட்டுள்ளது. சிறந்த தொழில்நுட்பத்தையும் இடவசதிகளையும் இந்நிறுவனம் பெற்றுள்ளதுடன் எமது பிரதேசத்தில் வேற்றுக் கலாச்சார முறைகளைப் பின்பற்றும் மக்களின் தேவைகளைப் புரிந்துகொண்டு சேவையாற்றும் ஒரு முன்னணி நிறுவனமாகவும் ஓபெட் விளங்குகிறது.</p>
+            <a class="funeral-link" href="https://obed.no" target="_blank" rel="noopener noreferrer"><span data-i18n="funeral.obed">ஓபெட் நிறுவனத்தின் இணையத்தளம்</span><span aria-hidden="true">↗</span></a>
+          </div>
+        </section>
+        <section class="funeral-section" aria-labelledby="funeral-jatta">
+          <div class="funeral-section-heading"><div class="funeral-number" aria-hidden="true">03</div>
+            <h2 id="funeral-jatta">Jåttå</h2>
+          </div>
+          <div class="funeral-section-content">
+            <p data-i18n="funeral.p3">இந்து மாமன்றத்தின் அயராத முயற்சியால் எமது அங்கத்தவர்களுக்கென அரச அனுசரணையுடன் தனியான ஒரு மயானப்பிரிவு இஸ்தாவங்கர் பிரதேசத்திலுள்ள Jåttå நகர் பகுதியில் நிர்மாணிக்கப்பட்டு 2012 ஆண்டிலிருந்து பாவனைக்கு வழங்கப்பட்டுள்ளது.</p>
+          </div>
+        </section>
       </div>
     </div>
   </main>

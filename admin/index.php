@@ -1,5 +1,6 @@
 <?php
 require dirname(__DIR__) . "/includes/publish.php";
+require dirname(__DIR__) . "/includes/recovery.php";
 hm_boot();
 
 function h($value) {
@@ -33,6 +34,9 @@ function role_choices(array $selected): void {
 }
 
 const UI = [
+  "recovery_requested" => ["கணக்கு இருந்தால், கோரிக்கை பதிவு செய்யப்படும்.", "If the email is registered and verified, the request will be recorded."],
+  "recovery_sent" => ["மீட்டமைப்பு இணைப்பு அனுப்பப்பட்டது.", "Password reset link sent."],
+  "recovery_failed" => ["அஞ்சல் அனுப்ப முடியவில்லை.", "Could not send email. Check mail configuration."],
   "csrf" => ["பக்கம் பழையது. மீண்டும் முயற்சிக்கவும்.", "This page is out of date. Try again."],
   "hash_exists" => ["கடவுச்சொல் ஏற்கெனவே உள்ளது.", "A password already exists."],
   "too_short" => ["கடவுச்சொல் குறைந்தது 8 எழுத்துகள் வேண்டும்.", "The password must be at least 8 characters."],
@@ -97,6 +101,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $error = "csrf";
   } elseif (isset($_POST["setup"])) {
     $error = "setup_closed";
+  } elseif (isset($_POST["recovery_request"])) {
+    $email = trim((string)($_POST["recovery_email"] ?? ""));
+    $bucket = "recovery:" . hash("sha256", strtolower($email) . "|" . ($_SERVER["REMOTE_ADDR"] ?? ""));
+    if (hm_attempt_count($bucket) < 4) {
+      hm_attempt_mark($bucket, false);
+      try { hm_recovery_request($email); } catch (Throwable $ignored) {}
+    }
+    $message = "recovery_requested";
   } elseif (isset($_POST["login"])) {
     $error = hm_attempt_login((string) ($_POST["username"] ?? ""), (string) ($_POST["password"] ?? ""));
   } elseif (!logged_in()) {
@@ -113,6 +125,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     );
     if ($changed === "") $message = "password_ok";
     else $error = $changed;
+  } elseif (isset($_POST["recovery_approve"]) || isset($_POST["recovery_reject"])) {
+    if (!hm_can_manage_users(hm_current_user())) $error = "forbidden";
+    else {
+      try {
+        $id = (string)($_POST["request_id"] ?? "");
+        if (isset($_POST["recovery_reject"])) { hm_recovery_reject($id); $message = "reset_ok"; }
+        elseif (hm_recovery_issue($id, (string)getenv("HM_RECOVERY_BASE_URL"))) $message = "recovery_sent";
+        else $error = "recovery_failed";
+      } catch (Throwable $e) { $error = "unavailable"; }
+    }
   } elseif (hm_account_post($_POST)) {
     $managed = hm_account_request($_POST);
     $message = $managed["message"];
@@ -168,41 +190,90 @@ header("X-Robots-Tag: noindex");
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hind+Madurai:wght@400;500;600&family=Tiro+Tamil&display=swap">
-  <link rel="stylesheet" href="../css/admin.css?v=20261027d">
+  <link rel="stylesheet" href="../css/admin.css?v=20261107-login">
+  <link rel="stylesheet" href="../css/admin-login.css?v=20261107d">
   <script>document.documentElement.classList.add("js-menu");</script>
 </head>
 <body>
 <?php if ($screen === "login"): ?>
-  <header class="admin-bar">
-    <a class="brand" href="../index.html">
-      <img src="../assets/hm-seal.jpg" alt="">
-      <span data-ta="இந்து மாமன்றம்" data-en="Hindu Mamanram">இந்து மாமன்றம்</span>
-    </a>
-    <div class="lang" role="group" data-label-ta="மொழி" data-label-en="Language" aria-label="மொழி">
-      <button type="button" class="is-on" data-set-lang="ta" aria-pressed="true">த</button>
-      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-    </div>
-  </header>
-  <main class="shell is-auth">
-    <?php if ($message !== ""): $pair = pair($message); ?>
-      <p class="banner" role="status" data-ta="<?= h($pair[0]) ?>" data-en="<?= h($pair[1]) ?>"><?= h($pair[0]) ?></p>
-    <?php endif; ?>
-    <?php if ($error !== ""): $pair = pair($error); ?>
-      <p class="banner bad" role="alert" data-ta="<?= h($pair[0]) ?>" data-en="<?= h($pair[1]) ?>"><?= h($pair[0]) ?></p>
-    <?php endif; ?>
-      <section class="card">
-        <div class="arch" aria-hidden="true"></div>
-        <form class="card-body" method="post">
+  <main class="temple-auth">
+    <section class="temple-auth-brand" aria-label="Hindu Mamanram Temple Management">
+      <div class="temple-auth-image" aria-hidden="true"></div>
+      <div class="temple-auth-brand-content">
+        <a class="temple-auth-logo" href="../index.html"><img src="../assets/hm-seal.jpg" alt=""><span data-ta="இந்து மாமன்றம்" data-en="Hindu Mamanram">இந்து மாமன்றம்</span></a>
+        <div class="temple-auth-brand-copy">
+          <p class="temple-auth-eyebrow" data-ta="ஆலய நிர்வாகம்" data-en="TEMPLE ADMINISTRATION">ஆலய நிர்வாகம்</p>
+          <h2 data-ta="ஆலய நிர்வாகத் தளம்" data-en="Temple Management Portal">ஆலய நிர்வாகத் தளம்</h2>
+          <p data-ta="பூஜைகள், அறிவிப்புகள் மற்றும் சமூக நிகழ்வுகளை ஒரே இடத்தில் நிர்வகிக்கவும்." data-en="Manage poojas, announcements and community activities in one place.">பூஜைகள், அறிவிப்புகள் மற்றும் சமூக நிகழ்வுகளை ஒரே இடத்தில் நிர்வகிக்கவும்.</p>
+        </div>
+        <span class="temple-auth-brand-footer">Hindu Mamanram · Rogaland</span>
+      </div>
+    </section>
+    <section class="temple-auth-form-side">
+      <div class="temple-auth-top">
+        <a class="temple-auth-home" href="../index.html" data-ta="← இணையதளம்" data-en="← Back to website">← இணையதளம்</a>
+        <div class="lang" role="group" data-label-ta="மொழி" data-label-en="Language" aria-label="மொழி">
+          <button type="button" class="is-on" data-set-lang="ta" aria-pressed="true">த</button>
+          <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+      <div class="temple-auth-form-wrap">
+        <div class="temple-auth-ornament" aria-hidden="true"><span>ॐ</span></div>
+        <p class="temple-auth-kicker" data-ta="பாதுகாப்பான நிர்வாக நுழைவு" data-en="SECURE ADMIN ACCESS">பாதுகாப்பான நிர்வாக நுழைவு</p>
+        <h1 data-ta="மீண்டும் வரவேற்கிறோம்" data-en="Welcome back">மீண்டும் வரவேற்கிறோம்</h1>
+        <p class="temple-auth-subtitle" data-ta="உங்கள் நிர்வாகக் கணக்கில் உள்நுழையுங்கள்." data-en="Sign in to your management account.">உங்கள் நிர்வாகக் கணக்கில் உள்நுழையுங்கள்.</p>
+        <?php if ($message !== ""): $pair = pair($message); ?>
+          <p class="banner" role="status" data-ta="<?= h($pair[0]) ?>" data-en="<?= h($pair[1]) ?>"><?= h($pair[0]) ?></p>
+        <?php endif; ?>
+        <?php if ($error !== ""): $pair = pair($error); ?>
+          <p class="banner bad" role="alert" data-ta="<?= h($pair[0]) ?>" data-en="<?= h($pair[1]) ?>"><?= h($pair[0]) ?></p>
+        <?php endif; ?>
+        <form class="temple-auth-form" method="post">
           <input type="hidden" name="csrf" value="<?= $token ?>">
-          <p class="kicker" data-ta="நிர்வாகம்" data-en="Administration">நிர்வாகம்</p>
-          <h1 data-ta="நுழைவு" data-en="Sign in">நுழைவு</h1>
-          <p class="lede" data-ta="உங்கள் பயனர் பெயரையும் கடவுச்சொல்லையும் உள்ளிடுங்கள். பழைய பொதுக் கடவுச்சொல் இருந்தால், பயனர் பெயரைக் காலியாக விடுங்கள்." data-en="Enter your username and password. If you still use the original shared password, leave the username blank.">உங்கள் பயனர் பெயரையும் கடவுச்சொல்லையும் உள்ளிடுங்கள். பழைய பொதுக் கடவுச்சொல் இருந்தால், பயனர் பெயரைக் காலியாக விடுங்கள்.</p>
-          <label class="field"><span data-ta="பயனர் பெயர்" data-en="Username">பயனர் பெயர்</span><input name="username" autocomplete="username" maxlength="32" spellcheck="false"></label>
-          <label class="field"><span data-ta="கடவுச்சொல்" data-en="Password">கடவுச்சொல்</span><input type="password" name="password" required autocomplete="current-password"></label>
-          <button class="btn btn-primary" name="login" value="1" type="submit"><span data-ta="நுழை" data-en="Sign in">நுழை</span></button>
+          <label class="temple-auth-field temple-auth-user"><span data-ta="பயனர் பெயர்" data-en="Username">பயனர் பெயர்</span><input name="username" autocomplete="username" maxlength="32" spellcheck="false" placeholder="Username" data-placeholder-ta="பயனர் பெயர்" data-placeholder-en="Username" required></label>
+          <label class="temple-auth-field temple-auth-pass"><span data-ta="கடவுச்சொல்" data-en="Password">கடவுச்சொல்</span><span class="temple-auth-password"><input id="temple-login-password" type="password" name="password" required autocomplete="current-password" placeholder="Password" data-placeholder-ta="கடவுச்சொல்" data-placeholder-en="Password"><button class="temple-auth-reveal" type="button" aria-controls="temple-login-password" aria-pressed="false" data-show-password><span data-ta="காட்டு" data-en="Show">காட்டு</span></button></span></label>
+          <button class="temple-auth-submit" name="login" value="1" type="submit"><span data-ta="உள்நுழைக" data-en="Sign In">உள்நுழைக</span><span aria-hidden="true">→</span></button>
         </form>
-      </section>
+          <details class="temple-auth-recovery">
+            <summary><span data-ta="கடவுச்சொல் மறந்துவிட்டதா?" data-en="Forgot password?">கடவுச்சொல் மறந்துவிட்டதா?</span></summary>
+            <div class="temple-auth-recovery-help">
+              <form method="post" class="temple-auth-recovery-request">
+                <input type="hidden" name="csrf" value="<?= $token ?>">
+                <label for="recovery-email" data-ta="பதிவு செய்யப்பட்ட மின்னஞ்சல்" data-en="Registered email address">பதிவு செய்யப்பட்ட மின்னஞ்சல்</label>
+                <input id="recovery-email" type="email" name="recovery_email" autocomplete="email" placeholder="name@example.com" required maxlength="254">
+                <button type="submit" name="recovery_request" value="1" data-ta="கோரிக்கை அனுப்பு" data-en="Send request">கோரிக்கை அனுப்பு</button>
+              </form>
+              <p data-ta="கடவுச்சொல்லை மாற்ற, அங்கீகரிக்கப்பட்ட முதன்மை நிர்வாகியைத் தொடர்புகொள்ளுங்கள். பாதுகாப்பிற்காக, இந்தப் பக்கத்தில் நேரடியாக கடவுச்சொல்லை மீட்டமைக்க முடியாது." data-en="Contact an authorized Super Admin to reset your password. For security, passwords cannot be reset directly from this page.">Contact an authorized Super Admin to reset your password. For security, passwords cannot be reset directly from this page.</p>
+              <p data-ta="நீங்களே ஒரே நிர்வாகியாக இருந்தால், பாதுகாப்பான உள்ளூர் நிர்வாக மீட்பு நடைமுறையைப் பயன்படுத்துங்கள்." data-en="If you are the only administrator, use the secure local administrator recovery procedure.">If you are the only administrator, use the secure local administrator recovery procedure.</p>
+            </div>
+          </details>
+        <p class="temple-auth-secure">🔒 <span data-ta="அங்கீகரிக்கப்பட்ட நிர்வாக உறுப்பினர்களுக்கு மட்டும்" data-en="Authorized committee members only">அங்கீகரிக்கப்பட்ட நிர்வாக உறுப்பினர்களுக்கு மட்டும்</span></p>
+      </div>
+      <footer class="temple-auth-footer" aria-label="Login page footer">
+        <span>© <?= date("Y") ?> Hindu Mamanram · Rogaland</span>
+        <a href="../index.html" data-ta="இணையதளத்திற்குச் செல்லவும்" data-en="Back to website">இணையதளத்திற்குச் செல்லவும்</a>
+      </footer>
+    </section>
   </main>
+  <script>
+    (function () {
+      var toggle = document.querySelector("[data-show-password]");
+      var field = document.getElementById("temple-login-password");
+      if (!toggle || !field) return;
+      toggle.addEventListener("click", function () {
+        var showing = field.type === "password";
+        field.type = showing ? "text" : "password";
+        toggle.setAttribute("aria-pressed", showing ? "true" : "false");
+        var label = toggle.querySelector("span");
+        if (label) {
+          label.setAttribute("data-ta", showing ? "மறை" : "காட்டு");
+          label.setAttribute("data-en", showing ? "Hide" : "Show");
+          var english = document.documentElement.lang === "en";
+          label.textContent = english ? label.getAttribute("data-en") : label.getAttribute("data-ta");
+        }
+      });
+    })();
+  </script>
 <?php else: ?>
   <main class="shell is-desk">
     <div class="desk-app">
@@ -222,6 +293,17 @@ header("X-Robots-Tag: noindex");
           <ul>
             <li><a class="side-link" href="#notices"><?php icon("notice"); ?><span data-ta="அறிவிப்புகள்" data-en="Notices">அறிவிப்புகள்</span></a></li>
             <li><a class="side-link" href="#dates"><?php icon("pooja"); ?><span data-ta="பூஜை மேலாண்மை" data-en="Pooja Management">பூஜை மேலாண்மை</span></a></li>
+          </ul>
+          <?php endif; ?>
+          <?php if ($manager !== null && hm_has_role($manager, "email_manager")): ?>
+          <p class="side-label" data-ta="தொடர்பு" data-en="Communication">தொடர்பு</p>
+          <ul>
+            <li>
+              <a class="side-link" href="email.php">
+                <?php icon("notice"); ?>
+                <span data-ta="ஆலய மின்னஞ்சல்" data-en="Temple Email">ஆலய மின்னஞ்சல்</span>
+              </a>
+            </li>
           </ul>
           <?php endif; ?>
           <p class="side-label" data-ta="கணக்கு" data-en="Account">கணக்கு</p>
@@ -253,6 +335,30 @@ header("X-Robots-Tag: noindex");
       <div class="desk-main">
         <div class="desk-top">
           <button type="button" class="menu-btn" data-menu aria-expanded="false" aria-controls="desk-sidebar" data-label-ta="பட்டி" data-label-en="Menu" aria-label="பட்டி"><span data-ta="பட்டி" data-en="Menu">பட்டி</span></button>
+          <?php if (hm_can_manage_users(hm_current_user())): ?>
+          <?php $pendingRecovery = array_values(array_filter(hm_recovery_requests(), fn($r) => ($r["status"] ?? "") === "pending")); ?>
+          <details class="hm-notifications">
+            <summary aria-label="Password reset notifications" title="Password reset notifications"><span aria-hidden="true">🔔</span><span data-ta="அறிவிப்புகள்" data-en="Notifications">அறிவிப்புகள்</span><?php if (count($pendingRecovery)): ?><strong class="hm-notification-count"><?= count($pendingRecovery) ?></strong><?php endif; ?></summary>
+            <div class="hm-notifications-panel">
+    <section class="hm-reset-queue" aria-label="Password reset requests">
+      <h2 data-ta="கடவுச்சொல் மீட்டமைப்பு கோரிக்கைகள்" data-en="Password reset requests">கடவுச்சொல் மீட்டமைப்பு கோரிக்கைகள்</h2>
+      <?php if (!$pendingRecovery): ?>
+        <p data-ta="நிலுவையில் கோரிக்கைகள் இல்லை." data-en="No pending requests.">நிலுவையில் கோரிக்கைகள் இல்லை.</p>
+      <?php else: foreach ($pendingRecovery as $request): ?>
+        <div class="hm-reset-row">
+          <span><?= h($request['email']) ?> · <?= h(date('Y-m-d H:i', (int)$request['created'])) ?></span>
+          <form method="post">
+            <input type="hidden" name="csrf" value="<?= $token ?>">
+            <input type="hidden" name="request_id" value="<?= h($request['id']) ?>">
+            <button name="recovery_approve" value="1" type="submit" data-ta="ஒப்புதல் & அனுப்பு" data-en="Approve & send">ஒப்புதல் & அனுப்பு</button>
+            <button name="recovery_reject" value="1" type="submit" data-ta="நிராகரி" data-en="Reject">நிராகரி</button>
+          </form>
+        </div>
+      <?php endforeach; endif; ?>
+    </section>
+            </div>
+          </details>
+          <?php endif; ?>
           <div class="lang" role="group" data-label-ta="மொழி" data-label-en="Language" aria-label="மொழி">
             <button type="button" class="is-on" data-set-lang="ta" aria-pressed="true">த</button>
             <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
@@ -319,13 +425,61 @@ header("X-Robots-Tag: noindex");
               </div>
               <div class="sheet-body">
                 <input type="hidden" name="csrf" value="<?= $token ?>">
-                <div class="form-grid">
-                  <label class="field"><span data-ta="தலைப்பு" data-en="Title">தலைப்பு</span><input name="title_ta" required maxlength="140"></label>
-                  <label class="field"><span data-ta="ஆங்கிலத் தலைப்பு" data-en="English title">ஆங்கிலத் தலைப்பு</span><input name="title_en" maxlength="140"></label>
-                  <label class="field wide"><span data-ta="செய்தி" data-en="Message">செய்தி</span><textarea name="body_ta" required maxlength="2000" rows="4"></textarea></label>
-                  <label class="field wide"><span data-ta="ஆங்கிலச் செய்தி" data-en="English text">ஆங்கிலச் செய்தி</span><textarea name="body_en" maxlength="2000" rows="3"></textarea></label>
-                  <label class="field"><span data-ta="நாள்" data-en="Date">நாள்</span><input type="date" name="notice_date"></label>
+                <div class="form-grid hm-notice-create">
+                  <label class="field wide"><span data-ta="அறிவிப்பு மொழி" data-en="Notice language">அறிவிப்பு மொழி</span>
+                    <select id="notice-language" name="notice_language">
+                      <option value="ta" data-ta="தமிழ்" data-en="Tamil">தமிழ்</option>
+                      <option value="en" data-ta="ஆங்கிலம்" data-en="English">English</option>
+                      <option value="both" data-ta="தமிழ் + ஆங்கிலம்" data-en="Tamil + English">தமிழ் + ஆங்கிலம்</option>
+                    </select>
+                  </label>
+                  <label class="field wide"><span data-ta="தலைப்பு" data-en="Title">தலைப்பு</span><input name="title_ta" required maxlength="140" data-count-limit="140"></label>
+                  <label class="field wide"><span data-ta="செய்தி" data-en="Message">செய்தி</span><textarea name="body_ta" required maxlength="2000" data-count-limit="2000" rows="4"></textarea></label>
+                  <div class="hm-notice-translation field wide" id="notice-translation" hidden>
+                    <p class="hm-notice-translation-heading" data-ta="ஆங்கிலப் பதிப்பு" data-en="English version">ஆங்கிலப் பதிப்பு</p>
+                    <div class="hm-notice-translation-fields">
+                      <label class="field"><span data-ta="ஆங்கிலத் தலைப்பு" data-en="English title">ஆங்கிலத் தலைப்பு</span><input name="title_en" maxlength="140" data-count-limit="140"></label>
+                      <label class="field"><span data-ta="ஆங்கிலச் செய்தி" data-en="English message">ஆங்கிலச் செய்தி</span><textarea name="body_en" maxlength="2000" data-count-limit="2000" rows="3"></textarea></label>
+                    </div>
+                  </div>
+                  <label class="field wide"><span data-ta="நாள்" data-en="Date">நாள்</span><input type="date" name="notice_date"></label>
                 </div>
+                <script>
+                  (function () {
+                    const select = document.getElementById("notice-language");
+                    const translation = document.getElementById("notice-translation");
+                    if (!select || !translation) return;
+                    function update() {
+                      const both = select.value === "both";
+                      translation.hidden = !both;
+                      const title = translation.querySelector('[name="title_en"]');
+                      const body = translation.querySelector('[name="body_en"]');
+                      if (title) title.required = both;
+                      if (body) body.required = both;
+                    }
+                    select.addEventListener("change", update);
+                    update();
+                  })();
+                </script>
+                <script>
+                  (function () {
+                    const form = document.querySelector("#notice-new .hm-notice-create");
+                    if (!form) return;
+                    form.querySelectorAll("[data-count-limit]").forEach(function (field) {
+                      const limit = Number(field.dataset.countLimit);
+                      const counter = document.createElement("small");
+                      counter.className = "hm-notice-counter";
+                      counter.setAttribute("aria-live", "off");
+                      field.closest("label").appendChild(counter);
+                      function updateCount() {
+                        const count = Array.from(field.value).length;
+                        counter.textContent = count + " / " + limit;
+                      }
+                      field.addEventListener("input", updateCount);
+                      updateCount();
+                    });
+                  })();
+                </script>
                 <div class="actions">
                   <button class="btn btn-primary" name="save_notice" value="1" type="submit"><span data-ta="வெளியிடு" data-en="Publish">வெளியிடு</span></button>
                 </div>
@@ -353,7 +507,16 @@ header("X-Robots-Tag: noindex");
                   <td><?= h(($notice["date"] ?? "") !== "" ? $notice["date"] : "—") ?></td>
                   <td><?= h($notice["titleTa"] ?? "") ?></td>
                   <td class="clip"><?= h($notice["bodyTa"] ?? "") ?></td>
-                  <td><button type="button" class="btn btn-ghost btn-small" data-open="<?= h($noticeDialog) ?>" aria-haspopup="dialog" aria-controls="<?= h($noticeDialog) ?>"><span data-ta="திருத்து" data-en="Edit">திருத்து</span></button></td>
+                  <td>
+                    <div class="hm-notice-row-actions">
+                      <button type="button" class="btn btn-ghost btn-small" data-open="<?= h($noticeDialog) ?>" aria-haspopup="dialog" aria-controls="<?= h($noticeDialog) ?>"><span data-ta="திருத்து" data-en="Edit">திருத்து</span></button>
+                      <form method="post" class="hm-notice-delete-form" onsubmit="return confirm('Remove this notice from the website? This cannot be undone.');">
+                        <input type="hidden" name="csrf" value="<?= h(csrf()) ?>">
+                        <input type="hidden" name="notice_id" value="<?= h($notice["id"] ?? "") ?>">
+                        <button type="submit" class="btn btn-ghost btn-small hm-notice-delete-btn" name="delete_notice" value="1"><span data-ta="நீக்கு" data-en="Remove">நீக்கு</span></button>
+                      </form>
+                    </div>
+                  </td>
                 </tr>
                 <?php endforeach; ?>
               </tbody>
@@ -798,9 +961,7 @@ header("X-Robots-Tag: noindex");
         dialog.addEventListener("close", function () {
           if (dialogOpener) dialogOpener.focus();
         });
-        dialog.addEventListener("click", function (event) {
-          if (event.target === dialog) dialog.close();
-        });
+        // Do not dismiss forms when clicking outside: unsaved notice text must be preserved.
         dialog.querySelectorAll("[data-close]").forEach(function (button) {
           button.addEventListener("click", function () { dialog.close(); });
         });
