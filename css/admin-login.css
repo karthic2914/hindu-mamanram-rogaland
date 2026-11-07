@@ -181,3 +181,13 @@ body:has(.temple-auth){margin:0;background:#fbf5ec}
 .temple-auth-recovery-help{text-align:left;margin-top:12px;padding:13px 16px;border:1px solid #e6d6c7;background:#fffaf4;border-radius:12px;color:#654a4e;line-height:1.55}
 .temple-auth-recovery-help p{margin:0 0 8px}
 .temple-auth-recovery-help p:last-child{margin-bottom:0}
+
+.temple-auth-recovery-request{display:grid;gap:8px;margin-bottom:12px}
+.temple-auth-recovery-request label{font-size:13px;font-weight:600}
+.temple-auth-recovery-request input{width:100%;padding:12px;border:1px solid #d5b8a8;border-radius:9px;background:#fff;color:#452638}
+.temple-auth-recovery-request button{padding:12px;border:0;border-radius:9px;background:#702b48;color:#fff;font-weight:600;cursor:pointer}
+.hm-reset-queue{margin:18px 24px;padding:20px;background:#fff9f1;border:1px solid #e5cba7;border-radius:15px;color:#542039}
+.hm-reset-queue h2{margin:0 0 12px;font-size:19px}
+.hm-reset-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid #eadbd1}
+.hm-reset-row form{display:flex;gap:8px;flex-wrap:wrap}
+.hm-reset-row button{padding:9px 12px;border:1px solid #aa7b81;border-radius:8px;background:#6b2c48;color:white;cursor:pointer}
