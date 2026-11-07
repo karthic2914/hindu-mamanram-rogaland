@@ -276,25 +276,6 @@ header("X-Robots-Tag: noindex");
   </script>
 <?php else: ?>
   <main class="shell is-desk">
-    <?php if (hm_can_manage_users(hm_current_user())): ?>
-    <section class="hm-reset-queue" aria-label="Password reset requests">
-      <h2 data-ta="கடவுச்சொல் மீட்டமைப்பு கோரிக்கைகள்" data-en="Password reset requests">கடவுச்சொல் மீட்டமைப்பு கோரிக்கைகள்</h2>
-      <?php $pendingRecovery = array_values(array_filter(hm_recovery_requests(), fn($r) => ($r['status'] ?? '') === 'pending')); ?>
-      <?php if (!$pendingRecovery): ?>
-        <p data-ta="நிலுவையில் கோரிக்கைகள் இல்லை." data-en="No pending requests.">நிலுவையில் கோரிக்கைகள் இல்லை.</p>
-      <?php else: foreach ($pendingRecovery as $request): ?>
-        <div class="hm-reset-row">
-          <span><?= h($request['email']) ?> · <?= h(date('Y-m-d H:i', (int)$request['created'])) ?></span>
-          <form method="post">
-            <input type="hidden" name="csrf" value="<?= $token ?>">
-            <input type="hidden" name="request_id" value="<?= h($request['id']) ?>">
-            <button name="recovery_approve" value="1" type="submit" data-ta="ஒப்புதல் & அனுப்பு" data-en="Approve & send">ஒப்புதல் & அனுப்பு</button>
-            <button name="recovery_reject" value="1" type="submit" data-ta="நிராகரி" data-en="Reject">நிராகரி</button>
-          </form>
-        </div>
-      <?php endforeach; endif; ?>
-    </section>
-    <?php endif; ?>
     <div class="desk-app">
       <button type="button" class="sidebar-backdrop" data-close-menu tabindex="-1" data-label-ta="பட்டியை மூடு" data-label-en="Close menu" aria-label="பட்டியை மூடு"></button>
       <aside id="desk-sidebar" class="sidebar">
@@ -343,6 +324,30 @@ header("X-Robots-Tag: noindex");
       <div class="desk-main">
         <div class="desk-top">
           <button type="button" class="menu-btn" data-menu aria-expanded="false" aria-controls="desk-sidebar" data-label-ta="பட்டி" data-label-en="Menu" aria-label="பட்டி"><span data-ta="பட்டி" data-en="Menu">பட்டி</span></button>
+          <?php if (hm_can_manage_users(hm_current_user())): ?>
+          <?php $pendingRecovery = array_values(array_filter(hm_recovery_requests(), fn($r) => ($r["status"] ?? "") === "pending")); ?>
+          <details class="hm-notifications">
+            <summary aria-label="Password reset notifications" title="Password reset notifications"><span aria-hidden="true">♧</span><span data-ta="அறிவிப்புகள்" data-en="Notifications">அறிவிப்புகள்</span><?php if (count($pendingRecovery)): ?><strong class="hm-notification-count"><?= count($pendingRecovery) ?></strong><?php endif; ?></summary>
+            <div class="hm-notifications-panel">
+    <section class="hm-reset-queue" aria-label="Password reset requests">
+      <h2 data-ta="கடவுச்சொல் மீட்டமைப்பு கோரிக்கைகள்" data-en="Password reset requests">கடவுச்சொல் மீட்டமைப்பு கோரிக்கைகள்</h2>
+      <?php if (!$pendingRecovery): ?>
+        <p data-ta="நிலுவையில் கோரிக்கைகள் இல்லை." data-en="No pending requests.">நிலுவையில் கோரிக்கைகள் இல்லை.</p>
+      <?php else: foreach ($pendingRecovery as $request): ?>
+        <div class="hm-reset-row">
+          <span><?= h($request['email']) ?> · <?= h(date('Y-m-d H:i', (int)$request['created'])) ?></span>
+          <form method="post">
+            <input type="hidden" name="csrf" value="<?= $token ?>">
+            <input type="hidden" name="request_id" value="<?= h($request['id']) ?>">
+            <button name="recovery_approve" value="1" type="submit" data-ta="ஒப்புதல் & அனுப்பு" data-en="Approve & send">ஒப்புதல் & அனுப்பு</button>
+            <button name="recovery_reject" value="1" type="submit" data-ta="நிராகரி" data-en="Reject">நிராகரி</button>
+          </form>
+        </div>
+      <?php endforeach; endif; ?>
+    </section>
+            </div>
+          </details>
+          <?php endif; ?>
           <div class="lang" role="group" data-label-ta="மொழி" data-label-en="Language" aria-label="மொழி">
             <button type="button" class="is-on" data-set-lang="ta" aria-pressed="true">த</button>
             <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
