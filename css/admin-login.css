@@ -126,3 +126,25 @@ body:has(.temple-auth){margin:0;background:#fbf5ec}
 .temple-auth-form-side:after{background:linear-gradient(0deg,rgba(223,172,92,.13),transparent);border-bottom:3px double #dfb974}
 @media(max-width:1050px){.temple-auth-field>input,.temple-auth-password{height:56px}.temple-auth-user:before,.temple-auth-pass:before{left:20px}.temple-auth-field>input,.temple-auth-password input{padding-left:60px}}
 @media(max-width:600px){.temple-auth-field>input,.temple-auth-password{height:52px}.temple-auth-form-side:after{display:none}}
+
+/* Asymmetric sweeping gold divider: approved reference */
+@media(min-width:1051px){
+ .temple-auth-brand:before{
+  content:"";position:absolute;z-index:5;top:0;right:-115px;width:235px;height:100%;
+  border:0;border-radius:0;box-shadow:none;pointer-events:none;
+  background:#d7a34d;
+  clip-path:polygon(65% 0%,60% 5%,56% 10%,53% 15%,52% 20%,52% 25%,53% 30%,54% 35%,55% 40%,56% 45%,57% 50%,57% 55%,56% 60%,54% 65%,51% 70%,47% 75%,42% 80%,36% 85%,29% 90%,21% 95%,12% 100%,100% 100%,100% 0%);
+ }
+ .temple-auth-brand:after{
+  content:"";display:block;position:absolute;z-index:1;inset:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(67,17,36,.08) 28%,rgba(78,20,42,.45) 46%,#54172e 67%,#54172e 100%);
+  pointer-events:none;
+ }
+ .temple-auth-form-side:before{z-index:0}
+ .temple-auth-form-side{isolation:isolate}
+ .temple-auth-form-side:before{background:radial-gradient(circle at 100% 0%,transparent 0 115px,rgba(201,151,70,.12) 116px 118px,transparent 119px)}
+}
+
+@media(min-width:1051px){
+ .temple-auth-brand:before{background:linear-gradient(90deg,#d7a34d 0 5%,#fff8ee 5% 100%)}
+}
