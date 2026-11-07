@@ -422,13 +422,13 @@ header("X-Robots-Tag: noindex");
                       <option value="both" data-ta="தமிழ் + ஆங்கிலம்" data-en="Tamil + English">தமிழ் + ஆங்கிலம்</option>
                     </select>
                   </label>
-                  <label class="field wide"><span data-ta="தலைப்பு" data-en="Title">தலைப்பு</span><input name="title_ta" required maxlength="140"></label>
-                  <label class="field wide"><span data-ta="செய்தி" data-en="Message">செய்தி</span><textarea name="body_ta" required maxlength="2000" rows="4"></textarea></label>
+                  <label class="field wide"><span data-ta="தலைப்பு" data-en="Title">தலைப்பு</span><input name="title_ta" required maxlength="140" data-count-limit="140"></label>
+                  <label class="field wide"><span data-ta="செய்தி" data-en="Message">செய்தி</span><textarea name="body_ta" required maxlength="2000" data-count-limit="2000" rows="4"></textarea></label>
                   <div class="hm-notice-translation field wide" id="notice-translation" hidden>
                     <p class="hm-notice-translation-heading" data-ta="ஆங்கிலப் பதிப்பு" data-en="English version">ஆங்கிலப் பதிப்பு</p>
                     <div class="hm-notice-translation-fields">
-                      <label class="field"><span data-ta="ஆங்கிலத் தலைப்பு" data-en="English title">ஆங்கிலத் தலைப்பு</span><input name="title_en" maxlength="140"></label>
-                      <label class="field"><span data-ta="ஆங்கிலச் செய்தி" data-en="English message">ஆங்கிலச் செய்தி</span><textarea name="body_en" maxlength="2000" rows="3"></textarea></label>
+                      <label class="field"><span data-ta="ஆங்கிலத் தலைப்பு" data-en="English title">ஆங்கிலத் தலைப்பு</span><input name="title_en" maxlength="140" data-count-limit="140"></label>
+                      <label class="field"><span data-ta="ஆங்கிலச் செய்தி" data-en="English message">ஆங்கிலச் செய்தி</span><textarea name="body_en" maxlength="2000" data-count-limit="2000" rows="3"></textarea></label>
                     </div>
                   </div>
                   <label class="field wide"><span data-ta="நாள்" data-en="Date">நாள்</span><input type="date" name="notice_date"></label>
@@ -448,6 +448,25 @@ header("X-Robots-Tag: noindex");
                     }
                     select.addEventListener("change", update);
                     update();
+                  })();
+                </script>
+                <script>
+                  (function () {
+                    const form = document.querySelector("#notice-new .hm-notice-create");
+                    if (!form) return;
+                    form.querySelectorAll("[data-count-limit]").forEach(function (field) {
+                      const limit = Number(field.dataset.countLimit);
+                      const counter = document.createElement("small");
+                      counter.className = "hm-notice-counter";
+                      counter.setAttribute("aria-live", "off");
+                      field.closest("label").appendChild(counter);
+                      function updateCount() {
+                        const count = Array.from(field.value).length;
+                        counter.textContent = count + " / " + limit;
+                      }
+                      field.addEventListener("input", updateCount);
+                      updateCount();
+                    });
                   })();
                 </script>
                 <div class="actions">
@@ -922,9 +941,7 @@ header("X-Robots-Tag: noindex");
         dialog.addEventListener("close", function () {
           if (dialogOpener) dialogOpener.focus();
         });
-        dialog.addEventListener("click", function (event) {
-          if (event.target === dialog) dialog.close();
-        });
+        // Do not dismiss forms when clicking outside: unsaved notice text must be preserved.
         dialog.querySelectorAll("[data-close]").forEach(function (button) {
           button.addEventListener("click", function () { dialog.close(); });
         });
