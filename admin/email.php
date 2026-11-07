@@ -18,7 +18,7 @@ function mail_settings_ready(): bool {
  return getenv('HM_TEMPLE_EMAIL_ENABLED') === '1'
   && getenv('HM_SMTP_HOST') !== false && getenv('HM_SMTP_USER') !== false
   && getenv('HM_SMTP_PASSWORD') !== false
-  && filter_var(getenv('HM_SMTP_FROM'), FILTER_VALIDATE_EMAIL) !== false;
+  && strtolower((string)getenv('HM_SMTP_FROM')) === 'hindu@mamanram.no';
 }
 function smtp_send(array $recipients, string $subject, string $body): void {
  $host=(string)getenv('HM_SMTP_HOST'); $port=(int)(getenv('HM_SMTP_PORT') ?: 587);
@@ -52,10 +52,11 @@ function smtp_send(array $recipients, string $subject, string $body): void {
   $cmd(base64_encode($user),[334]);
   $cmd(base64_encode($pass),[235]);
   $cmd('MAIL FROM:<'.$from.'>',[250]);
+  $cmd('RCPT TO:<hindu@mamanram.no>',[250,251]);
   foreach($recipients as $address) $cmd('RCPT TO:<'.$address.'>',[250,251]);
   $cmd('DATA',[354]);
   $safeSubject='=?UTF-8?B?'.base64_encode($subject).'?=';
-  $headers="From: Hindu Mamanram <".$from.">\r\nTo: undisclosed-recipients:;\r\nSubject: ".$safeSubject."\r\nMIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n";
+  $headers="From: Hindu Mamanram <".$from.">\r\nTo: hindu@mamanram.no\r\nSubject: ".$safeSubject."\r\nMIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n";
   $payload=$headers."\r\n".chunk_split(base64_encode($body),76,"\r\n");
   $payload=preg_replace('/^\./m','..',$payload);
   if (fwrite($socket,$payload."\r\n.\r\n")===false) throw new RuntimeException('SMTP message failed.');
@@ -66,7 +67,7 @@ function smtp_send(array $recipients, string $subject, string $body): void {
 $type=(string)($_POST['type']??'pooja'); if (!isset($templates[$type])) $type='pooja';
 $subject=(string)($_POST['subject']??$templates[$type][1]);
 $body=(string)($_POST['body']??$templates[$type][2]);
-$to=(string)($_POST['recipients']??'');
+$to=(string)($_POST['bcc']??'');
 $error='';$success='';
 if ($_SERVER['REQUEST_METHOD']==='POST') {
  if (!hm_csrf_ok()) $error='Session expired. Refresh the page.';
@@ -76,14 +77,14 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
  else {
   $addresses=preg_split('/[,;\s]+/',trim($to),-1,PREG_SPLIT_NO_EMPTY);
   $addresses=array_values(array_unique(array_map('strtolower',$addresses)));
-  if (!$addresses || count($addresses)>20 || count(array_filter($addresses,fn($a)=>filter_var($a,FILTER_VALIDATE_EMAIL)!==false))!==count($addresses)) $error='Enter 1–20 valid recipient addresses.';
-  elseif (!isset($_POST['confirm_recipients'])) $error='Please confirm the recipient list before sending.';
+  if (!$addresses || count($addresses)>20 || count(array_filter($addresses,fn($a)=>filter_var($a,FILTER_VALIDATE_EMAIL)!==false))!==count($addresses)) $error='Enter 1–20 valid BCC recipient addresses.';
+  elseif (!isset($_POST['confirm_recipients'])) $error='Please confirm the BCC recipient list before sending.';
   else {
    $bucket='temple-email:'.(string)($user['id']??'legacy');
    if (hm_attempt_count($bucket)>=5) $error='Sending limit reached. Try again later.';
    else {
     hm_attempt_mark($bucket,false);
-    try { smtp_send($addresses,$subject,$body); $success='Email accepted by the mail server for '.count($addresses).' recipient(s).'; $to=''; }
+    try { smtp_send($addresses,$subject,$body); $success='Email accepted by the mail server for the temple address and '.count($addresses).' BCC recipient(s).'; $to=''; }
     catch(Throwable $e) { error_log('Temple email SMTP error: '.$e->getMessage()); $error='Email could not be sent. Check server mail configuration or logs.'; }
    }
   }
@@ -98,7 +99,7 @@ $ready=mail_settings_ready();
 .email-panel .muted{color:#70655c}.email-panel .alert{padding:12px 16px;border-radius:10px;background:#fff0df;margin:14px 0}.email-panel .alert.ok{background:#e8f5e9}
 .email-panel label{display:block;font-weight:600;margin:18px 0 7px}
 .email-panel input:not([type=checkbox]),.email-panel textarea,.email-panel select{display:block;width:100%;padding:12px;border:1px solid #bfb4a9;border-radius:8px;font:inherit;background:white}
-.email-panel textarea{min-height:220px;resize:vertical}.email-panel textarea#recipients{min-height:75px}
+.email-panel textarea{min-height:220px;resize:vertical}.email-panel textarea#bcc{min-height:75px}
 .email-panel button{background:#6e2c46;color:white;border:0;border-radius:8px;padding:12px 22px;font:inherit;cursor:pointer}
 .email-panel button:disabled{opacity:.55;cursor:not-allowed}.email-panel .bar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
 .email-panel .check{display:flex;align-items:flex-start;gap:10px}.email-panel .check input{width:auto;margin-top:5px}
@@ -132,11 +133,12 @@ $ready=mail_settings_ready();
 <form method="post" id="composer"><input type="hidden" name="csrf" value="<?=eh(hm_csrf())?>">
 <label for="type">Email type</label><select id="type" name="type"><?php foreach($templates as $key=>$tpl):?><option value="<?=eh($key)?>" <?=$key===$type?'selected':''?>><?=eh($tpl[0])?></option><?php endforeach;?></select>
 <label>From</label><input value="hindu@mamanram.no" readonly aria-label="From">
-<label for="recipients">Recipients (email addresses separated by commas, maximum 20)</label><textarea id="recipients" name="recipients" rows="2" style="min-height:75px" placeholder="person@example.com" required><?=eh($to)?></textarea>
-<p class="muted">Recipient addresses are sent privately (BCC-style). Each recipient sees only the temple sender.</p>
+<label for="to">To</label><input id="to" type="email" value="hindu@mamanram.no" readonly aria-label="To address">
+<label for="bcc">BCC (email addresses separated by commas, maximum 20)</label><textarea id="bcc" name="bcc" rows="2" style="min-height:75px" placeholder="person@example.com" required><?=eh($to)?></textarea>
+<p class="muted">BCC recipients are delivered privately and are not listed in the message headers. The temple address receives a copy.</p>
 <label for="subject">Subject</label><input id="subject" name="subject" maxlength="200" value="<?=eh($subject)?>" required>
 <label for="body">Message</label><textarea id="body" name="body" maxlength="20000" required><?=eh($body)?></textarea>
-<label class="check"><input type="checkbox" name="confirm_recipients" value="1" required><span>I have reviewed the recipients and the message, and I am authorized to contact them.</span></label>
+<label class="check"><input type="checkbox" name="confirm_recipients" value="1" required><span>I have reviewed the BCC recipients and the message, and I am authorized to contact them.</span></label>
 <div class="bar"><button type="button" id="preview">Preview message</button><button type="submit" name="send_email" value="1" <?=$ready?'':'disabled'?>>Send Email</button></div>
 </form>
 </div></main></div></div></div>
@@ -144,7 +146,7 @@ $ready=mail_settings_ready();
 const templates=<?=json_encode(array_map(fn($v)=>['subject'=>$v[1],'body'=>$v[2]],$templates),JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS|JSON_HEX_QUOT)?>;
 document.getElementById('type').addEventListener('change',e=>{let t=templates[e.target.value];document.getElementById('subject').value=t.subject;document.getElementById('body').value=t.body;});
 document.getElementById('preview').addEventListener('click',()=>alert('Subject: '+document.getElementById('subject').value+'\n\n'+document.getElementById('body').value));
-document.getElementById('composer').addEventListener('submit',e=>{if(!confirm('Send this email to the reviewed recipients?'))e.preventDefault();});
+document.getElementById('composer').addEventListener('submit',e=>{if(!confirm('Send this email to the temple address and the reviewed BCC recipients?'))e.preventDefault();});
 </script>
 <script>
 document.documentElement.classList.add('js-menu');
