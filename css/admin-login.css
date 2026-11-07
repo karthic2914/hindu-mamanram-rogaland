@@ -214,3 +214,7 @@ body:has(.temple-auth){margin:0;background:#fbf5ec}
 .hm-notice-translation>summary{cursor:pointer;color:#782c4a;font-weight:600;padding:10px 0}
 .hm-notice-translation-fields{display:grid;gap:14px;padding:14px 0}
 .hm-notice-create select{width:100%;min-height:44px;border:1px solid #e3d8d5;border-radius:10px;background:#fff;padding:10px;color:#542039}
+
+/* Language selection alone controls bilingual notice fields. */
+.hm-notice-translation[hidden]{display:none!important}
+.hm-notice-translation-heading{margin:4px 0 10px;color:#782c4a;font-weight:600}
