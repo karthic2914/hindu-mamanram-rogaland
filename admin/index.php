@@ -496,7 +496,16 @@ header("X-Robots-Tag: noindex");
                   <td><?= h(($notice["date"] ?? "") !== "" ? $notice["date"] : "—") ?></td>
                   <td><?= h($notice["titleTa"] ?? "") ?></td>
                   <td class="clip"><?= h($notice["bodyTa"] ?? "") ?></td>
-                  <td><button type="button" class="btn btn-ghost btn-small" data-open="<?= h($noticeDialog) ?>" aria-haspopup="dialog" aria-controls="<?= h($noticeDialog) ?>"><span data-ta="திருத்து" data-en="Edit">திருத்து</span></button></td>
+                  <td>
+                    <div class="hm-notice-row-actions">
+                      <button type="button" class="btn btn-ghost btn-small" data-open="<?= h($noticeDialog) ?>" aria-haspopup="dialog" aria-controls="<?= h($noticeDialog) ?>"><span data-ta="திருத்து" data-en="Edit">திருத்து</span></button>
+                      <form method="post" class="hm-notice-delete-form" onsubmit="return confirm('Remove this notice from the website? This cannot be undone.');">
+                        <input type="hidden" name="csrf" value="<?= h(csrf()) ?>">
+                        <input type="hidden" name="notice_id" value="<?= h($notice["id"] ?? "") ?>">
+                        <button type="submit" class="btn btn-ghost btn-small hm-notice-delete-btn" name="delete_notice" value="1"><span data-ta="நீக்கு" data-en="Remove">நீக்கு</span></button>
+                      </form>
+                    </div>
+                  </td>
                 </tr>
                 <?php endforeach; ?>
               </tbody>
