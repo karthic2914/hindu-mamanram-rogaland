@@ -214,6 +214,10 @@ header("X-Robots-Tag: noindex");
         </form>
         <p class="temple-auth-secure">🔒 <span data-ta="அங்கீகரிக்கப்பட்ட நிர்வாக உறுப்பினர்களுக்கு மட்டும்" data-en="Authorized committee members only">அங்கீகரிக்கப்பட்ட நிர்வாக உறுப்பினர்களுக்கு மட்டும்</span></p>
       </div>
+      <footer class="temple-auth-footer" aria-label="Login page footer">
+        <span>© <?= date("Y") ?> Hindu Mamanram · Rogaland</span>
+        <a href="../index.html" data-ta="இணையதளத்திற்குச் செல்லவும்" data-en="Back to website">இணையதளத்திற்குச் செல்லவும்</a>
+      </footer>
     </section>
   </main>
   <script>
