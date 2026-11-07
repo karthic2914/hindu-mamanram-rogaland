@@ -210,6 +210,13 @@ header("X-Robots-Tag: noindex");
           <input type="hidden" name="csrf" value="<?= $token ?>">
           <label class="temple-auth-field temple-auth-user"><span data-ta="பயனர் பெயர்" data-en="Username">பயனர் பெயர்</span><input name="username" autocomplete="username" maxlength="32" spellcheck="false" placeholder="Username" data-placeholder-ta="பயனர் பெயர்" data-placeholder-en="Username" required></label>
           <label class="temple-auth-field temple-auth-pass"><span data-ta="கடவுச்சொல்" data-en="Password">கடவுச்சொல்</span><span class="temple-auth-password"><input id="temple-login-password" type="password" name="password" required autocomplete="current-password" placeholder="Password" data-placeholder-ta="கடவுச்சொல்" data-placeholder-en="Password"><button class="temple-auth-reveal" type="button" aria-controls="temple-login-password" aria-pressed="false" data-show-password><span data-ta="காட்டு" data-en="Show">காட்டு</span></button></span></label>
+          <details class="temple-auth-recovery">
+            <summary><span data-ta="கடவுச்சொல் மறந்துவிட்டதா?" data-en="Forgot password?">கடவுச்சொல் மறந்துவிட்டதா?</span></summary>
+            <div class="temple-auth-recovery-help">
+              <p data-ta="கடவுச்சொல்லை மாற்ற, அங்கீகரிக்கப்பட்ட முதன்மை நிர்வாகியைத் தொடர்புகொள்ளுங்கள். பாதுகாப்பிற்காக, இந்தப் பக்கத்தில் நேரடியாக கடவுச்சொல்லை மீட்டமைக்க முடியாது." data-en="Contact an authorized Super Admin to reset your password. For security, passwords cannot be reset directly from this page.">Contact an authorized Super Admin to reset your password. For security, passwords cannot be reset directly from this page.</p>
+              <p data-ta="நீங்களே ஒரே நிர்வாகியாக இருந்தால், பாதுகாப்பான உள்ளூர் நிர்வாக மீட்பு நடைமுறையைப் பயன்படுத்துங்கள்." data-en="If you are the only administrator, use the secure local administrator recovery procedure.">If you are the only administrator, use the secure local administrator recovery procedure.</p>
+            </div>
+          </details>
           <button class="temple-auth-submit" name="login" value="1" type="submit"><span data-ta="உள்நுழைக" data-en="Sign In">உள்நுழைக</span><span aria-hidden="true">→</span></button>
         </form>
         <p class="temple-auth-secure">🔒 <span data-ta="அங்கீகரிக்கப்பட்ட நிர்வாக உறுப்பினர்களுக்கு மட்டும்" data-en="Authorized committee members only">அங்கீகரிக்கப்பட்ட நிர்வாக உறுப்பினர்களுக்கு மட்டும்</span></p>
