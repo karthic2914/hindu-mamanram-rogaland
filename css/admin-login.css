@@ -221,3 +221,9 @@ body:has(.temple-auth){margin:0;background:#fbf5ec}
 
 /* Notice editor character counts. */
 .hm-notice-counter{display:block;margin-top:5px;text-align:right;font-size:12px;font-weight:400;color:#816a72;font-variant-numeric:tabular-nums}
+
+/* Keep notice row actions grouped and clearly distinguish removal. */
+.hm-notice-row-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hm-notice-delete-form{display:inline-flex;margin:0}
+.hm-notice-delete-btn{color:#a33849!important;border-color:#e3c4c9!important}
+.hm-notice-delete-btn:hover{background:#fff0f1!important}
