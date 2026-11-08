@@ -227,3 +227,32 @@ body:has(.temple-auth){margin:0;background:#fbf5ec}
 .hm-notice-delete-form{display:inline-flex;margin:0}
 .hm-notice-delete-btn{color:#a33849!important;border-color:#e3c4c9!important}
 .hm-notice-delete-btn:hover{background:#fff0f1!important}
+/* Extra breathing room when password recovery is expanded */
+.temple-auth-form-side:has(.temple-auth-recovery[open]) {
+    padding-bottom: 48px;
+}
+
+@media (max-width: 600px) {
+    .temple-auth-form-side:has(.temple-auth-recovery[open]) {
+        padding-bottom: 32px;
+    }
+}
+/* Allow scrolling when the password recovery form is expanded */
+@media (min-width: 1051px) {
+  html:has(.temple-auth-recovery[open]),
+  body:has(.temple-auth-recovery[open]) {
+      height: auto;
+      overflow-y: auto;
+  }
+
+  .temple-auth:has(.temple-auth-recovery[open]) {
+      height: auto;
+      min-height: 100vh;
+  }
+
+  .temple-auth-form-side:has(.temple-auth-recovery[open]) {
+      height: auto;
+      min-height: 100vh;
+      padding-bottom: 40px;
+  }
+}
